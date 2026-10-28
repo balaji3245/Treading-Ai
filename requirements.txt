@@ -1,0 +1,10 @@
+# Treading-AI Phase 1: Historical Data Pipeline Dependencies
+# Optimized for CPU execution on Linux (Ubuntu 24.04/26.04)
+
+pandas>=2.2.0,<4.0.0
+numpy>=2.0.0,<3.0.0
+pyarrow>=15.0.0,<30.0.0
+requests>=2.31.0,<3.0.0
+pytest>=8.0.0,<10.0.0
+matplotlib>=3.8.0,<4.0.0
+python-dateutil>=2.9.0,<4.0.0
