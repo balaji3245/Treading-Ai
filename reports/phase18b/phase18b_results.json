@@ -1,0 +1,671 @@
+{
+  "data_partition_protection": {
+    "val": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+      "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "is_unmodified": true
+    },
+    "test": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+      "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "is_unmodified": true
+    }
+  },
+  "corrected_excursions": {
+    "H_12": {
+      "horizon_bars": 12,
+      "sample_count": 260808,
+      "terminal_move": {
+        "mean_usd": 2.4012808234409984,
+        "median_usd": 1.56899999999996
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 2.440774707831048,
+        "long_mean_mae_usd": 2.4672818778565078,
+        "short_mean_mfe_usd": 2.4672818778565078,
+        "short_mean_mae_usd": 2.440774707831048,
+        "mfe_mae_ratio_long": 0.9892565295180265,
+        "mfe_mae_ratio_short": 1.0108601461414743
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 2.507869760513482,
+        "corrected_pooled_excursion": 2.454028292843778,
+        "index_overstatement_usd": 0.05384146766970366
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_24": {
+      "horizon_bars": 24,
+      "sample_count": 260796,
+      "terminal_move": {
+        "mean_usd": 3.442728922222733,
+        "median_usd": 2.2590000000000146
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 3.5262747281400024,
+        "long_mean_mae_usd": 3.5444132003558337,
+        "short_mean_mfe_usd": 3.5444132003558337,
+        "short_mean_mae_usd": 3.5262747281400024,
+        "mfe_mae_ratio_long": 0.9948825175873935,
+        "mfe_mae_ratio_short": 1.005143805748056
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 3.5754436264359883,
+        "corrected_pooled_excursion": 3.535343964247918,
+        "index_overstatement_usd": 0.04009966218807026
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_48": {
+      "horizon_bars": 48,
+      "sample_count": 260772,
+      "terminal_move": {
+        "mean_usd": 5.013434325771172,
+        "median_usd": 3.3730000000000473
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 5.148137031583146,
+        "long_mean_mae_usd": 5.127654809565445,
+        "short_mean_mfe_usd": 5.127654809565445,
+        "short_mean_mae_usd": 5.148137031583146,
+        "mfe_mae_ratio_long": 1.0039944619476906,
+        "mfe_mae_ratio_short": 0.9960214302975919
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 5.168055347199854,
+        "corrected_pooled_excursion": 5.1378959205742945,
+        "index_overstatement_usd": 0.03015942662555915
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_72": {
+      "horizon_bars": 72,
+      "sample_count": 260748,
+      "terminal_move": {
+        "mean_usd": 6.286877092058233,
+        "median_usd": 4.349999999999909
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 6.450578899934036,
+        "long_mean_mae_usd": 6.384319833709175,
+        "short_mean_mfe_usd": 6.384319833709175,
+        "short_mean_mae_usd": 6.450578899934036,
+        "mfe_mae_ratio_long": 1.0103784064631307,
+        "mfe_mae_ratio_short": 0.9897281984682742
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 6.442871793839262,
+        "corrected_pooled_excursion": 6.417449366821606,
+        "index_overstatement_usd": 0.025422427017655735
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_96": {
+      "horizon_bars": 96,
+      "sample_count": 260724,
+      "terminal_move": {
+        "mean_usd": 7.381148413648148,
+        "median_usd": 5.163000000000011
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 7.583612525122352,
+        "long_mean_mae_usd": 7.463386623402525,
+        "short_mean_mfe_usd": 7.463386623402525,
+        "short_mean_mae_usd": 7.583612525122352,
+        "mfe_mae_ratio_long": 1.0161087597074017,
+        "mfe_mae_ratio_short": 0.9841466186040554
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 7.546103845445759,
+        "corrected_pooled_excursion": 7.523499574262439,
+        "index_overstatement_usd": 0.022604271183320535
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_120": {
+      "horizon_bars": 120,
+      "sample_count": 260700,
+      "terminal_move": {
+        "mean_usd": 8.34328298427311,
+        "median_usd": 5.899999999999864
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 8.611428799386267,
+        "long_mean_mae_usd": 8.430649370924435,
+        "short_mean_mfe_usd": 8.430649370924435,
+        "short_mean_mae_usd": 8.611428799386267,
+        "mfe_mae_ratio_long": 1.021443120275563,
+        "mfe_mae_ratio_short": 0.9790070344105131
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 8.54168897967012,
+        "corrected_pooled_excursion": 8.521039085155351,
+        "index_overstatement_usd": 0.02064989451476862
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    },
+    "H_288": {
+      "horizon_bars": 288,
+      "sample_count": 260532,
+      "terminal_move": {
+        "mean_usd": 13.530686126848142,
+        "median_usd": 10.059999999999945
+      },
+      "corrected_excursions": {
+        "long_mean_mfe_usd": 14.112385204120798,
+        "long_mean_mae_usd": 13.377452739010943,
+        "short_mean_mfe_usd": 13.377452739010943,
+        "short_mean_mae_usd": 14.112385204120798,
+        "mfe_mae_ratio_long": 1.054938147003627,
+        "mfe_mae_ratio_short": 0.9479228738104983
+      },
+      "phase17_comparison": {
+        "p17_reported_pooled_mfe_mae": 13.757846679102759,
+        "corrected_pooled_excursion": 13.744918971565872,
+        "index_overstatement_usd": 0.012927707536887212
+      },
+      "timing_definitions": {
+        "decision_time": "Close of candle i",
+        "entry_time": "Open of candle i+1",
+        "holding_interval": "Open of candle i+1 to Open of candle i+1+H",
+        "active_candles_included": "Candles i+1 through i+H",
+        "exit_time": "Open of candle i+1+H",
+        "future_data_excluded": "Candle i+1+H High, Low, Close (occurring strictly after exit execution)"
+      }
+    }
+  },
+  "effective_sample_size_sensitivity": {
+    "H_12": {
+      "horizon_bars": 12,
+      "valid_samples_N": 258408,
+      "autocorrelation_lags": {
+        "lag_1": 0.7919565659786636,
+        "lag_5": 0.42225364793410486,
+        "lag_H": -0.027578106197330414,
+        "first_negative_lag": 11
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 12.0,
+          "n_eff": 21534.0,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 7.842172866592568,
+          "n_eff": 32951.07164760556,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 6.4565533290799575,
+          "n_eff": 40022.592059473085,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 11)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 7.820981825089786,
+          "n_eff": 33040.352960676195,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_24": {
+      "horizon_bars": 24,
+      "valid_samples_N": 255996,
+      "autocorrelation_lags": {
+        "lag_1": 0.8566060590961048,
+        "lag_5": 0.6080030133210728,
+        "lag_H": -0.017197276841598292,
+        "first_negative_lag": 23
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 24.0,
+          "n_eff": 10666.5,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 15.207553471383232,
+          "n_eff": 16833.476895657128,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 12.495681662484207,
+          "n_eff": 20486.75749867868,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 23)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 15.16648368203553,
+          "n_eff": 16879.06078738761,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_48": {
+      "horizon_bars": 48,
+      "valid_samples_N": 251172,
+      "autocorrelation_lags": {
+        "lag_1": 0.9020251854958683,
+        "lag_5": 0.73498385205662,
+        "lag_H": -0.005921786397521668,
+        "first_negative_lag": 47
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 48.0,
+          "n_eff": 5232.75,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 30.429608756680707,
+          "n_eff": 8254.197482734842,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 24.82882292871933,
+          "n_eff": 10116.146090416194,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 47)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 30.26967457772959,
+          "n_eff": 8297.809722235852,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_72": {
+      "horizon_bars": 72,
+      "valid_samples_N": 246348,
+      "autocorrelation_lags": {
+        "lag_1": 0.9227484731109682,
+        "lag_5": 0.7905492258045901,
+        "lag_H": -0.03214602507196633,
+        "first_negative_lag": 68
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 72.0,
+          "n_eff": 3421.5,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 44.05200468185599,
+          "n_eff": 5592.2086129593345,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 35.753361831670226,
+          "n_eff": 6890.205210906507,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 68)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 44.07819222133887,
+          "n_eff": 5588.886194854867,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_96": {
+      "horizon_bars": 96,
+      "valid_samples_N": 241524,
+      "autocorrelation_lags": {
+        "lag_1": 0.9347742133968383,
+        "lag_5": 0.819581024315958,
+        "lag_H": -0.031440640290588844,
+        "first_negative_lag": 91
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 96.0,
+          "n_eff": 2515.875,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 57.13450506881808,
+          "n_eff": 4227.287865871704,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 46.58009127878648,
+          "n_eff": 5185.133677700518,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 91)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 57.235343134093284,
+          "n_eff": 4219.840168235696,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_120": {
+      "horizon_bars": 120,
+      "valid_samples_N": 236700,
+      "autocorrelation_lags": {
+        "lag_1": 0.9406693009508607,
+        "lag_5": 0.8358756371549497,
+        "lag_H": -0.024108343309125955,
+        "first_negative_lag": 115
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 120.0,
+          "n_eff": 1972.5,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 70.53822877523798,
+          "n_eff": 3355.6272125036985,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 57.704447361555474,
+          "n_eff": 4101.936866614843,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 115)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 70.64145014262527,
+          "n_eff": 3350.7239661997605,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    },
+    "H_288": {
+      "horizon_bars": 288,
+      "valid_samples_N": 202896,
+      "autocorrelation_lags": {
+        "lag_1": 0.9632494457303573,
+        "lag_5": 0.8986147951827625,
+        "lag_H": -0.000494720638090908,
+        "first_negative_lag": 287
+      },
+      "estimators_comparison": {
+        "heuristic_N_over_H": {
+          "vif": 288.0,
+          "n_eff": 704.5,
+          "description": "Crude lower bound assuming linear autocorrelation decay of continuous returns"
+        },
+        "bartlett_kernel_2H_truncation": {
+          "vif": 164.85973723687016,
+          "n_eff": 1230.7189335652004,
+          "description": "Triangular Bartlett weighting truncated at lag 2H"
+        },
+        "bartlett_kernel_first_neg_truncation": {
+          "vif": 136.62751893354195,
+          "n_eff": 1485.0302602559314,
+          "description": "Bartlett weighting truncated at first non-positive autocorrelation (lag 287)"
+        },
+        "parzen_kernel_2H_truncation": {
+          "vif": 164.772820478569,
+          "n_eff": 1231.3681310467673,
+          "description": "Smooth cubic Parzen kernel truncated at lag 2H"
+        }
+      },
+      "governance_caveat": "NO SINGLE ESTIMATE CAN BE LABELED 'THE TRUE EFFECTIVE SAMPLE SIZE'. Effective degrees of freedom is an asymptotic theoretical construct sensitive to kernel choice, lag truncation, and sign mapping. Crucially, overlapping-label dependence (induced mechanically by rolling horizons) must be distinguished from serial dependence in market returns (e.g. volatility clustering, GARCH effects, and macro trend persistence)."
+    }
+  },
+  "clean_feature_diagnostics": {
+    "raw_feature_count": 232,
+    "zero_variance_columns_excluded": [
+      "is_daily_roll_window"
+    ],
+    "clean_feature_count": 231,
+    "correlation_pair_counts": {
+      "total_pairs": 26565,
+      "pairs_gt_80_pct": 783,
+      "pairs_gt_90_pct": 277,
+      "pairs_gt_95_pct": 100,
+      "pairs_gt_98_pct": 54,
+      "pairs_gt_99_pct": 48,
+      "pairs_exact_duplicates_100_pct": 41
+    },
+    "top_collinear_pairs_clean": [
+      {
+        "rank": 1,
+        "feature_1": "rsi_14",
+        "feature_2": "rsi_14_norm",
+        "abs_correlation": 1.0,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 2,
+        "feature_1": "htf_h4_rsi_14",
+        "feature_2": "htf_h4_rsi_14_norm",
+        "abs_correlation": 1.0,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 3,
+        "feature_1": "htf_h1_rsi_14",
+        "feature_2": "htf_h1_rsi_14_norm",
+        "abs_correlation": 0.9999999999999989,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 4,
+        "feature_1": "dist_ema_200",
+        "feature_2": "ema_slope_200",
+        "abs_correlation": 0.9999999959166614,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 5,
+        "feature_1": "htf_h1_dist_ema_200",
+        "feature_2": "htf_h1_ema_slope_200",
+        "abs_correlation": 0.9999999791881963,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 6,
+        "feature_1": "dist_ema_50",
+        "feature_2": "ema_slope_50",
+        "abs_correlation": 0.9999999653170935,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 7,
+        "feature_1": "htf_h4_dist_ema_200",
+        "feature_2": "htf_h4_ema_slope_200",
+        "abs_correlation": 0.9999999383340551,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 8,
+        "feature_1": "htf_h1_dist_ema_50",
+        "feature_2": "htf_h1_ema_slope_50",
+        "abs_correlation": 0.9999998850279984,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 9,
+        "feature_1": "dist_ema_21",
+        "feature_2": "ema_slope_21",
+        "abs_correlation": 0.9999998624841283,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 10,
+        "feature_1": "htf_h1_dist_ema_21",
+        "feature_2": "htf_h1_ema_slope_21",
+        "abs_correlation": 0.9999996195035937,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 11,
+        "feature_1": "htf_h4_dist_ema_50",
+        "feature_2": "htf_h4_ema_slope_50",
+        "abs_correlation": 0.9999996028801361,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 12,
+        "feature_1": "dist_ema_9",
+        "feature_2": "ema_slope_9",
+        "abs_correlation": 0.9999995021401847,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 13,
+        "feature_1": "candle_span",
+        "feature_2": "log_hl_ratio",
+        "abs_correlation": 0.9999987826951272,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 14,
+        "feature_1": "htf_h4_dist_ema_21",
+        "feature_2": "htf_h4_ema_slope_21",
+        "abs_correlation": 0.9999987818818431,
+        "is_exact_duplicate": true
+      },
+      {
+        "rank": 15,
+        "feature_1": "htf_h1_dist_ema_9",
+        "feature_2": "htf_h1_ema_slope_9",
+        "abs_correlation": 0.9999986817171022,
+        "is_exact_duplicate": true
+      }
+    ],
+    "pca_variance_spectrum": {
+      "components_80_pct": 29,
+      "components_90_pct": 52,
+      "components_95_pct": 71,
+      "components_99_pct": 106,
+      "redundant_dimensions_vs_90pct": 179
+    },
+    "linear_redundancy_vs_correlation": "Exact duplicates (e.g. rsi_14 vs rsi_14_norm, dist_ema_200 vs ema_slope_200 with |r|=1.000) represent mathematical identity redundancies that provide zero new information. Highly correlated features (e.g. 0.85 < |r| < 0.95) retain marginal independent variance but cause severe multicollinearity and coefficient variance inflation in unregularized linear models."
+  },
+  "transaction_costs_and_breakeven": {
+    "cost_architecture_audit": {
+      "broker_spread_quote_convention": "In spot gold, broker quote $0.20 is the full distance between Ask and Bid. A long trade buys at Ask and sells at Bid, crossing the spread exactly ONCE. Phase 17's terminology calling $0.20 a 'half-spread' and doubling to $0.40 was static terminology confusion.",
+      "static_friction_usd": 0.3,
+      "realized_dynamic_friction_usd": 0.6039,
+      "overnight_swap_status": "Positions in M5 models (H <= 96) were intraday (< 24h) and incurred no overnight financing. However, a daily or multi-day macro strategy WILL incur overnight swap financing debits (typically -0.015% to -0.03% daily debit for spot gold longs based on SOFR benchmark)."
+    },
+    "empirical_payoff_break_even": {
+      "Incumbent_H24": {
+        "total_trades": 2724,
+        "winning_trades": 1237,
+        "losing_trades": 1487,
+        "actual_win_rate_pct": 45.411160058737146,
+        "avg_gross_win_usd": 5.43903152789005,
+        "avg_gross_loss_usd": 4.339980497646265,
+        "avg_friction_per_trade_usd": 0.6038704111600581,
+        "avg_net_win_usd": 4.838292643492318,
+        "avg_net_loss_usd": 4.946455951580362,
+        "empirical_asymmetric_breakeven_win_rate_pct": 50.555729923393635,
+        "win_rate_deficit_pct": 5.144569864656489
+      },
+      "Candidate5_H96": {
+        "total_trades": 531,
+        "winning_trades": 256,
+        "losing_trades": 275,
+        "actual_win_rate_pct": 48.21092278719397,
+        "avg_gross_win_usd": 11.224386718749999,
+        "avg_gross_loss_usd": 9.484952727272738,
+        "avg_friction_per_trade_usd": 0.6380489642184551,
+        "avg_net_win_usd": 10.63519921875,
+        "avg_net_loss_usd": 10.168487272727281,
+        "empirical_asymmetric_breakeven_win_rate_pct": 48.88133548574062,
+        "win_rate_deficit_pct": 0.6704126985466488
+      }
+    }
+  },
+  "macro_research_feasibility": {
+    "daily_bar_construction": {
+      "total_institutional_daily_bars": 984,
+      "approximate_weekly_bars": 196,
+      "bars_by_calendar_year": {
+        "2021": 210,
+        "2022": 258,
+        "2023": 257,
+        "2024": 259
+      },
+      "standard_session_bars_m5": 276,
+      "rollover_closure_gap_minutes": 60,
+      "h288_equivalence_refutation": "H=288 M5 bars (24.0 hours) is NOT equivalent to one calendar day. Because gold markets close for 1 hour daily (Mon-Thu) and over weekends, an institutional trading day contains exactly 276 M5 bars. Rolling 288 bars shifts relative to settlement by 12 bars (1 hour) every day."
+    },
+    "macro_variables_inventory": {
+      "locally_available_macro_features": [],
+      "local_macro_data_status": "NONE_AVAILABLE (0 macro variables exist in current repository)",
+      "required_external_variables": [
+        "US 10-Year Real Yield (TIPS Yield, daily)",
+        "US Dollar Index (DXY Trade-Weighted Index, daily)",
+        "10-Year Breakeven Inflation Rate (daily)",
+        "Fed Funds Effective Rate / Fed Funds Futures Implied Rate (daily)",
+        "Total Known Gold ETF Holdings / Central Bank Flow Proxies (daily/weekly)"
+      ]
+    },
+    "sample_size_and_complexity_constraint": {
+      "total_samples_N": 984,
+      "maximum_permitted_features_D": 5,
+      "sample_to_feature_ratio": 196.8,
+      "walk_forward_evaluation_slices": {
+        "development_train_period": "2021-03-11 to 2022-12-30 (~468 daily bars)",
+        "out_of_sample_eval_period": "2023-01-02 to 2024-12-31 (~516 daily bars)"
+      },
+      "overparameterization_warning": "With only N=984 daily bars available across 2021-2024, attempting to use the existing 232 features results in N/D = 4.2:1, guaranteeing catastrophic overfitting. Any valid macro design must strictly enforce D <= 5 pre-specified explanatory variables."
+    },
+    "pre_registered_research_specification": {
+      "primary_hypothesis": "Daily changes in US 10-Year Real Yields and US Dollar Index momentum forecast next-day spot gold excess returns net of execution spread and overnight financing swap debits.",
+      "target": "Next-day institutional settlement return: (Close_t+1 - Open_t+1) / Open_t+1",
+      "holding_period": "1 institutional trading day (17:00 NY to 17:00 NY)",
+      "baselines": [
+        "No-Trade ($0.00)",
+        "Passive Buy-and-Hold",
+        "Prior-Day Directional Momentum"
+      ],
+      "execution_costs": "Institutional spread $0.15-$0.20/oz + $0.05 slippage + overnight swap debit (-0.02%/day)",
+      "promotion_gate": "Net Profit Factor > 1.25 across non-overlapping out-of-sample walk-forward folds"
+    }
+  },
+  "final_verdict": "MACRO RESEARCH FEASIBLE AFTER DATA ACQUISITION",
+  "verdict_rationale": "The mathematical and statistical foundation for a daily macro research redesign is feasible: institutional daily bars (N=984 across 2021-2024) can be cleanly constructed from M5 data, and transaction friction drops from 26.6% (at H=24) to ~4.0%-6.0% of median daily moves ($10.06/oz). HOWEVER, zero macroeconomic variables (real yields, TIPS, DXY, inflation expectations) currently exist in the local repository. Research cannot proceed until external macroeconomic series are formally acquired according to the pre-registered Data Acquisition Specification. Model complexity must be strictly bounded to D <= 5 pre-specified drivers to avoid overparameterizing the 984 daily observations."
+}

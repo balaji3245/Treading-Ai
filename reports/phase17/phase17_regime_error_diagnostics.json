@@ -1,0 +1,115 @@
+{
+  "volatility_regimes": {
+    "Low_Vol": {
+      "sample_count": 50887,
+      "atr_range_usd": [
+        0.20864308992520622,
+        0.8804816477054929
+      ],
+      "incumbent_h24_accuracy": 0.4007300587657193,
+      "candidate5_h96_accuracy": 0.4492066055638551,
+      "incumbent_h24_error_rate": 0.5992699412342807,
+      "candidate5_h96_error_rate": 0.550793394436145
+    },
+    "MidLow_Vol": {
+      "sample_count": 50886,
+      "atr_range_usd": [
+        0.8804855251203357,
+        1.2138869906588523
+      ],
+      "incumbent_h24_accuracy": 0.42439485703937707,
+      "candidate5_h96_accuracy": 0.4669039293178009,
+      "incumbent_h24_error_rate": 0.5756051429606229,
+      "candidate5_h96_error_rate": 0.5330960706821991
+    },
+    "MidHigh_Vol": {
+      "sample_count": 50887,
+      "atr_range_usd": [
+        1.2139011307481635,
+        1.7020475026867585
+      ],
+      "incumbent_h24_accuracy": 0.43956506911148113,
+      "candidate5_h96_accuracy": 0.46549014610941214,
+      "incumbent_h24_error_rate": 0.5604349308885188,
+      "candidate5_h96_error_rate": 0.5345098538905879
+    },
+    "High_Vol": {
+      "sample_count": 50887,
+      "atr_range_usd": [
+        1.7020495934065805,
+        10.110372465932222
+      ],
+      "incumbent_h24_accuracy": 0.4388766410455024,
+      "candidate5_h96_accuracy": 0.47643171298961473,
+      "incumbent_h24_error_rate": 0.5611233589544976,
+      "candidate5_h96_error_rate": 0.5235682870103853
+    }
+  },
+  "trend_regimes": {
+    "Choppy_Range": {
+      "sample_count": 203547,
+      "incumbent_h24_accuracy": 0.4259238863802477,
+      "candidate5_h96_accuracy": 0.46409347163681536,
+      "incumbent_h24_error_rate": 0.5740761136197523,
+      "candidate5_h96_error_rate": 0.5359065283631846
+    }
+  },
+  "session_regimes": {
+    "Asian": {
+      "sample_count": 74266,
+      "incumbent_h24_accuracy": 0.4176743058734818,
+      "candidate5_h96_accuracy": 0.45507391022874405,
+      "incumbent_h24_error_rate": 0.5823256941265182,
+      "candidate5_h96_error_rate": 0.544926089771256
+    },
+    "London": {
+      "sample_count": 35682,
+      "incumbent_h24_accuracy": 0.4486295611232554,
+      "candidate5_h96_accuracy": 0.503147908581285,
+      "incumbent_h24_error_rate": 0.5513704388767446,
+      "candidate5_h96_error_rate": 0.496852091418715
+    },
+    "London_NY_Overlap": {
+      "sample_count": 39456,
+      "incumbent_h24_accuracy": 0.4655203023155545,
+      "candidate5_h96_accuracy": 0.4872109740026357,
+      "incumbent_h24_error_rate": 0.5344796976844455,
+      "candidate5_h96_error_rate": 0.5127890259973643
+    },
+    "NY_Afternoon": {
+      "sample_count": 37366,
+      "incumbent_h24_accuracy": 0.3884624399390601,
+      "candidate5_h96_accuracy": 0.43842232358465255,
+      "incumbent_h24_error_rate": 0.6115375600609398,
+      "candidate5_h96_error_rate": 0.5615776764153475
+    },
+    "Off_Hours": {
+      "sample_count": 16777,
+      "incumbent_h24_accuracy": 0.3963681132656202,
+      "candidate5_h96_accuracy": 0.4212373037857802,
+      "incumbent_h24_error_rate": 0.6036318867343797,
+      "candidate5_h96_error_rate": 0.5787626962142198
+    }
+  },
+  "directional_asymmetry_by_year": {
+    "2022": {
+      "candidate5_long_precision": 0.4577569935487506,
+      "candidate5_short_precision": 0.4938371116708648,
+      "long_short_precision_gap": -0.0360801181221142,
+      "macro_regime_context": "2022: Fed hiking cycle / rangebound gold"
+    },
+    "2023": {
+      "candidate5_long_precision": 0.5012051145880142,
+      "candidate5_short_precision": 0.46721260236294304,
+      "long_short_precision_gap": 0.03399251222507116,
+      "macro_regime_context": "2023: Pause cycle / mild uptrend"
+    },
+    "2024": {
+      "candidate5_long_precision": 0.5373355406465105,
+      "candidate5_short_precision": 0.42330453960668996,
+      "long_short_precision_gap": 0.1140310010398205,
+      "macro_regime_context": "2024: Secular gold bull market rally (+26%)"
+    }
+  },
+  "governance_note": "All regime findings are exploratory diagnostic patterns identifying historical failure modes, NOT proven predictive signals. They must NOT be used for post-hoc rule filtering without independent, pre-specified validation."
+}

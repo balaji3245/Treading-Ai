@@ -1,0 +1,505 @@
+{
+  "phase": "PHASE 20: PRE-REGISTERED MACRO HYPOTHESIS TEST",
+  "timestamp_utc": "2026-10-29T15:58:27.970242+00:00",
+  "final_verdict": "NO EVIDENCE OF PREDICTIVE EDGE",
+  "verdict_rationale": "Out-of-sample evaluation across 516 institutional gold sessions (2023\u20132024) reveals that daily macroeconomic changes (10-Year Real Yields, Broad Dollar Index, Breakeven Inflation) possess no statistically credible predictive power for next-session XAUUSD returns. Out-of-sample correlation with next-session returns is near zero (|r| <= 0.0244, p > 0.57), regression R-squared is zero (R2 <= 0.0006), and directional hit rates (49.7% to 51.4%) fail to beat a random coin toss. Net of realistic execution and financing costs ($0.42 to $0.66/oz), every active macro model loses money (-$79.02/oz to -$297.18/oz, Net PF 0.894 to 0.978) and is outperformed by the No-Trade baseline ($0.00). All candidate models fail the pre-registered promotion hurdle of Net PF > 1.25 and fail Holm-Bonferroni significance testing. The data firmly rejects the hypothesis that 1-day macro changes forecast next-session gold returns.",
+  "governance": {
+    "protocol_sha256": "82d47383a2b65265ed3bebc5080aa3e259941f7508286dd377bb8dff8f92969c",
+    "aligned_dataset_sha256": "7171f82488b34b2e62e092a298e41d64758fb85a0393418ce3971440f12bff89",
+    "protected_partitions": {
+      "val": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+        "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "is_unmodified": true
+      },
+      "test": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+        "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "is_unmodified": true
+      }
+    },
+    "development_period": "2021-03-11 to 2022-12-30 (N=468 sessions)",
+    "out_of_sample_period": "2023-01-02 to 2024-12-31 (N=516 sessions)",
+    "point_in_time_classification": "Retrospective Proxy"
+  },
+  "predictive_metrics_oos": {
+    "Model_A_Yield_Only": {
+      "pearson_r": 0.007581279366385767,
+      "pearson_p_value": 0.8635960377228723,
+      "spearman_rho": -0.00822483568645134,
+      "spearman_p_value": 0.8521448920773532,
+      "ols_r_squared": 5.7475796831186525e-05,
+      "ols_slope": 8.483043901815572e-05,
+      "ols_p_value": 0.8635960377228741,
+      "directional_accuracy_pct": 49.72527472527473,
+      "binomial_test_p_value": 0.5624593315167976
+    },
+    "Model_B_Dollar_Only": {
+      "pearson_r": 0.024365424661051276,
+      "pearson_p_value": 0.5808005391351256,
+      "spearman_rho": 0.03650210162756005,
+      "spearman_p_value": 0.40799154572894925,
+      "ols_r_squared": 0.0005936739189133655,
+      "ols_slope": 0.00024320794693109794,
+      "ols_p_value": 0.5808005391351243,
+      "directional_accuracy_pct": 50.75757575757576,
+      "binomial_test_p_value": 0.4008259828602894
+    },
+    "Model_C_Bivariate": {
+      "pearson_r": 0.019659302652129458,
+      "pearson_p_value": 0.6559342211134729,
+      "spearman_rho": 0.013105597135795741,
+      "spearman_p_value": 0.7664720726933818,
+      "ols_r_squared": 0.0003864881807680239,
+      "ols_slope": 0.0002478639417427831,
+      "ols_p_value": 0.655934221113473,
+      "directional_accuracy_pct": 50.968992248062015,
+      "binomial_test_p_value": 0.34599763502497377
+    },
+    "Model_D_Trivariate": {
+      "pearson_r": 0.01633684264429455,
+      "pearson_p_value": 0.7112137731611835,
+      "spearman_rho": 0.027092202193120668,
+      "spearman_p_value": 0.5391910430256149,
+      "ols_r_squared": 0.0002668924275844408,
+      "ols_slope": 0.0002587024551650084,
+      "ols_p_value": 0.7112137731611821,
+      "directional_accuracy_pct": 51.356589147286826,
+      "binomial_test_p_value": 0.28358285481703027
+    }
+  },
+  "trading_metrics_oos": {
+    "Model_A_Yield_Only": {
+      "cost_1_0x_baseline": {
+        "trades_count": 364,
+        "exposure_pct": 70.54263565891473,
+        "gross_pnl_usd": -121.7419999999986,
+        "total_costs_usd": 175.44,
+        "net_pnl_usd": -297.1819999999987,
+        "win_rate_pct": 48.35164835164835,
+        "directional_accuracy_pct": 49.72527472527473,
+        "gross_profit_factor": 0.9552555325070169,
+        "net_profit_factor": 0.8942820634317584,
+        "max_drawdown_usd": 387.54999999999757,
+        "max_drawdown_pct": 3.863164914428205,
+        "avg_net_trade_pnl_usd": -0.8164340659340624
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 364,
+        "exposure_pct": 70.54263565891473,
+        "gross_pnl_usd": -121.7419999999986,
+        "total_costs_usd": 263.15999999999997,
+        "net_pnl_usd": -384.90199999999857,
+        "win_rate_pct": 47.527472527472526,
+        "directional_accuracy_pct": 49.72527472527473,
+        "gross_profit_factor": 0.9552555325070169,
+        "net_profit_factor": 0.8652937361737814,
+        "max_drawdown_usd": 465.7159999999974,
+        "max_drawdown_pct": 4.6448854257738175,
+        "avg_net_trade_pnl_usd": -1.057423076923073
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 364,
+        "exposure_pct": 70.54263565891473,
+        "gross_pnl_usd": -121.7419999999986,
+        "total_costs_usd": 350.88,
+        "net_pnl_usd": -472.6219999999987,
+        "win_rate_pct": 46.42857142857143,
+        "directional_accuracy_pct": 49.72527472527473,
+        "gross_profit_factor": 0.9552555325070169,
+        "net_profit_factor": 0.8372654429661904,
+        "max_drawdown_usd": 548.4259999999966,
+        "max_drawdown_pct": 5.470329259507714,
+        "avg_net_trade_pnl_usd": -1.2984120879120844
+      }
+    },
+    "Model_B_Dollar_Only": {
+      "cost_1_0x_baseline": {
+        "trades_count": 396,
+        "exposure_pct": 76.74418604651163,
+        "gross_pnl_usd": 112.02300000000378,
+        "total_costs_usd": 191.04000000000002,
+        "net_pnl_usd": -79.01699999999633,
+        "win_rate_pct": 48.98989898989899,
+        "directional_accuracy_pct": 50.75757575757576,
+        "gross_profit_factor": 1.0389668529734661,
+        "net_profit_factor": 0.9734004932978625,
+        "max_drawdown_usd": 433.8529999999971,
+        "max_drawdown_pct": 4.212239887368847,
+        "avg_net_trade_pnl_usd": -0.19953787878786952
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 396,
+        "exposure_pct": 76.74418604651163,
+        "gross_pnl_usd": 112.02300000000378,
+        "total_costs_usd": 286.56000000000006,
+        "net_pnl_usd": -174.53699999999617,
+        "win_rate_pct": 48.73737373737374,
+        "directional_accuracy_pct": 50.75757575757576,
+        "gross_profit_factor": 1.0389668529734661,
+        "net_profit_factor": 0.9421947686260653,
+        "max_drawdown_usd": 483.802999999997,
+        "max_drawdown_pct": 4.714929324739162,
+        "avg_net_trade_pnl_usd": -0.4407499999999903
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 396,
+        "exposure_pct": 76.74418604651163,
+        "gross_pnl_usd": 112.02300000000378,
+        "total_costs_usd": 382.08000000000004,
+        "net_pnl_usd": -270.05699999999644,
+        "win_rate_pct": 47.474747474747474,
+        "directional_accuracy_pct": 50.75757575757576,
+        "gross_profit_factor": 1.0389668529734661,
+        "net_profit_factor": 0.9119946504041048,
+        "max_drawdown_usd": 533.7529999999974,
+        "max_drawdown_pct": 5.221427895738693,
+        "avg_net_trade_pnl_usd": -0.6819621212121122
+      }
+    },
+    "Model_C_Bivariate": {
+      "cost_1_0x_baseline": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 159.52000000000226,
+        "total_costs_usd": 241.68,
+        "net_pnl_usd": -82.15999999999795,
+        "win_rate_pct": 49.8062015503876,
+        "directional_accuracy_pct": 50.968992248062015,
+        "gross_profit_factor": 1.0436292585159386,
+        "net_profit_factor": 0.9782481730954051,
+        "max_drawdown_usd": 447.5639999999988,
+        "max_drawdown_pct": 4.396356113842959,
+        "avg_net_trade_pnl_usd": -0.15922480620154641
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 159.52000000000226,
+        "total_costs_usd": 362.5200000000001,
+        "net_pnl_usd": -202.99999999999756,
+        "win_rate_pct": 49.6124031007752,
+        "directional_accuracy_pct": 50.968992248062015,
+        "gross_profit_factor": 1.0436292585159386,
+        "net_profit_factor": 0.94711645295722,
+        "max_drawdown_usd": 476.8139999999987,
+        "max_drawdown_pct": 4.72255787142499,
+        "avg_net_trade_pnl_usd": -0.39341085271317355
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 159.52000000000226,
+        "total_costs_usd": 483.36,
+        "net_pnl_usd": -323.8399999999982,
+        "win_rate_pct": 48.837209302325576,
+        "directional_accuracy_pct": 50.968992248062015,
+        "gross_profit_factor": 1.0436292585159386,
+        "net_profit_factor": 0.9169747681131223,
+        "max_drawdown_usd": 580.9399999999966,
+        "max_drawdown_pct": 5.758965285614652,
+        "avg_net_trade_pnl_usd": -0.6275968992248028
+      }
+    },
+    "Model_D_Trivariate": {
+      "cost_1_0x_baseline": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -17.041999999999007,
+        "total_costs_usd": 241.68,
+        "net_pnl_usd": -258.7219999999992,
+        "win_rate_pct": 50.0,
+        "directional_accuracy_pct": 51.356589147286826,
+        "gross_profit_factor": 0.9954488438242001,
+        "net_profit_factor": 0.9330577212271003,
+        "max_drawdown_usd": 495.85200000000003,
+        "max_drawdown_pct": 4.8624143797835675,
+        "avg_net_trade_pnl_usd": -0.5013992248061999
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -17.041999999999007,
+        "total_costs_usd": 362.5200000000001,
+        "net_pnl_usd": -379.5619999999988,
+        "win_rate_pct": 49.41860465116279,
+        "directional_accuracy_pct": 51.356589147286826,
+        "gross_profit_factor": 0.9954488438242001,
+        "net_profit_factor": 0.9033274133699146,
+        "max_drawdown_usd": 561.4919999999998,
+        "max_drawdown_pct": 5.532229761751091,
+        "avg_net_trade_pnl_usd": -0.7355852713178271
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -17.041999999999007,
+        "total_costs_usd": 483.36,
+        "net_pnl_usd": -500.4019999999994,
+        "win_rate_pct": 48.643410852713174,
+        "directional_accuracy_pct": 51.356589147286826,
+        "gross_profit_factor": 0.9954488438242001,
+        "net_profit_factor": 0.8745341119675779,
+        "max_drawdown_usd": 633.3609999999978,
+        "max_drawdown_pct": 6.27010015552468,
+        "avg_net_trade_pnl_usd": -0.9697713178294562
+      }
+    },
+    "Benchmark_E_No_Trade": {
+      "cost_1_0x_baseline": {
+        "trades_count": 0,
+        "exposure_pct": 0.0,
+        "gross_pnl_usd": 0.0,
+        "total_costs_usd": 0.0,
+        "net_pnl_usd": 0.0,
+        "win_rate_pct": 0.0,
+        "directional_accuracy_pct": 0.0,
+        "gross_profit_factor": null,
+        "net_profit_factor": null,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "avg_net_trade_pnl_usd": 0.0
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 0,
+        "exposure_pct": 0.0,
+        "gross_pnl_usd": 0.0,
+        "total_costs_usd": 0.0,
+        "net_pnl_usd": 0.0,
+        "win_rate_pct": 0.0,
+        "directional_accuracy_pct": 0.0,
+        "gross_profit_factor": null,
+        "net_profit_factor": null,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "avg_net_trade_pnl_usd": 0.0
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 0,
+        "exposure_pct": 0.0,
+        "gross_pnl_usd": 0.0,
+        "total_costs_usd": 0.0,
+        "net_pnl_usd": 0.0,
+        "win_rate_pct": 0.0,
+        "directional_accuracy_pct": 0.0,
+        "gross_profit_factor": null,
+        "net_profit_factor": null,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0,
+        "avg_net_trade_pnl_usd": 0.0
+      }
+    },
+    "Benchmark_F_Buy_and_Hold": {
+      "cost_1_0x_baseline": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 789.6140000000023,
+        "total_costs_usd": 241.68,
+        "net_pnl_usd": 547.9340000000021,
+        "win_rate_pct": 52.13178294573644,
+        "directional_accuracy_pct": 53.48837209302325,
+        "gross_profit_factor": 1.2363254085714337,
+        "net_profit_factor": 1.1586093724535866,
+        "max_drawdown_usd": 300.8369999999993,
+        "max_drawdown_pct": 2.958571909336409,
+        "avg_net_trade_pnl_usd": 1.061887596899229
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 789.6140000000023,
+        "total_costs_usd": 362.5200000000001,
+        "net_pnl_usd": 427.09400000000244,
+        "win_rate_pct": 51.74418604651163,
+        "directional_accuracy_pct": 53.48837209302325,
+        "gross_profit_factor": 1.2363254085714337,
+        "net_profit_factor": 1.1216031916232425,
+        "max_drawdown_usd": 330.0869999999992,
+        "max_drawdown_pct": 3.2516408084876534,
+        "avg_net_trade_pnl_usd": 0.8277015503876016
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": 789.6140000000023,
+        "total_costs_usd": 483.36,
+        "net_pnl_usd": 306.2540000000019,
+        "win_rate_pct": 51.162790697674424,
+        "directional_accuracy_pct": 53.48837209302325,
+        "gross_profit_factor": 1.2363254085714337,
+        "net_profit_factor": 1.085778346047036,
+        "max_drawdown_usd": 359.3369999999994,
+        "max_drawdown_pct": 3.5456882929737255,
+        "avg_net_trade_pnl_usd": 0.5935155038759726
+      }
+    },
+    "Benchmark_G_Prior_Momentum": {
+      "cost_1_0x_baseline": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -230.90600000000222,
+        "total_costs_usd": 241.68,
+        "net_pnl_usd": -472.5860000000024,
+        "win_rate_pct": 48.44961240310077,
+        "directional_accuracy_pct": 49.6124031007752,
+        "gross_profit_factor": 0.9400473844436217,
+        "net_profit_factor": 0.8811500270098709,
+        "max_drawdown_usd": 740.0500000000004,
+        "max_drawdown_pct": 7.3404223135745585,
+        "avg_net_trade_pnl_usd": -0.9158643410852759
+      },
+      "cost_1_5x_elevated": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -230.90600000000222,
+        "total_costs_usd": 362.5200000000001,
+        "net_pnl_usd": -593.4260000000022,
+        "win_rate_pct": 47.286821705426355,
+        "directional_accuracy_pct": 49.6124031007752,
+        "gross_profit_factor": 0.9400473844436217,
+        "net_profit_factor": 0.8531246643226379,
+        "max_drawdown_usd": 824.0120000000005,
+        "max_drawdown_pct": 8.183843798122217,
+        "avg_net_trade_pnl_usd": -1.1500503875969035
+      },
+      "cost_2_0x_stressed": {
+        "trades_count": 516,
+        "exposure_pct": 100.0,
+        "gross_pnl_usd": -230.90600000000222,
+        "total_costs_usd": 483.36,
+        "net_pnl_usd": -714.2660000000026,
+        "win_rate_pct": 46.51162790697674,
+        "directional_accuracy_pct": 49.6124031007752,
+        "gross_profit_factor": 0.9400473844436217,
+        "net_profit_factor": 0.8260157662600666,
+        "max_drawdown_usd": 923.3720000000043,
+        "max_drawdown_pct": 9.182586765595827,
+        "avg_net_trade_pnl_usd": -1.384236434108532
+      }
+    }
+  },
+  "bootstrap_confidence_intervals": {
+    "Model_A_Yield_Only": {
+      "net_pnl_point_estimate": -297.1819999999987,
+      "net_pnl_95_ci_lower": -985.9173000000003,
+      "net_pnl_95_ci_upper": 371.8486249999983,
+      "net_pf_point_estimate": 0.8942820634317584,
+      "net_pf_95_ci_lower": 0.6888157033479526,
+      "net_pf_95_ci_upper": 1.1481904968134056
+    },
+    "Model_B_Dollar_Only": {
+      "net_pnl_point_estimate": -79.01699999999633,
+      "net_pnl_95_ci_lower": -879.4046499999961,
+      "net_pnl_95_ci_upper": 671.669450000004,
+      "net_pf_point_estimate": 0.9734004932978625,
+      "net_pf_95_ci_lower": 0.738703329306894,
+      "net_pf_95_ci_upper": 1.2571265191721142
+    },
+    "Model_C_Bivariate": {
+      "net_pnl_point_estimate": -82.15999999999795,
+      "net_pnl_95_ci_lower": -1017.2408249999976,
+      "net_pnl_95_ci_upper": 692.8316500000042,
+      "net_pf_point_estimate": 0.9782481730954051,
+      "net_pf_95_ci_lower": 0.7607066058556309,
+      "net_pf_95_ci_upper": 1.2051000926091702
+    },
+    "Model_D_Trivariate": {
+      "net_pnl_point_estimate": -258.7219999999992,
+      "net_pnl_95_ci_lower": -1120.4124000000022,
+      "net_pnl_95_ci_upper": 465.4487249999991,
+      "net_pf_point_estimate": 0.9330577212271003,
+      "net_pf_95_ci_lower": 0.7425432141137582,
+      "net_pf_95_ci_upper": 1.130492745237647
+    },
+    "Benchmark_E_No_Trade": {
+      "net_pnl_point_estimate": 0.0,
+      "net_pnl_95_ci_lower": 0.0,
+      "net_pnl_95_ci_upper": 0.0,
+      "net_pf_point_estimate": 0.0,
+      "net_pf_95_ci_lower": 0.0,
+      "net_pf_95_ci_upper": 0.0
+    },
+    "Benchmark_F_Buy_and_Hold": {
+      "net_pnl_point_estimate": 547.9340000000021,
+      "net_pnl_95_ci_lower": -316.34110000000004,
+      "net_pnl_95_ci_upper": 1354.646575000005,
+      "net_pf_point_estimate": 1.1586093724535866,
+      "net_pf_95_ci_lower": 0.9186518311332794,
+      "net_pf_95_ci_upper": 1.4456896062562312
+    },
+    "Benchmark_G_Prior_Momentum": {
+      "net_pnl_point_estimate": -472.5860000000024,
+      "net_pnl_95_ci_lower": -1320.5330499999995,
+      "net_pnl_95_ci_upper": 438.3925499999951,
+      "net_pf_point_estimate": 0.8811500270098709,
+      "net_pf_95_ci_lower": 0.7025075565627317,
+      "net_pf_95_ci_upper": 1.1254533344710305
+    }
+  },
+  "holm_bonferroni_correction": [
+    {
+      "rank": 1,
+      "model_name": "Model_B_Dollar_Only",
+      "raw_p_value": 0.5808005391351256,
+      "adjusted_alpha_threshold": 0.0125,
+      "is_significant_after_holm": false
+    },
+    {
+      "rank": 2,
+      "model_name": "Model_C_Bivariate",
+      "raw_p_value": 0.6559342211134729,
+      "adjusted_alpha_threshold": 0.016666666666666666,
+      "is_significant_after_holm": false
+    },
+    {
+      "rank": 3,
+      "model_name": "Model_D_Trivariate",
+      "raw_p_value": 0.7112137731611835,
+      "adjusted_alpha_threshold": 0.025,
+      "is_significant_after_holm": false
+    },
+    {
+      "rank": 4,
+      "model_name": "Model_A_Yield_Only",
+      "raw_p_value": 0.8635960377228723,
+      "adjusted_alpha_threshold": 0.05,
+      "is_significant_after_holm": false
+    }
+  ],
+  "promotion_gate_audit": {
+    "Model_A_Yield_Only": {
+      "net_profit_factor_gt_1_25": false,
+      "positive_net_pnl": false,
+      "survives_holm_bonferroni": false,
+      "robust_under_1_5x_costs": false,
+      "robust_under_2_0x_costs": false,
+      "meets_all_promotion_gates": false
+    },
+    "Model_B_Dollar_Only": {
+      "net_profit_factor_gt_1_25": false,
+      "positive_net_pnl": false,
+      "survives_holm_bonferroni": false,
+      "robust_under_1_5x_costs": false,
+      "robust_under_2_0x_costs": false,
+      "meets_all_promotion_gates": false
+    },
+    "Model_C_Bivariate": {
+      "net_profit_factor_gt_1_25": false,
+      "positive_net_pnl": false,
+      "survives_holm_bonferroni": false,
+      "robust_under_1_5x_costs": false,
+      "robust_under_2_0x_costs": false,
+      "meets_all_promotion_gates": false
+    },
+    "Model_D_Trivariate": {
+      "net_profit_factor_gt_1_25": false,
+      "positive_net_pnl": false,
+      "survives_holm_bonferroni": false,
+      "robust_under_1_5x_costs": false,
+      "robust_under_2_0x_costs": false,
+      "meets_all_promotion_gates": false
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "phase": "PHASE 19 \u2014 MACRO DATA ACQUISITION & INTEGRITY AUDIT",
+  "timestamp_utc": "2026-10-29T15:46:01.437362+00:00",
+  "final_verdict": "DATA ACQUIRED \u2014 POINT-IN-TIME LIMITATIONS REMAIN",
+  "verdict_rationale": "All three mandatory macroeconomic series (DFII10, DTWEXBGS, T10YIE) were successfully acquired from official Federal Reserve Bank of St. Louis FRED endpoints spanning 2003/2006 to 2026. Gold data integrity confirms 984 institutional daily sessions (276 M5 bars standard) with 0 duplicate timestamps and 0 invalid OHLC relationships. Under a conservative 1-business-day publication lag with holiday forward-fill (limit=3 days), exactly 984 of 984 gold sessions (100.0%) possess complete macro data, providing a statistically viable N/D ratio of 196.8:1 for D <= 5 features.\n\nHOWEVER, point-in-time limitations remain: (1) FRED daily CSVs record observation dates rather than exact intraday release timestamps; (2) Historical vintages (from ALFRED) were not captured, meaning DTWEXBGS broad dollar trade-weight revisions reflect retrospective current-vintage adjustments; and (3) DTWEXBGS is a broad trade-weighted index, not the traded ICE DXY index. While applying a 1-business-day lag eliminates same-day execution look-ahead risk, historical revision limitations cannot be erased without vintage reconstruction. Therefore, the data cannot be declared fully point-in-time safe.",
+  "protected_data_invariants": {
+    "val": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+      "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "is_unmodified": true
+    },
+    "test": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+      "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "is_unmodified": true
+    }
+  },
+  "macro_acquisition_audit": {
+    "DFII10": {
+      "series_name": "dfii10",
+      "full_history_start": "2003-01-02",
+      "full_history_end": "2026-10-27",
+      "full_history_total_rows": 6214,
+      "duplicate_dates_count": 0,
+      "dates_strictly_monotonic": true,
+      "target_period": "2021-01-01 to 2024-12-31",
+      "target_calendar_days_count": 1043,
+      "valid_observations_count": 1000,
+      "missing_observations_count": 43,
+      "missing_ratio_pct": 4.1227229146692235,
+      "value_distribution": {
+        "min": -1.19,
+        "max": 2.52,
+        "mean": 0.7802,
+        "std": 1.2266158104094151
+      }
+    },
+    "DTWEXBGS": {
+      "series_name": "dtwexbgs",
+      "full_history_start": "2006-01-02",
+      "full_history_end": "2026-10-23",
+      "full_history_total_rows": 5430,
+      "duplicate_dates_count": 0,
+      "dates_strictly_monotonic": true,
+      "target_period": "2021-01-01 to 2024-12-31",
+      "target_calendar_days_count": 1043,
+      "valid_observations_count": 999,
+      "missing_observations_count": 44,
+      "missing_ratio_pct": 4.218600191754554,
+      "value_distribution": {
+        "min": 110.5046,
+        "max": 129.2775,
+        "mean": 119.24938398398399,
+        "std": 4.480280169737427
+      }
+    },
+    "T10YIE": {
+      "series_name": "t10yie",
+      "full_history_start": "2003-01-02",
+      "full_history_end": "2026-10-28",
+      "full_history_total_rows": 6215,
+      "duplicate_dates_count": 0,
+      "dates_strictly_monotonic": true,
+      "target_period": "2021-01-01 to 2024-12-31",
+      "target_calendar_days_count": 1043,
+      "valid_observations_count": 1000,
+      "missing_observations_count": 43,
+      "missing_ratio_pct": 4.1227229146692235,
+      "value_distribution": {
+        "min": 2.01,
+        "max": 3.02,
+        "mean": 2.35939,
+        "std": 0.17316152232182763
+      }
+    },
+    "critical_distinction_dtwexbgs_vs_dxy": "DTWEXBGS is the Federal Reserve Board's Nominal Broad Trade-Weighted U.S. Dollar Index, calculated against 26 trading partner currencies with annually reweighted trade weights. It is NOT the ICE U.S. Dollar Index (DXY), which is a 6-currency fixed-weight tradable index. DTWEXBGS is labeled correctly across all artifacts."
+  },
+  "gold_data_integrity_audit": {
+    "total_m5_bars": 260821,
+    "duplicate_timestamps": 0,
+    "timestamps_strictly_monotonic": true,
+    "price_convention": "HistData Bid Quotes Only (Synthetic Ask modeled via ExecutionCostModel)",
+    "ohlc_validity": {
+      "invalid_high_lt_low": 0,
+      "invalid_open_gt_high": 0,
+      "invalid_open_lt_low": 0,
+      "invalid_close_gt_high": 0,
+      "invalid_close_lt_low": 0,
+      "non_finite_price_counts": {
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0
+      }
+    },
+    "top_timestamp_intervals": {
+      "0 days 00:05:00": 259029,
+      "0 days 01:05:00": 1178,
+      "0 days 00:10:00": 229,
+      "2 days 01:05:00": 156,
+      "0 days 02:05:00": 81
+    },
+    "institutional_daily_sessions": {
+      "session_definition": "18:00 NY to 17:00 NY next day (23 trading hours + 1h rollover pause)",
+      "expected_standard_bars_per_session": 276,
+      "total_institutional_sessions_2021_2024": 984,
+      "standard_276_bar_sessions_count": 671,
+      "standard_sessions_pct": 68.1910569105691,
+      "irregular_sessions_count": 313,
+      "irregular_sessions_pct": 31.808943089430898,
+      "bar_count_distribution_top": {
+        "276": 671,
+        "275": 113,
+        "204": 42,
+        "192": 39,
+        "274": 27,
+        "203": 13,
+        "245": 8,
+        "273": 8
+      },
+      "sessions_count_by_calendar_year": {
+        "2021": 210,
+        "2022": 258,
+        "2023": 257,
+        "2024": 259
+      },
+      "h288_calendar_day_refutation": "H=288 M5 bars represents 24.0 hours of continuous trading without closure. Because gold markets close 1 hour daily at 17:00 NY and over weekends, rolling 288 bars induces a 12-bar (1-hour) phase shift relative to NY daily settlement every day. An institutional gold trading day contains 276 M5 bars."
+    }
+  },
+  "macro_gold_alignment_audit": {
+    "total_gold_sessions": 984,
+    "conservative_lag_policy": {
+      "description": "Macro observation date <= entry date - 1 calendar day. Guarantees publication >= 24h prior to trade entry.",
+      "strict_no_ffill_sessions_complete": 976,
+      "strict_no_ffill_sessions_pct": 99.1869918699187,
+      "strict_no_ffill_sessions_lost": 8,
+      "holiday_ffill_limit3_sessions_complete": 984,
+      "holiday_ffill_limit3_sessions_pct": 100.0,
+      "holiday_ffill_limit3_sessions_lost": 0,
+      "holiday_justification": "Carrying the last known closing yield/index across weekend/holiday market closures (up to 3 calendar days) reflects authentic institutional practice where non-traded assets retain their last settlement price until trading resumes."
+    },
+    "same_day_release_policy": {
+      "description": "Macro observation date <= entry date. Assumes daily release by 17:00 NY is available for 18:00 NY entry.",
+      "strict_sessions_complete": 980,
+      "strict_sessions_pct": 99.59349593495935,
+      "point_in_time_risk": "Same-day evening entry assumes publication by 17:00 NY. If FRED or Treasury servers experience release delays, trades placed at 18:00 NY incur look-ahead bias."
+    },
+    "sample_size_evaluation_for_phase20": {
+      "usable_sample_size_N": 984,
+      "proposed_maximum_features_D": 5,
+      "sample_to_feature_ratio": 196.8,
+      "is_sample_sufficient": true,
+      "sample_sufficiency_justification": "With N = 984 daily sessions and D <= 5 explanatory features, the observation-to-feature ratio is 196.8:1 (> 150:1 requirement). This sample is statistically viable for evaluating parsimonious linear macro models across chronological walk-forward folds."
+    }
+  },
+  "processed_artifacts": {
+    "macro_daily_cleaned_parquet": {
+      "path": "/home/bhoot/project/Treading-Ai/data/processed/macro/macro_daily_cleaned.parquet",
+      "sha256": "f7ae56f57e1e3d7d8c8e4fb74ef088fcf3398d76684c530af98874288019937d",
+      "rows": 6215
+    },
+    "macro_gold_aligned_parquet": {
+      "path": "/home/bhoot/project/Treading-Ai/data/processed/macro/macro_gold_aligned.parquet",
+      "sha256": "7171f82488b34b2e62e092a298e41d64758fb85a0393418ce3971440f12bff89",
+      "rows": 984
+    }
+  }
+}

@@ -1,0 +1,526 @@
+{
+  "audit_phase": "PHASE 20A: INDEPENDENT FORENSIC AUDIT",
+  "audit_timestamp_utc": "2026-10-29T16:15:34.525114+00:00",
+  "final_verdict": "PHASE 20 PARTIALLY INVALID \u2014 CORRECTIONS REQUIRED",
+  "verdict_justification": "Phase 20 correctly concluded that macroeconomic variables provide no out-of-sample predictive edge for XAUUSD returns. However, the implementation contains critical accounting errors and misleading labels that require correction: (1) Benchmark F was mislabeled as 'Passive Buy-and-Hold' while incurring 516 daily round-turn executions ($154.80 in spread/slippage friction); true continuous Buy-and-Hold delivers +$710.23/oz net rather than the reported +$547.93/oz. (2) Wednesday triple-swap rollover was implemented with an off-by-one timing shift (entry_dow == 2 rather than settlement_dow == 2), shifting triple swap debits by 1 session and overstating baseline costs by $0.24 to $3.60 across models. (3) Short positions were debited -$0.12/day financing without empirical verification. After all corrections, every macro model remains net negative (-$294.54 to -$75.42/oz) and fails all promotion gates. Hence Phase 20 is partially invalid and requires formal accounting corrections, while its negative research conclusion stands.",
+  "governance": {
+    "protocol_sha256": "82d47383a2b65265ed3bebc5080aa3e259941f7508286dd377bb8dff8f92969c",
+    "protocol_verified": true,
+    "protected_partitions": {
+      "val": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+        "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "is_unmodified": true
+      },
+      "test": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+        "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "is_unmodified": true
+      }
+    },
+    "data_scope": "2021-03-11 to 2024-12-31 (Research and OOS only)",
+    "zero_access_val_test": true
+  },
+  "directional_accuracy_audit": {
+    "Model_A": {
+      "total_sessions": 516,
+      "active_predictions": 364,
+      "inactive_predictions": 152,
+      "zero_return_sessions": 0,
+      "correct_active_predictions": 181,
+      "recomputed_directional_accuracy_pct": 49.72527472527473,
+      "original_reported_directional_accuracy_pct": 49.72527472527473,
+      "is_exact_match": true,
+      "numerator_includes_inactive": false,
+      "same_observations_in_num_and_den": true
+    },
+    "Model_B": {
+      "total_sessions": 516,
+      "active_predictions": 396,
+      "inactive_predictions": 120,
+      "zero_return_sessions": 0,
+      "correct_active_predictions": 201,
+      "recomputed_directional_accuracy_pct": 50.75757575757576,
+      "original_reported_directional_accuracy_pct": 50.75757575757576,
+      "is_exact_match": true,
+      "numerator_includes_inactive": false,
+      "same_observations_in_num_and_den": true
+    },
+    "Model_C": {
+      "total_sessions": 516,
+      "active_predictions": 516,
+      "inactive_predictions": 0,
+      "zero_return_sessions": 0,
+      "correct_active_predictions": 263,
+      "recomputed_directional_accuracy_pct": 50.968992248062015,
+      "original_reported_directional_accuracy_pct": 50.968992248062015,
+      "is_exact_match": true,
+      "numerator_includes_inactive": false,
+      "same_observations_in_num_and_den": true
+    },
+    "Model_D": {
+      "total_sessions": 516,
+      "active_predictions": 516,
+      "inactive_predictions": 0,
+      "zero_return_sessions": 0,
+      "correct_active_predictions": 265,
+      "recomputed_directional_accuracy_pct": 51.356589147286826,
+      "original_reported_directional_accuracy_pct": 51.356589147286826,
+      "is_exact_match": true,
+      "numerator_includes_inactive": false,
+      "same_observations_in_num_and_den": true
+    }
+  },
+  "benchmark_audit": {
+    "finding": "Phase 20 mislabeled a Daily Long-Only Strategy as 'Passive Buy-and-Hold'. Phase 20 applied $0.20 spread and $0.10 slippage to every one of the 516 sessions ($154.80 in friction), which represents a daily turnover strategy rather than a continuous long position. A continuous Buy-and-Hold investor pays entry/exit friction once ($0.30 total), captures the overnight roll return (+$7.55/oz), and incurs holding swap financing ($86.64/oz), achieving +$710.23/oz net PnL rather than +$547.93/oz.",
+    "daily_long_only_benchmark": {
+      "label": "Daily Long-Only Strategy (Daily Turnover)",
+      "gross_pnl_usd": 789.6140000000023,
+      "total_turnover_friction_usd": 154.79999999999998,
+      "swap_costs_usd_orig": 86.88000000000002,
+      "swap_costs_usd_corr": 86.64000000000001,
+      "net_pnl_usd_orig": 547.9340000000021,
+      "net_pnl_usd_corr": 548.1740000000021,
+      "net_profit_factor_orig": 1.1586093724535866,
+      "net_profit_factor_corr": 1.1585288335460846,
+      "trades_count": 516
+    },
+    "continuous_buy_and_hold_benchmark": {
+      "label": "Continuous Buy-and-Hold Position",
+      "entry_price_session_0_open": 1827.187,
+      "exit_price_session_515_close": 2624.355,
+      "continuous_gross_pnl_usd": 797.1680000000001,
+      "daily_session_gross_sum_usd": 789.6140000000023,
+      "overnight_gap_pnl_captured_usd": 7.553999999997814,
+      "entry_and_exit_turnover_friction_usd": 0.3,
+      "financing_swap_costs_usd_orig": 86.88000000000002,
+      "financing_swap_costs_usd_corr": 86.64000000000001,
+      "total_costs_usd_orig": 87.18000000000002,
+      "total_costs_usd_corr": 86.94000000000001,
+      "net_pnl_usd_orig": 709.988,
+      "net_pnl_usd_corr": 710.2280000000001,
+      "trades_count": 1
+    }
+  },
+  "model_reconciliation": {
+    "Model_A_Yield_Only": {
+      "active_trades": 364,
+      "gross_pnl_usd": -121.7419999999986,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 175.44,
+        "corrected_costs_usd": 172.8,
+        "costs_diff_usd": -2.6399999999999864,
+        "original_net_pnl_usd": -297.1819999999987,
+        "corrected_net_pnl_usd": -294.5419999999988,
+        "net_pnl_diff_usd": 2.6399999999999295,
+        "original_net_profit_factor": 0.8942820634317584,
+        "corrected_net_profit_factor": 0.8950965988720487,
+        "max_drawdown_usd": 387.06999999999766,
+        "max_drawdown_pct": 3.857641882228635
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 263.15999999999997,
+        "corrected_costs_usd": 259.20000000000005,
+        "original_net_pnl_usd": -384.90199999999857,
+        "corrected_net_pnl_usd": -380.94199999999853,
+        "net_pnl_diff_usd": 3.9600000000000364
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 350.88,
+        "corrected_costs_usd": 345.6,
+        "original_net_pnl_usd": -472.6219999999987,
+        "corrected_net_pnl_usd": -467.34199999999873,
+        "net_pnl_diff_usd": 5.279999999999973
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 137.64,
+        "net_pnl_usd": -259.3819999999987,
+        "net_profit_factor": 0.9070388048532416
+      }
+    },
+    "Model_B_Dollar_Only": {
+      "active_trades": 396,
+      "gross_pnl_usd": 112.02300000000378,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 191.03999999999996,
+        "corrected_costs_usd": 187.44,
+        "costs_diff_usd": -3.599999999999966,
+        "original_net_pnl_usd": -79.01699999999633,
+        "corrected_net_pnl_usd": -75.41699999999639,
+        "net_pnl_diff_usd": 3.5999999999999375,
+        "original_net_profit_factor": 0.9734004932978625,
+        "corrected_net_profit_factor": 0.9746033766527671,
+        "max_drawdown_usd": 432.172999999997,
+        "max_drawdown_pct": 4.195440120135682
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 286.56,
+        "corrected_costs_usd": 281.15999999999997,
+        "original_net_pnl_usd": -174.53699999999617,
+        "corrected_net_pnl_usd": -169.1369999999961,
+        "net_pnl_diff_usd": 5.4000000000000625
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 382.0799999999999,
+        "corrected_costs_usd": 374.88,
+        "original_net_pnl_usd": -270.05699999999644,
+        "corrected_net_pnl_usd": -262.8569999999964,
+        "net_pnl_diff_usd": 7.2000000000000455
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 154.07999999999998,
+        "net_pnl_usd": -42.05699999999615,
+        "net_profit_factor": 0.9857544048144482
+      }
+    },
+    "Model_C_Bivariate": {
+      "active_trades": 516,
+      "gross_pnl_usd": 159.52000000000226,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 241.68,
+        "corrected_costs_usd": 241.44,
+        "costs_diff_usd": -0.2400000000000091,
+        "original_net_pnl_usd": -82.15999999999795,
+        "corrected_net_pnl_usd": -81.91999999999786,
+        "net_pnl_diff_usd": 0.24000000000009436,
+        "original_net_profit_factor": 0.9782481730954051,
+        "corrected_net_profit_factor": 0.9783076986221212,
+        "max_drawdown_usd": 447.56399999999894,
+        "max_drawdown_pct": 4.396459759727313
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 362.5200000000001,
+        "corrected_costs_usd": 362.1600000000001,
+        "original_net_pnl_usd": -202.99999999999753,
+        "corrected_net_pnl_usd": -202.63999999999754,
+        "net_pnl_diff_usd": 0.3599999999999852
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 483.36,
+        "corrected_costs_usd": 482.88,
+        "original_net_pnl_usd": -323.8399999999982,
+        "corrected_net_pnl_usd": -323.3599999999981,
+        "net_pnl_diff_usd": 0.4800000000001319
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 209.64,
+        "net_pnl_usd": -50.11999999999787,
+        "net_profit_factor": 0.9866710919067047
+      }
+    },
+    "Model_D_Trivariate": {
+      "active_trades": 516,
+      "gross_pnl_usd": -17.041999999999007,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 241.68,
+        "corrected_costs_usd": 241.44,
+        "costs_diff_usd": -0.2400000000000091,
+        "original_net_pnl_usd": -258.7219999999992,
+        "corrected_net_pnl_usd": -258.48199999999906,
+        "net_pnl_diff_usd": 0.24000000000012278,
+        "original_net_profit_factor": 0.9330577212271003,
+        "corrected_net_profit_factor": 0.9331013154724271,
+        "max_drawdown_usd": 495.6120000000001,
+        "max_drawdown_pct": 4.860175279801432
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 362.5200000000001,
+        "corrected_costs_usd": 362.1600000000001,
+        "original_net_pnl_usd": -379.5619999999988,
+        "corrected_net_pnl_usd": -379.20199999999875,
+        "net_pnl_diff_usd": 0.3600000000000705
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 483.36,
+        "corrected_costs_usd": 482.88,
+        "original_net_pnl_usd": -500.4019999999994,
+        "corrected_net_pnl_usd": -499.9219999999994,
+        "net_pnl_diff_usd": 0.4800000000000182
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 209.39999999999998,
+        "net_pnl_usd": -226.44199999999913,
+        "net_profit_factor": 0.9411488299781743
+      }
+    },
+    "Benchmark_E_No_Trade": {
+      "active_trades": 0,
+      "gross_pnl_usd": 0.0,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 0.0,
+        "corrected_costs_usd": 0.0,
+        "costs_diff_usd": 0.0,
+        "original_net_pnl_usd": 0.0,
+        "corrected_net_pnl_usd": 0.0,
+        "net_pnl_diff_usd": 0.0,
+        "original_net_profit_factor": null,
+        "corrected_net_profit_factor": null,
+        "max_drawdown_usd": 0.0,
+        "max_drawdown_pct": 0.0
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 0.0,
+        "corrected_costs_usd": 0.0,
+        "original_net_pnl_usd": 0.0,
+        "corrected_net_pnl_usd": 0.0,
+        "net_pnl_diff_usd": 0.0
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 0.0,
+        "corrected_costs_usd": 0.0,
+        "original_net_pnl_usd": 0.0,
+        "corrected_net_pnl_usd": 0.0,
+        "net_pnl_diff_usd": 0.0
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 0.0,
+        "net_pnl_usd": 0.0,
+        "net_profit_factor": null
+      }
+    },
+    "Benchmark_F_Daily_Long": {
+      "active_trades": 516,
+      "gross_pnl_usd": 789.6140000000023,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 241.68,
+        "corrected_costs_usd": 241.44,
+        "costs_diff_usd": -0.2400000000000091,
+        "original_net_pnl_usd": 547.9340000000021,
+        "corrected_net_pnl_usd": 548.1740000000021,
+        "net_pnl_diff_usd": 0.2400000000000091,
+        "original_net_profit_factor": 1.1586093724535866,
+        "corrected_net_profit_factor": 1.1585288335460846,
+        "max_drawdown_usd": 300.8369999999993,
+        "max_drawdown_pct": 2.958571909336409
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 362.5200000000001,
+        "corrected_costs_usd": 362.1600000000001,
+        "original_net_pnl_usd": 427.09400000000244,
+        "corrected_net_pnl_usd": 427.45400000000234,
+        "net_pnl_diff_usd": 0.35999999999989996
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 483.36,
+        "corrected_costs_usd": 482.88,
+        "original_net_pnl_usd": 306.2540000000019,
+        "corrected_net_pnl_usd": 306.7340000000019,
+        "net_pnl_diff_usd": 0.4800000000000182
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 241.44,
+        "net_pnl_usd": 548.1740000000021,
+        "net_profit_factor": 1.1585288335460846
+      }
+    },
+    "Benchmark_G_Prior_Momentum": {
+      "active_trades": 516,
+      "gross_pnl_usd": -230.90600000000222,
+      "cost_1_0x_baseline": {
+        "original_costs_usd": 241.68,
+        "corrected_costs_usd": 241.44,
+        "costs_diff_usd": -0.2400000000000091,
+        "original_net_pnl_usd": -472.5860000000024,
+        "corrected_net_pnl_usd": -472.3460000000025,
+        "net_pnl_diff_usd": 0.2399999999998954,
+        "original_net_profit_factor": 0.8811500270098709,
+        "corrected_net_profit_factor": 0.8810961849009625,
+        "max_drawdown_usd": 740.0500000000003,
+        "max_drawdown_pct": 7.3404223135745585
+      },
+      "cost_1_5x_elevated": {
+        "original_costs_usd": 362.5200000000001,
+        "corrected_costs_usd": 362.1600000000001,
+        "original_net_pnl_usd": -593.4260000000022,
+        "corrected_net_pnl_usd": -593.0660000000021,
+        "net_pnl_diff_usd": 0.36000000000012733
+      },
+      "cost_2_0x_stressed": {
+        "original_costs_usd": 483.36,
+        "corrected_costs_usd": 482.88,
+        "original_net_pnl_usd": -714.2660000000026,
+        "corrected_net_pnl_usd": -713.7860000000026,
+        "net_pnl_diff_usd": 0.4800000000000182
+      },
+      "cost_asymmetric_short_swap_0": {
+        "costs_usd": 202.32,
+        "net_pnl_usd": -433.22600000000216,
+        "net_profit_factor": 0.8904108965302655
+      }
+    }
+  },
+  "bootstrap_audit": {
+    "Model_A_Yield_Only": {
+      "reproduction_exact_match": true,
+      "original_pnl_ci": [
+        -985.9173000000003,
+        371.8486249999983
+      ],
+      "corrected_pnl_ci": [
+        -983.2293000000005,
+        374.2966249999981
+      ],
+      "original_pf_ci": [
+        0.6888157033479526,
+        1.1481904968134056
+      ],
+      "corrected_pf_ci": [
+        0.6896899648682125,
+        1.1499701888528326
+      ],
+      "valid_resamples": 2000,
+      "resampling_unit": "Daily Session Net PnL (N=516 vector)",
+      "block_length": 5,
+      "temporal_dependence_preserved": true,
+      "zero_denominator_pf_treatment": "Returns NaN and excluded from percentile bounds"
+    },
+    "Model_B_Dollar_Only": {
+      "reproduction_exact_match": true,
+      "original_pnl_ci": [
+        -879.4046499999961,
+        671.6694500000041
+      ],
+      "corrected_pnl_ci": [
+        -876.020649999996,
+        674.321450000004
+      ],
+      "original_pf_ci": [
+        0.738703329306894,
+        1.2571265191721142
+      ],
+      "corrected_pf_ci": [
+        0.7398946734546814,
+        1.2580907471853524
+      ],
+      "valid_resamples": 2000,
+      "resampling_unit": "Daily Session Net PnL (N=516 vector)",
+      "block_length": 5,
+      "temporal_dependence_preserved": true,
+      "zero_denominator_pf_treatment": "Returns NaN and excluded from percentile bounds"
+    },
+    "Model_C_Bivariate": {
+      "reproduction_exact_match": true,
+      "original_pnl_ci": [
+        -1017.2408249999976,
+        692.8316500000043
+      ],
+      "corrected_pnl_ci": [
+        -1017.4748249999973,
+        692.6036500000042
+      ],
+      "original_pf_ci": [
+        0.7607066058556309,
+        1.2051000926091702
+      ],
+      "corrected_pf_ci": [
+        0.7608779633853732,
+        1.2053971129765697
+      ],
+      "valid_resamples": 2000,
+      "resampling_unit": "Daily Session Net PnL (N=516 vector)",
+      "block_length": 5,
+      "temporal_dependence_preserved": true,
+      "zero_denominator_pf_treatment": "Returns NaN and excluded from percentile bounds"
+    },
+    "Model_D_Trivariate": {
+      "reproduction_exact_match": true,
+      "original_pnl_ci": [
+        -1120.4124000000022,
+        465.4487249999991
+      ],
+      "corrected_pnl_ci": [
+        -1120.5768749999932,
+        466.15072499999917
+      ],
+      "original_pf_ci": [
+        0.7425432141137582,
+        1.130492745237647
+      ],
+      "corrected_pf_ci": [
+        0.7425028396879155,
+        1.130569905383985
+      ],
+      "valid_resamples": 2000,
+      "resampling_unit": "Daily Session Net PnL (N=516 vector)",
+      "block_length": 5,
+      "temporal_dependence_preserved": true,
+      "zero_denominator_pf_treatment": "Returns NaN and excluded from percentile bounds"
+    }
+  },
+  "holm_bonferroni_audit": {
+    "family": [
+      "Model_A_Yield_Only",
+      "Model_B_Dollar_Only",
+      "Model_C_Bivariate",
+      "Model_D_Trivariate"
+    ],
+    "m_tests": 4,
+    "alpha": 0.05,
+    "tests": [
+      {
+        "rank": 1,
+        "model": "Model_B_Dollar_Only",
+        "raw_p": 0.5794,
+        "threshold": 0.0125,
+        "rejected": false
+      },
+      {
+        "rank": 2,
+        "model": "Model_D_Trivariate",
+        "raw_p": 0.6724,
+        "threshold": 0.0167,
+        "rejected": false
+      },
+      {
+        "rank": 3,
+        "model": "Model_C_Bivariate",
+        "raw_p": 0.6865,
+        "threshold": 0.025,
+        "rejected": false
+      },
+      {
+        "rank": 4,
+        "model": "Model_A_Yield_Only",
+        "raw_p": 0.8624,
+        "threshold": 0.05,
+        "rejected": false
+      }
+    ],
+    "all_rejected": false,
+    "conclusion": "No hypothesis achieves statistical significance at any rank."
+  },
+  "cost_assumptions_table": {
+    "broker_spread_0_20": {
+      "value": "$0.20/oz round turn",
+      "classification": "proxy",
+      "evidence": "Reflects standard liquid-hours bid-ask spread; widens to $0.50-$2.00 during 17:00-18:00 roll."
+    },
+    "slippage_0_10": {
+      "value": "$0.10/oz round turn ($0.05 enter, $0.05 exit)",
+      "classification": "proxy",
+      "evidence": "Reasonable for normal hours; optimistic for 18:00 NY entry immediately at market re-open."
+    },
+    "long_swap_0_12": {
+      "value": "-$0.12/oz per calendar day",
+      "classification": "proxy",
+      "evidence": "Matches ~2.2% annual financing on $2,000 gold; realistic retail CFD rate."
+    },
+    "short_swap_0_12": {
+      "value": "-$0.12/oz per calendar day",
+      "classification": "unverified",
+      "evidence": "Assumes retail broker short financing penalty; in institutional markets short gold receives or pays minimal financing."
+    },
+    "wednesday_triple_swap_rule": {
+      "value": "3x swap debit on rollover settling over weekend",
+      "classification": "verified convention / unverified implementation timing",
+      "evidence": "T+2 spot settlement charges 3x swap across Wednesday 17:00 NY roll, but code applied it on Wednesday evening entry."
+    },
+    "benchmark_f_daily_friction": {
+      "value": "$0.30/oz spread and slippage charged every session (516 times)",
+      "classification": "unverified / mislabeled",
+      "evidence": "Passive buy-and-hold does not enter and exit daily. Daily friction is only valid for Daily Long-Only strategy."
+    }
+  }
+}

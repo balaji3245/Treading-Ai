@@ -1,0 +1,54 @@
+{
+  "incumbent_mom_baseline_v1": {
+    "model_version": "incumbent_mom_baseline_v1",
+    "model_class": "MomentumBaseline",
+    "feature_names": [
+      "ret_1",
+      "atr_14"
+    ],
+    "hyperparameters": {
+      "threshold": 0.5
+    },
+    "created_at": "2026-10-29T08:31:08.209911+00:00",
+    "status": "ARCHIVED",
+    "promoted_at": null,
+    "promotion_reason": null,
+    "performance_metrics": {
+      "net_pnl": -850.0,
+      "profit_factor": 0.78,
+      "trade_count": 65,
+      "max_drawdown": 1400.0
+    },
+    "parent_version": null,
+    "hypothesis_tested": null
+  },
+  "challenger_cost_hurdle_v1": {
+    "model_version": "challenger_cost_hurdle_v1",
+    "model_class": "COST_HURDLE",
+    "feature_names": [
+      "market_structure",
+      "technical",
+      "regimes"
+    ],
+    "hyperparameters": {
+      "probability_threshold": 0.65
+    },
+    "created_at": "2026-10-29T08:31:08.297190+00:00",
+    "status": "INCUMBENT",
+    "promoted_at": "2026-10-29T08:31:08.298041+00:00",
+    "promotion_reason": "Passed all gates. Scorecard: {'challenger_net_pnl': 11.624000000000251, 'challenger_profit_factor': 1.3486502699460234, 'challenger_trade_count': 25, 'challenger_max_drawdown': 450.0, 'incumbent_max_drawdown': 1400.0, 'negative_fold_count': 0, 'total_folds': 3, 'stress_net_pnl': 7.874000000000251, 'is_approved': True, 'rejection_reasons_count': 0}",
+    "performance_metrics": {
+      "net_pnl": 11.624000000000251,
+      "profit_factor": 1.3486502699460234,
+      "trade_count": 25,
+      "max_drawdown": 450.0,
+      "fold_pnls": [
+        4.649600000000101,
+        4.0684000000000875,
+        2.9060000000000628
+      ]
+    },
+    "parent_version": "incumbent_mom_baseline_v1",
+    "hypothesis_tested": "Tighten selective probability threshold from 0.60 to 0.65 to ensure estimated gross edge overcomes transaction costs."
+  }
+}

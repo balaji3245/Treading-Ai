@@ -1,0 +1,1654 @@
+{
+  "walk_forward_results": [
+    {
+      "fold_id": 1,
+      "model_name": "Majority-Class",
+      "classification": {
+        "model_name": "Majority-Class",
+        "split_name": "Fold_1_Eval",
+        "n_total": 70864,
+        "n_valid": 70552,
+        "n_purged": 312,
+        "coverage": 0.9955972002709416,
+        "accuracy": 0.36118040594171674,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.17689568277901577,
+        "per_class": {
+          "-1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 26137
+          },
+          "0": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 18933
+          },
+          "1": {
+            "precision": 0.36118040594171674,
+            "recall": 1.0,
+            "f1": 0.5306870483370473,
+            "support": 25482
+          }
+        },
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            26137
+          ],
+          [
+            0,
+            0,
+            18933
+          ],
+          [
+            0,
+            0,
+            25482
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3704643383603583,
+          "0": 0.26835525569792495,
+          "1": 0.36118040594171674
+        },
+        "predicted_distribution": {
+          "-1": 0.0,
+          "0": 0.0,
+          "1": 1.0
+        }
+      },
+      "economic": {
+        "model_name": "Majority-Class",
+        "scenario_name": "Fold_1_Baseline_Costs",
+        "total_bars": 70864,
+        "tradable_bars": 70857,
+        "n_signals_long": 70552,
+        "n_signals_short": 0,
+        "n_signals_neutral": 312,
+        "n_trades_executed": 70551,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9956814429061349,
+        "gross_pnl_usd": -439.0959999999993,
+        "net_pnl_usd": -41294.820999999996,
+        "total_friction_usd": 40855.725000000006,
+        "avg_gross_return_bps": -0.023496832080995716,
+        "avg_net_return_bps": -3.2396285444968567,
+        "avg_net_pnl_per_trade": -0.5853187197913565,
+        "win_rate_gross": 0.4932176723221499,
+        "win_rate_net": 0.361341440943431,
+        "profit_factor_gross": 0.9925075660877168,
+        "profit_factor_net": 0.5021792515682568,
+        "max_drawdown_usd": 41314.696000000564,
+        "max_drawdown_pct": 2293.5765188549985,
+        "turnover_lots": 70551.0,
+        "long_trades": 70551,
+        "long_gross_pnl": -439.0959999999993,
+        "long_net_pnl": -41294.820999999996,
+        "long_win_rate_net": 0.361341440943431,
+        "short_trades": 0,
+        "short_gross_pnl": 0.0,
+        "short_net_pnl": 0.0,
+        "short_win_rate_net": 0.0
+      }
+    },
+    {
+      "fold_id": 1,
+      "model_name": "Directional Heuristic",
+      "classification": {
+        "model_name": "Directional Heuristic",
+        "split_name": "Fold_1_Eval",
+        "n_total": 70864,
+        "n_valid": 70552,
+        "n_purged": 312,
+        "coverage": 0.9955972002709416,
+        "accuracy": 0.3307064293003742,
+        "balanced_accuracy": 0.3505360624429698,
+        "macro_f1": 0.326016566749506,
+        "per_class": {
+          "-1": {
+            "precision": 0.3659217877094972,
+            "recall": 0.2506025940237977,
+            "f1": 0.2974771215114563,
+            "support": 26137
+          },
+          "0": {
+            "precision": 0.2956242427657716,
+            "recall": 0.554164685997993,
+            "f1": 0.3855651918271351,
+            "support": 18933
+          },
+          "1": {
+            "precision": 0.3665287570654391,
+            "recall": 0.24684090730711875,
+            "f1": 0.2950073869099266,
+            "support": 25482
+          }
+        },
+        "confusion_matrix": [
+          [
+            6550,
+            12772,
+            6815
+          ],
+          [
+            4385,
+            10492,
+            4056
+          ],
+          [
+            6965,
+            12227,
+            6290
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3704643383603583,
+          "0": 0.26835525569792495,
+          "1": 0.36118040594171674
+        },
+        "predicted_distribution": {
+          "-1": 0.2537135729674566,
+          "0": 0.5030473976641343,
+          "1": 0.2432390293684091
+        }
+      },
+      "economic": {
+        "model_name": "Directional Heuristic",
+        "scenario_name": "Fold_1_Baseline_Costs",
+        "total_bars": 70864,
+        "tradable_bars": 70857,
+        "n_signals_long": 17161,
+        "n_signals_short": 17900,
+        "n_signals_neutral": 35803,
+        "n_trades_executed": 35060,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.4947993846761788,
+        "gross_pnl_usd": -400.1030000000085,
+        "net_pnl_usd": -20322.57600000001,
+        "total_friction_usd": 19922.472999999998,
+        "avg_gross_return_bps": -0.057130811642113234,
+        "avg_net_return_bps": -3.2106278362121126,
+        "avg_net_pnl_per_trade": -0.5796513405590419,
+        "win_rate_gross": 0.48531089560752994,
+        "win_rate_net": 0.3663148887621221,
+        "profit_factor_gross": 0.9875834148686077,
+        "profit_factor_net": 0.537686081367264,
+        "max_drawdown_usd": 20336.366000000064,
+        "max_drawdown_pct": 1128.9690122962702,
+        "turnover_lots": 35060.0,
+        "long_trades": 17160,
+        "long_gross_pnl": -90.83900000001177,
+        "long_net_pnl": -9781.547000000011,
+        "long_win_rate_net": 0.36672494172494174,
+        "short_trades": 17900,
+        "short_gross_pnl": -309.2639999999967,
+        "short_net_pnl": -10541.028999999995,
+        "short_win_rate_net": 0.3659217877094972
+      }
+    },
+    {
+      "fold_id": 1,
+      "model_name": "Logistic Regression",
+      "classification": {
+        "model_name": "Logistic Regression",
+        "split_name": "Fold_1_Eval",
+        "n_total": 70864,
+        "n_valid": 70552,
+        "n_purged": 312,
+        "coverage": 0.9955972002709416,
+        "accuracy": 0.4025116226329516,
+        "balanced_accuracy": 0.4009981112350802,
+        "macro_f1": 0.40259988312634915,
+        "per_class": {
+          "-1": {
+            "precision": 0.40434611109118945,
+            "recall": 0.431419061101121,
+            "f1": 0.417444098918999,
+            "support": 26137
+          },
+          "0": {
+            "precision": 0.42717486179807973,
+            "recall": 0.3877356995721756,
+            "f1": 0.40650091367185337,
+            "support": 18933
+          },
+          "1": {
+            "precision": 0.3838697017268446,
+            "recall": 0.3838395730319441,
+            "f1": 0.38385463678819515,
+            "support": 25482
+          }
+        },
+        "confusion_matrix": [
+          [
+            11276,
+            4974,
+            9887
+          ],
+          [
+            5780,
+            7341,
+            5812
+          ],
+          [
+            10831,
+            4870,
+            9781
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3704643383603583,
+          "0": 0.26835525569792495,
+          "1": 0.36118040594171674
+        },
+        "predicted_distribution": {
+          "-1": 0.3952687379521488,
+          "0": 0.24357920399138225,
+          "1": 0.361152058056469
+        }
+      },
+      "economic": {
+        "model_name": "Logistic Regression",
+        "scenario_name": "Fold_1_Baseline_Costs",
+        "total_bars": 70864,
+        "tradable_bars": 70857,
+        "n_signals_long": 25480,
+        "n_signals_short": 27887,
+        "n_signals_neutral": 17497,
+        "n_trades_executed": 53367,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.7531648249290825,
+        "gross_pnl_usd": 2243.176999999985,
+        "net_pnl_usd": -26675.932000000015,
+        "total_friction_usd": 28919.108999999997,
+        "avg_gross_return_bps": 0.22374898911252591,
+        "avg_net_return_bps": -2.7889876595550875,
+        "avg_net_pnl_per_trade": -0.49985818951786715,
+        "win_rate_gross": 0.5022392114977421,
+        "win_rate_net": 0.39468210692000677,
+        "profit_factor_gross": 1.045684378641682,
+        "profit_factor_net": 0.5902002112726381,
+        "max_drawdown_usd": 26682.4160000001,
+        "max_drawdown_pct": 1481.2686217979267,
+        "turnover_lots": 53367.0,
+        "long_trades": 25480,
+        "long_gross_pnl": 946.3379999999959,
+        "long_net_pnl": -12593.886000000004,
+        "long_win_rate_net": 0.3839089481946625,
+        "short_trades": 27887,
+        "short_gross_pnl": 1296.838999999989,
+        "short_net_pnl": -14082.046000000011,
+        "short_win_rate_net": 0.4045254061032022
+      }
+    },
+    {
+      "fold_id": 1,
+      "model_name": "Random Forest",
+      "classification": {
+        "model_name": "Random Forest",
+        "split_name": "Fold_1_Eval",
+        "n_total": 70864,
+        "n_valid": 70552,
+        "n_purged": 312,
+        "coverage": 0.9955972002709416,
+        "accuracy": 0.4034754507313754,
+        "balanced_accuracy": 0.39920374588388,
+        "macro_f1": 0.3936170637435126,
+        "per_class": {
+          "-1": {
+            "precision": 0.39633516393888313,
+            "recall": 0.2788766882197651,
+            "f1": 0.3273895077254761,
+            "support": 26137
+          },
+          "0": {
+            "precision": 0.45199440167949617,
+            "recall": 0.34115037236571066,
+            "f1": 0.38882701742768566,
+            "support": 18933
+          },
+          "1": {
+            "precision": 0.3886351033772544,
+            "recall": 0.5775841770661644,
+            "f1": 0.46463466607737597,
+            "support": 25482
+          }
+        },
+        "confusion_matrix": [
+          [
+            7289,
+            4077,
+            14771
+          ],
+          [
+            4092,
+            6459,
+            8382
+          ],
+          [
+            7010,
+            3754,
+            14718
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3704643383603583,
+          "0": 0.26835525569792495,
+          "1": 0.36118040594171674
+        },
+        "predicted_distribution": {
+          "-1": 0.26067297879578183,
+          "0": 0.2025456400952489,
+          "1": 0.5367813811089692
+        }
+      },
+      "economic": {
+        "model_name": "Random Forest",
+        "scenario_name": "Fold_1_Baseline_Costs",
+        "total_bars": 70864,
+        "tradable_bars": 70857,
+        "n_signals_long": 37871,
+        "n_signals_short": 18391,
+        "n_signals_neutral": 14602,
+        "n_trades_executed": 56262,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.7940217621406495,
+        "gross_pnl_usd": -326.4970000000055,
+        "net_pnl_usd": -31273.917,
+        "total_friction_usd": 30947.42,
+        "avg_gross_return_bps": -0.03311748743736995,
+        "avg_net_return_bps": -3.082206236652557,
+        "avg_net_pnl_per_trade": -0.5558621627386158,
+        "win_rate_gross": 0.5007287334257581,
+        "win_rate_net": 0.3912054317301198,
+        "profit_factor_gross": 0.9937688733067092,
+        "profit_factor_net": 0.5514777459214362,
+        "max_drawdown_usd": 31294.83300000034,
+        "max_drawdown_pct": 1737.325965808591,
+        "turnover_lots": 56262.0,
+        "long_trades": 37871,
+        "long_gross_pnl": -213.54600000000596,
+        "long_net_pnl": -21138.551000000007,
+        "long_win_rate_net": 0.38871431966412295,
+        "short_trades": 18391,
+        "short_gross_pnl": -112.95099999999957,
+        "short_net_pnl": -10135.365999999998,
+        "short_win_rate_net": 0.39633516393888313
+      }
+    },
+    {
+      "fold_id": 2,
+      "model_name": "Majority-Class",
+      "classification": {
+        "model_name": "Majority-Class",
+        "split_name": "Fold_2_Eval",
+        "n_total": 61611,
+        "n_valid": 61299,
+        "n_purged": 312,
+        "coverage": 0.9949359692262745,
+        "accuracy": 0.3469387755102041,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.1717171717171717,
+        "per_class": {
+          "-1": {
+            "precision": 0.3469387755102041,
+            "recall": 1.0,
+            "f1": 0.5151515151515151,
+            "support": 21267
+          },
+          "0": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 18772
+          },
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 21260
+          }
+        },
+        "confusion_matrix": [
+          [
+            21267,
+            0,
+            0
+          ],
+          [
+            18772,
+            0,
+            0
+          ],
+          [
+            21260,
+            0,
+            0
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3469387755102041,
+          "0": 0.3062366433383905,
+          "1": 0.3468245811514054
+        },
+        "predicted_distribution": {
+          "-1": 1.0,
+          "0": 0.0,
+          "1": 0.0
+        }
+      },
+      "economic": {
+        "model_name": "Majority-Class",
+        "scenario_name": "Fold_2_Baseline_Costs",
+        "total_bars": 61611,
+        "tradable_bars": 61604,
+        "n_signals_long": 0,
+        "n_signals_short": 61299,
+        "n_signals_neutral": 312,
+        "n_trades_executed": 61298,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9950327900785664,
+        "gross_pnl_usd": -1161.1169999999966,
+        "net_pnl_usd": -35629.704,
+        "total_friction_usd": 34468.587,
+        "avg_gross_return_bps": -0.10511626280237704,
+        "avg_net_return_bps": -3.0027544420063537,
+        "avg_net_pnl_per_trade": -0.5812539397696499,
+        "win_rate_gross": 0.4972429769323632,
+        "win_rate_net": 0.3470912590949134,
+        "profit_factor_gross": 0.9755145305352699,
+        "profit_factor_net": 0.47773621408202843,
+        "max_drawdown_usd": 35647.2980000004,
+        "max_drawdown_pct": 1835.690968742715,
+        "turnover_lots": 61298.0,
+        "long_trades": 0,
+        "long_gross_pnl": 0.0,
+        "long_net_pnl": 0.0,
+        "long_win_rate_net": 0.0,
+        "short_trades": 61298,
+        "short_gross_pnl": -1161.1169999999966,
+        "short_net_pnl": -35629.704,
+        "short_win_rate_net": 0.3470912590949134
+      }
+    },
+    {
+      "fold_id": 2,
+      "model_name": "Directional Heuristic",
+      "classification": {
+        "model_name": "Directional Heuristic",
+        "split_name": "Fold_2_Eval",
+        "n_total": 61611,
+        "n_valid": 61299,
+        "n_purged": 312,
+        "coverage": 0.9949359692262745,
+        "accuracy": 0.3471671642278014,
+        "balanced_accuracy": 0.357595387722541,
+        "macro_f1": 0.33192374600745705,
+        "per_class": {
+          "-1": {
+            "precision": 0.3541407791828083,
+            "recall": 0.2278177458033573,
+            "f1": 0.27726908549845486,
+            "support": 21267
+          },
+          "0": {
+            "precision": 0.34384133611691026,
+            "recall": 0.6141593863200512,
+            "f1": 0.4408626821154067,
+            "support": 18772
+          },
+          "1": {
+            "precision": 0.3483106189664963,
+            "recall": 0.2308090310442145,
+            "f1": 0.27763947040850967,
+            "support": 21260
+          }
+        },
+        "confusion_matrix": [
+          [
+            4845,
+            10916,
+            5506
+          ],
+          [
+            3568,
+            11529,
+            3675
+          ],
+          [
+            5268,
+            11085,
+            4907
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3469387755102041,
+          "0": 0.3062366433383905,
+          "1": 0.3468245811514054
+        },
+        "predicted_distribution": {
+          "-1": 0.22318471753209676,
+          "0": 0.5469909786456549,
+          "1": 0.22982430382224833
+        }
+      },
+      "economic": {
+        "model_name": "Directional Heuristic",
+        "scenario_name": "Fold_2_Baseline_Costs",
+        "total_bars": 61611,
+        "tradable_bars": 61604,
+        "n_signals_long": 14088,
+        "n_signals_short": 13681,
+        "n_signals_neutral": 33842,
+        "n_trades_executed": 27769,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.4507661840140251,
+        "gross_pnl_usd": 485.0790000000113,
+        "net_pnl_usd": -14900.713999999989,
+        "total_friction_usd": 15385.792999999998,
+        "avg_gross_return_bps": 0.07689115156229845,
+        "avg_net_return_bps": -2.7761834988338685,
+        "avg_net_pnl_per_trade": -0.5365952681047207,
+        "win_rate_gross": 0.4755662789441463,
+        "win_rate_net": 0.351218985199323,
+        "profit_factor_gross": 1.0198182055441578,
+        "profit_factor_net": 0.5572136893695611,
+        "max_drawdown_usd": 14925.934000000065,
+        "max_drawdown_pct": 768.6249388060111,
+        "turnover_lots": 27769.0,
+        "long_trades": 14088,
+        "long_gross_pnl": 416.4080000000108,
+        "long_net_pnl": -7359.513999999988,
+        "long_win_rate_net": 0.3484525837592277,
+        "short_trades": 13681,
+        "short_gross_pnl": 68.6710000000005,
+        "short_net_pnl": -7541.199999999999,
+        "short_win_rate_net": 0.3540676851107375
+      }
+    },
+    {
+      "fold_id": 2,
+      "model_name": "Logistic Regression",
+      "classification": {
+        "model_name": "Logistic Regression",
+        "split_name": "Fold_2_Eval",
+        "n_total": 61611,
+        "n_valid": 61299,
+        "n_purged": 312,
+        "coverage": 0.9949359692262745,
+        "accuracy": 0.4132367575327493,
+        "balanced_accuracy": 0.4159253873327429,
+        "macro_f1": 0.41348967946552656,
+        "per_class": {
+          "-1": {
+            "precision": 0.39093748287765057,
+            "recall": 0.3354963088352847,
+            "f1": 0.3611012703072018,
+            "support": 21267
+          },
+          "0": {
+            "precision": 0.4499651845220332,
+            "recall": 0.4819411890049009,
+            "f1": 0.46540459900200626,
+            "support": 18772
+          },
+          "1": {
+            "precision": 0.3987882486269724,
+            "recall": 0.4303386641580433,
+            "f1": 0.41396316908737163,
+            "support": 21260
+          }
+        },
+        "confusion_matrix": [
+          [
+            7135,
+            5436,
+            8696
+          ],
+          [
+            4628,
+            9047,
+            5097
+          ],
+          [
+            6488,
+            5623,
+            9149
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3469387755102041,
+          "0": 0.3062366433383905,
+          "1": 0.3468245811514054
+        },
+        "predicted_distribution": {
+          "-1": 0.29773732034780337,
+          "0": 0.32799882542945236,
+          "1": 0.3742638542227443
+        }
+      },
+      "economic": {
+        "model_name": "Logistic Regression",
+        "scenario_name": "Fold_2_Baseline_Costs",
+        "total_bars": 61611,
+        "tradable_bars": 61604,
+        "n_signals_long": 22942,
+        "n_signals_short": 18251,
+        "n_signals_neutral": 20418,
+        "n_trades_executed": 41193,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.6686741120706448,
+        "gross_pnl_usd": 1421.8649999999952,
+        "net_pnl_usd": -20149.057000000004,
+        "total_friction_usd": 21570.922,
+        "avg_gross_return_bps": 0.18329014856611736,
+        "avg_net_return_bps": -2.5097606385347255,
+        "avg_net_pnl_per_trade": -0.48913788750515874,
+        "win_rate_gross": 0.5134124729929842,
+        "win_rate_net": 0.3956254703469036,
+        "profit_factor_gross": 1.0388044305985775,
+        "profit_factor_net": 0.585000661764406,
+        "max_drawdown_usd": 20228.251999999702,
+        "max_drawdown_pct": 1041.6727660494996,
+        "turnover_lots": 41193.0,
+        "long_trades": 22942,
+        "long_gross_pnl": 777.9919999999952,
+        "long_net_pnl": -11614.749000000003,
+        "long_win_rate_net": 0.39913695405805943,
+        "short_trades": 18251,
+        "short_gross_pnl": 643.873,
+        "short_net_pnl": -8534.308,
+        "short_win_rate_net": 0.3912114404690154
+      }
+    },
+    {
+      "fold_id": 2,
+      "model_name": "Random Forest",
+      "classification": {
+        "model_name": "Random Forest",
+        "split_name": "Fold_2_Eval",
+        "n_total": 61611,
+        "n_valid": 61299,
+        "n_purged": 312,
+        "coverage": 0.9949359692262745,
+        "accuracy": 0.4236121307036004,
+        "balanced_accuracy": 0.425287539032211,
+        "macro_f1": 0.42581398297256196,
+        "per_class": {
+          "-1": {
+            "precision": 0.397527742660486,
+            "recall": 0.39921004372972213,
+            "f1": 0.39836711711711714,
+            "support": 21267
+          },
+          "0": {
+            "precision": 0.47959910181280463,
+            "recall": 0.4664926486256126,
+            "f1": 0.4729550916799438,
+            "support": 18772
+          },
+          "1": {
+            "precision": 0.4021583729188765,
+            "recall": 0.4101599247412982,
+            "f1": 0.406119740120625,
+            "support": 21260
+          }
+        },
+        "confusion_matrix": [
+          [
+            8490,
+            4698,
+            8079
+          ],
+          [
+            5131,
+            8757,
+            4884
+          ],
+          [
+            7736,
+            4804,
+            8720
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3469387755102041,
+          "0": 0.3062366433383905,
+          "1": 0.3468245811514054
+        },
+        "predicted_distribution": {
+          "-1": 0.3484069886947585,
+          "0": 0.29786782818643043,
+          "1": 0.35372518311881107
+        }
+      },
+      "economic": {
+        "model_name": "Random Forest",
+        "scenario_name": "Fold_2_Baseline_Costs",
+        "total_bars": 61611,
+        "tradable_bars": 61604,
+        "n_signals_long": 21683,
+        "n_signals_short": 21357,
+        "n_signals_neutral": 18571,
+        "n_trades_executed": 43040,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.6986559314330238,
+        "gross_pnl_usd": 1108.3250000000087,
+        "net_pnl_usd": -21425.44599999999,
+        "total_friction_usd": 22533.771,
+        "avg_gross_return_bps": 0.12954223378221763,
+        "avg_net_return_bps": -2.5650428084568775,
+        "avg_net_pnl_per_trade": -0.4978031133828994,
+        "win_rate_gross": 0.5178903345724907,
+        "win_rate_net": 0.4000232342007435,
+        "profit_factor_gross": 1.0286344302047439,
+        "profit_factor_net": 0.5795796810507665,
+        "max_drawdown_usd": 21473.07699999971,
+        "max_drawdown_pct": 1105.7761943139685,
+        "turnover_lots": 43040.0,
+        "long_trades": 21683,
+        "long_gross_pnl": 685.9510000000046,
+        "long_net_pnl": -10746.170999999995,
+        "long_win_rate_net": 0.4023889683161924,
+        "short_trades": 21357,
+        "short_gross_pnl": 422.3740000000041,
+        "short_net_pnl": -10679.274999999996,
+        "short_win_rate_net": 0.39762138877183123
+      }
+    },
+    {
+      "fold_id": 3,
+      "model_name": "Majority-Class",
+      "classification": {
+        "model_name": "Majority-Class",
+        "split_name": "Fold_3_Eval",
+        "n_total": 71072,
+        "n_valid": 70747,
+        "n_purged": 325,
+        "coverage": 0.9954271724448447,
+        "accuracy": 0.3639730306585438,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.17789844934730267,
+        "per_class": {
+          "-1": {
+            "precision": 0.3639730306585438,
+            "recall": 1.0,
+            "f1": 0.533695348041908,
+            "support": 25750
+          },
+          "0": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17075
+          },
+          "1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 27922
+          }
+        },
+        "confusion_matrix": [
+          [
+            25750,
+            0,
+            0
+          ],
+          [
+            17075,
+            0,
+            0
+          ],
+          [
+            27922,
+            0,
+            0
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3639730306585438,
+          "0": 0.24135299023280138,
+          "1": 0.39467397910865476
+        },
+        "predicted_distribution": {
+          "-1": 1.0,
+          "0": 0.0,
+          "1": 0.0
+        }
+      },
+      "economic": {
+        "model_name": "Majority-Class",
+        "scenario_name": "Fold_3_Baseline_Costs",
+        "total_bars": 71072,
+        "tradable_bars": 71065,
+        "n_signals_long": 0,
+        "n_signals_short": 70747,
+        "n_signals_neutral": 325,
+        "n_trades_executed": 70747,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9955252233870401,
+        "gross_pnl_usd": -2972.3260000000037,
+        "net_pnl_usd": -46830.691000000006,
+        "total_friction_usd": 43858.36499999999,
+        "avg_gross_return_bps": -0.18812693793483531,
+        "avg_net_return_bps": -2.7952810459972643,
+        "avg_net_pnl_per_trade": -0.6619459623729629,
+        "win_rate_gross": 0.48040199584434673,
+        "win_rate_net": 0.3641426491582682,
+        "profit_factor_gross": 0.9600186100221381,
+        "profit_factor_net": 0.5337383188884948,
+        "max_drawdown_usd": 46834.26800000065,
+        "max_drawdown_pct": 1960.5485886974855,
+        "turnover_lots": 70747.0,
+        "long_trades": 0,
+        "long_gross_pnl": 0.0,
+        "long_net_pnl": 0.0,
+        "long_win_rate_net": 0.0,
+        "short_trades": 70747,
+        "short_gross_pnl": -2972.3260000000037,
+        "short_net_pnl": -46830.691000000006,
+        "short_win_rate_net": 0.3641426491582682
+      }
+    },
+    {
+      "fold_id": 3,
+      "model_name": "Directional Heuristic",
+      "classification": {
+        "model_name": "Directional Heuristic",
+        "split_name": "Fold_3_Eval",
+        "n_total": 71072,
+        "n_valid": 70747,
+        "n_purged": 325,
+        "coverage": 0.9954271724448447,
+        "accuracy": 0.32046588547924293,
+        "balanced_accuracy": 0.35113319876608373,
+        "macro_f1": 0.3164297423500078,
+        "per_class": {
+          "-1": {
+            "precision": 0.3694851753762677,
+            "recall": 0.22213592233009707,
+            "f1": 0.27746113361305813,
+            "support": 25750
+          },
+          "0": {
+            "precision": 0.2667172017976068,
+            "recall": 0.5769838945827233,
+            "f1": 0.36480106640993837,
+            "support": 17075
+          },
+          "1": {
+            "precision": 0.38738542121344394,
+            "recall": 0.25427977938543084,
+            "f1": 0.307027027027027,
+            "support": 27922
+          }
+        },
+        "confusion_matrix": [
+          [
+            5720,
+            12816,
+            7214
+          ],
+          [
+            3209,
+            9852,
+            4014
+          ],
+          [
+            6552,
+            14270,
+            7100
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3639730306585438,
+          "0": 0.24135299023280138,
+          "1": 0.39467397910865476
+        },
+        "predicted_distribution": {
+          "-1": 0.21882199951941425,
+          "0": 0.5221140119015647,
+          "1": 0.259063988579021
+        }
+      },
+      "economic": {
+        "model_name": "Directional Heuristic",
+        "scenario_name": "Fold_3_Baseline_Costs",
+        "total_bars": 71072,
+        "tradable_bars": 71065,
+        "n_signals_long": 18328,
+        "n_signals_short": 15481,
+        "n_signals_neutral": 37263,
+        "n_trades_executed": 33809,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.47574755505523114,
+        "gross_pnl_usd": 174.55600000002755,
+        "net_pnl_usd": -20915.147999999972,
+        "total_friction_usd": 21089.703999999998,
+        "avg_gross_return_bps": 0.026558648919932842,
+        "avg_net_return_bps": -2.5879574613118383,
+        "avg_net_pnl_per_trade": -0.6186266378774874,
+        "win_rate_gross": 0.48274128190718446,
+        "win_rate_net": 0.37918897335029134,
+        "profit_factor_gross": 1.0044265261601246,
+        "profit_factor_net": 0.5950821972483056,
+        "max_drawdown_usd": 20929.78800000016,
+        "max_drawdown_pct": 876.1504786439133,
+        "turnover_lots": 33809.0,
+        "long_trades": 18328,
+        "long_gross_pnl": 349.0649999999921,
+        "long_net_pnl": -10924.029000000008,
+        "long_win_rate_net": 0.38738542121344394,
+        "short_trades": 15481,
+        "short_gross_pnl": -174.50899999996454,
+        "short_net_pnl": -9991.118999999966,
+        "short_win_rate_net": 0.3694851753762677
+      }
+    },
+    {
+      "fold_id": 3,
+      "model_name": "Logistic Regression",
+      "classification": {
+        "model_name": "Logistic Regression",
+        "split_name": "Fold_3_Eval",
+        "n_total": 71072,
+        "n_valid": 70747,
+        "n_purged": 325,
+        "coverage": 0.9954271724448447,
+        "accuracy": 0.3931191428611814,
+        "balanced_accuracy": 0.40846730671350756,
+        "macro_f1": 0.3612725315796284,
+        "per_class": {
+          "-1": {
+            "precision": 0.39654524971836275,
+            "recall": 0.6561553398058252,
+            "f1": 0.4943386289827087,
+            "support": 25750
+          },
+          "0": {
+            "precision": 0.3798100222933023,
+            "recall": 0.4589751098096633,
+            "f1": 0.4156567397703466,
+            "support": 17075
+          },
+          "1": {
+            "precision": 0.41025982678214523,
+            "recall": 0.11027147052503403,
+            "f1": 0.17382222598583003,
+            "support": 27922
+          }
+        },
+        "confusion_matrix": [
+          [
+            16896,
+            5971,
+            2883
+          ],
+          [
+            7695,
+            7837,
+            1543
+          ],
+          [
+            18017,
+            6826,
+            3079
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3639730306585438,
+          "0": 0.24135299023280138,
+          "1": 0.39467397910865476
+        },
+        "predicted_distribution": {
+          "-1": 0.6022587530213295,
+          "0": 0.2916590102760541,
+          "1": 0.10608223670261636
+        }
+      },
+      "economic": {
+        "model_name": "Logistic Regression",
+        "scenario_name": "Fold_3_Baseline_Costs",
+        "total_bars": 71072,
+        "tradable_bars": 71065,
+        "n_signals_long": 7505,
+        "n_signals_short": 42608,
+        "n_signals_neutral": 20959,
+        "n_trades_executed": 50113,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.7051713220291282,
+        "gross_pnl_usd": -408.5890000000247,
+        "net_pnl_usd": -29947.738000000027,
+        "total_friction_usd": 29539.148999999998,
+        "avg_gross_return_bps": -0.04341390829059768,
+        "avg_net_return_bps": -2.504411694643133,
+        "avg_net_pnl_per_trade": -0.5976041745654825,
+        "win_rate_gross": 0.4900724362939756,
+        "win_rate_net": 0.3987787600023946,
+        "profit_factor_gross": 0.9932968638567714,
+        "profit_factor_net": 0.6124190321676378,
+        "max_drawdown_usd": 29983.639999999727,
+        "max_drawdown_pct": 1255.1575074475836,
+        "turnover_lots": 50113.0,
+        "long_trades": 7505,
+        "long_gross_pnl": 493.86699999999314,
+        "long_net_pnl": -3604.842000000007,
+        "long_win_rate_net": 0.4105263157894737,
+        "short_trades": 42608,
+        "short_gross_pnl": -902.4560000000179,
+        "short_net_pnl": -26342.89600000002,
+        "short_win_rate_net": 0.396709538114908
+      }
+    },
+    {
+      "fold_id": 3,
+      "model_name": "Random Forest",
+      "classification": {
+        "model_name": "Random Forest",
+        "split_name": "Fold_3_Eval",
+        "n_total": 71072,
+        "n_valid": 70747,
+        "n_purged": 325,
+        "coverage": 0.9954271724448447,
+        "accuracy": 0.4166254399479837,
+        "balanced_accuracy": 0.40864514417369274,
+        "macro_f1": 0.4119376437991975,
+        "per_class": {
+          "-1": {
+            "precision": 0.3939096980255517,
+            "recall": 0.4214757281553398,
+            "f1": 0.40722674571310646,
+            "support": 25750
+          },
+          "0": {
+            "precision": 0.4261844331641286,
+            "recall": 0.3540263543191801,
+            "f1": 0.3867686106401356,
+            "support": 17075
+          },
+          "1": {
+            "precision": 0.43352521457378235,
+            "recall": 0.45043335004655827,
+            "f1": 0.4418175750443504,
+            "support": 27922
+          }
+        },
+        "confusion_matrix": [
+          [
+            10853,
+            3802,
+            11095
+          ],
+          [
+            5691,
+            6045,
+            5339
+          ],
+          [
+            11008,
+            4337,
+            12577
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3639730306585438,
+          "0": 0.24135299023280138,
+          "1": 0.39467397910865476
+        },
+        "predicted_distribution": {
+          "-1": 0.38944407536715336,
+          "0": 0.20048906667420527,
+          "1": 0.41006685795864134
+        }
+      },
+      "economic": {
+        "model_name": "Random Forest",
+        "scenario_name": "Fold_3_Baseline_Costs",
+        "total_bars": 71072,
+        "tradable_bars": 71065,
+        "n_signals_long": 29011,
+        "n_signals_short": 27552,
+        "n_signals_neutral": 14509,
+        "n_trades_executed": 56563,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.7959333004995427,
+        "gross_pnl_usd": 785.1909999999766,
+        "net_pnl_usd": -32954.61100000002,
+        "total_friction_usd": 33739.802,
+        "avg_gross_return_bps": 0.056480724816143774,
+        "avg_net_return_bps": -2.428027378372741,
+        "avg_net_pnl_per_trade": -0.5826178066934218,
+        "win_rate_gross": 0.5117833212524088,
+        "win_rate_net": 0.41435213832363915,
+        "profit_factor_gross": 1.0120101546011562,
+        "profit_factor_net": 0.6053921609422186,
+        "max_drawdown_usd": 32971.20999999998,
+        "max_drawdown_pct": 1380.2214061111722,
+        "turnover_lots": 56563.0,
+        "long_trades": 29011,
+        "long_gross_pnl": 1280.9529999999927,
+        "long_net_pnl": -16466.233000000007,
+        "long_win_rate_net": 0.43359415394160833,
+        "short_trades": 27552,
+        "short_gross_pnl": -495.7620000000161,
+        "short_net_pnl": -16488.378000000015,
+        "short_win_rate_net": 0.3940911730545877
+      }
+    }
+  ],
+  "validation_results": [
+    {
+      "model_name": "Majority-Class",
+      "classification": {
+        "model_name": "Majority-Class",
+        "split_name": "Validation_2025",
+        "n_total": 70759,
+        "n_valid": 70434,
+        "n_purged": 325,
+        "coverage": 0.9954069446996142,
+        "accuracy": 0.43832524065082207,
+        "balanced_accuracy": 0.3333333333333333,
+        "macro_f1": 0.20316463817900046,
+        "per_class": {
+          "-1": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 27513
+          },
+          "0": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 12048
+          },
+          "1": {
+            "precision": 0.43832524065082207,
+            "recall": 1.0,
+            "f1": 0.6094939145370014,
+            "support": 30873
+          }
+        },
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            27513
+          ],
+          [
+            0,
+            0,
+            12048
+          ],
+          [
+            0,
+            0,
+            30873
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3906210069000767,
+          "0": 0.1710537524491013,
+          "1": 0.43832524065082207
+        },
+        "predicted_distribution": {
+          "-1": 0.0,
+          "0": 0.0,
+          "1": 1.0
+        }
+      },
+      "economic_baseline": {
+        "model_name": "Majority-Class",
+        "scenario_name": "Baseline Costs",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 70434,
+        "n_signals_short": 0,
+        "n_signals_neutral": 325,
+        "n_trades_executed": 70434,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9955054274084125,
+        "gross_pnl_usd": 10011.456000000006,
+        "net_pnl_usd": -51603.87999999999,
+        "total_friction_usd": 61615.335999999996,
+        "avg_gross_return_bps": 0.43222817680181924,
+        "avg_net_return_bps": -2.0930859347354787,
+        "avg_net_pnl_per_trade": -0.7326558196325637,
+        "win_rate_gross": 0.5249595365874435,
+        "win_rate_net": 0.4383536360280546,
+        "profit_factor_gross": 1.0746020690710072,
+        "profit_factor_net": 0.690276429649579,
+        "max_drawdown_usd": 51691.31700000003,
+        "max_drawdown_pct": 1502.1423532475517,
+        "turnover_lots": 70434.0,
+        "long_trades": 70434,
+        "long_gross_pnl": 10011.456000000006,
+        "long_net_pnl": -51603.87999999999,
+        "long_win_rate_net": 0.4383536360280546,
+        "short_trades": 0,
+        "short_gross_pnl": 0.0,
+        "short_net_pnl": 0.0,
+        "short_win_rate_net": 0.0
+      },
+      "economic_harsher": {
+        "model_name": "Majority-Class",
+        "scenario_name": "Harsher Costs (2x)",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 70434,
+        "n_signals_short": 0,
+        "n_signals_neutral": 325,
+        "n_trades_executed": 70434,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9955054274084125,
+        "gross_pnl_usd": 10011.456000000006,
+        "net_pnl_usd": -100340.364,
+        "total_friction_usd": 110351.82,
+        "avg_gross_return_bps": 0.43222817680181924,
+        "avg_net_return_bps": -4.089776551932551,
+        "avg_net_pnl_per_trade": -1.4246012437175228,
+        "win_rate_gross": 0.5249595365874435,
+        "win_rate_net": 0.3766220859244115,
+        "profit_factor_gross": 1.0746020690710072,
+        "profit_factor_net": 0.48980615912780384,
+        "max_drawdown_usd": 100354.70900000015,
+        "max_drawdown_pct": 2916.2936347072255,
+        "turnover_lots": 70434.0,
+        "long_trades": 70434,
+        "long_gross_pnl": 10011.456000000006,
+        "long_net_pnl": -100340.364,
+        "long_win_rate_net": 0.3766220859244115,
+        "short_trades": 0,
+        "short_gross_pnl": 0.0,
+        "short_net_pnl": 0.0,
+        "short_win_rate_net": 0.0
+      }
+    },
+    {
+      "model_name": "Directional Heuristic",
+      "classification": {
+        "model_name": "Directional Heuristic",
+        "split_name": "Validation_2025",
+        "n_total": 70759,
+        "n_valid": 70434,
+        "n_purged": 325,
+        "coverage": 0.9954069446996142,
+        "accuracy": 0.3024675582815118,
+        "balanced_accuracy": 0.34023076934944907,
+        "macro_f1": 0.30020003882346186,
+        "per_class": {
+          "-1": {
+            "precision": 0.38300073010464836,
+            "recall": 0.22880093046923272,
+            "f1": 0.2864684065621516,
+            "support": 27513
+          },
+          "0": {
+            "precision": 0.18199072121467735,
+            "recall": 0.5014110225763613,
+            "f1": 0.2670527386057204,
+            "support": 12048
+          },
+          "1": {
+            "precision": 0.4310709478946356,
+            "recall": 0.2904803550027532,
+            "f1": 0.3470789713025137,
+            "support": 30873
+          }
+        },
+        "confusion_matrix": [
+          [
+            6295,
+            12793,
+            8425
+          ],
+          [
+            2596,
+            6041,
+            3411
+          ],
+          [
+            7545,
+            14360,
+            8968
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3906210069000767,
+          "0": 0.1710537524491013,
+          "1": 0.43832524065082207
+        },
+        "predicted_distribution": {
+          "-1": 0.23335321009739615,
+          "0": 0.4712780759292387,
+          "1": 0.2953687139733651
+        }
+      },
+      "economic_baseline": {
+        "model_name": "Directional Heuristic",
+        "scenario_name": "Baseline Costs",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 20804,
+        "n_signals_short": 16436,
+        "n_signals_neutral": 33519,
+        "n_trades_executed": 37240,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.5263455450022614,
+        "gross_pnl_usd": 545.3619999999464,
+        "net_pnl_usd": -32820.42800000006,
+        "total_friction_usd": 33365.79,
+        "avg_gross_return_bps": 0.018737447712377293,
+        "avg_net_return_bps": -2.5595423855932093,
+        "avg_net_pnl_per_trade": -0.8813219119226654,
+        "win_rate_gross": 0.4890171858216971,
+        "win_rate_net": 0.40990870032223414,
+        "profit_factor_gross": 1.0069060271150472,
+        "profit_factor_net": 0.6631172463254876,
+        "max_drawdown_usd": 32834.37100000025,
+        "max_drawdown_pct": 954.1621723691719,
+        "turnover_lots": 37240.0,
+        "long_trades": 20804,
+        "long_gross_pnl": 3077.736999999993,
+        "long_net_pnl": -14818.340000000007,
+        "long_win_rate_net": 0.43111901557392807,
+        "short_trades": 16436,
+        "short_gross_pnl": -2532.3750000000464,
+        "short_net_pnl": -18002.088000000047,
+        "short_win_rate_net": 0.3830615721586761
+      },
+      "economic_harsher": {
+        "model_name": "Directional Heuristic",
+        "scenario_name": "Harsher Costs (2x)",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 20804,
+        "n_signals_short": 16436,
+        "n_signals_neutral": 33519,
+        "n_trades_executed": 37240,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.5263455450022614,
+        "gross_pnl_usd": 545.3619999999464,
+        "net_pnl_usd": -58938.63400000006,
+        "total_friction_usd": 59483.996,
+        "avg_gross_return_bps": 0.018737447712377293,
+        "avg_net_return_bps": -4.577491236520699,
+        "avg_net_pnl_per_trade": -1.58267008592911,
+        "win_rate_gross": 0.4890171858216971,
+        "win_rate_net": 0.3514500537056928,
+        "profit_factor_gross": 1.0069060271150472,
+        "profit_factor_net": 0.4829475183515553,
+        "max_drawdown_usd": 58936.83100000027,
+        "max_drawdown_pct": 1712.6959642234226,
+        "turnover_lots": 37240.0,
+        "long_trades": 20804,
+        "long_gross_pnl": 3077.736999999993,
+        "long_net_pnl": -28897.354000000007,
+        "long_win_rate_net": 0.3675735435493174,
+        "short_trades": 16436,
+        "short_gross_pnl": -2532.3750000000464,
+        "short_net_pnl": -30041.28000000005,
+        "short_win_rate_net": 0.33104161596495496
+      }
+    },
+    {
+      "model_name": "Logistic Regression",
+      "classification": {
+        "model_name": "Logistic Regression",
+        "split_name": "Validation_2025",
+        "n_total": 70759,
+        "n_valid": 70434,
+        "n_purged": 325,
+        "coverage": 0.9954069446996142,
+        "accuracy": 0.4266405429196127,
+        "balanced_accuracy": 0.34454819449673524,
+        "macro_f1": 0.30633243713508534,
+        "per_class": {
+          "-1": {
+            "precision": 0.3944803865367292,
+            "recall": 0.1750808708610475,
+            "f1": 0.2425234115396234,
+            "support": 27513
+          },
+          "0": {
+            "precision": 0.37766450417052827,
+            "recall": 0.06764608233731739,
+            "f1": 0.11474025059833873,
+            "support": 12048
+          },
+          "1": {
+            "precision": 0.4355301881744404,
+            "recall": 0.7909176302918408,
+            "f1": 0.561733649267294,
+            "support": 30873
+          }
+        },
+        "confusion_matrix": [
+          [
+            4817,
+            606,
+            22090
+          ],
+          [
+            1676,
+            815,
+            9557
+          ],
+          [
+            5718,
+            737,
+            24418
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3906210069000767,
+          "0": 0.1710537524491013,
+          "1": 0.43832524065082207
+        },
+        "predicted_distribution": {
+          "-1": 0.17336797569355708,
+          "0": 0.03063861203396087,
+          "1": 0.795993412272482
+        }
+      },
+      "economic_baseline": {
+        "model_name": "Logistic Regression",
+        "scenario_name": "Baseline Costs",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 56065,
+        "n_signals_short": 12211,
+        "n_signals_neutral": 2483,
+        "n_trades_executed": 68276,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9650045228403438,
+        "gross_pnl_usd": 3684.6110000000053,
+        "net_pnl_usd": -55699.121,
+        "total_friction_usd": 59383.731999999996,
+        "avg_gross_return_bps": 0.1274836968835072,
+        "avg_net_return_bps": -2.368261426262589,
+        "avg_net_pnl_per_trade": -0.8157935584978616,
+        "win_rate_gross": 0.510047454449587,
+        "win_rate_net": 0.4282178217821782,
+        "profit_factor_gross": 1.027140058007189,
+        "profit_factor_net": 0.6675295812911299,
+        "max_drawdown_usd": 55864.07599999983,
+        "max_drawdown_pct": 1623.402138982835,
+        "turnover_lots": 68276.0,
+        "long_trades": 56065,
+        "long_gross_pnl": 6607.698000000004,
+        "long_net_pnl": -40907.763999999996,
+        "long_win_rate_net": 0.435548024614287,
+        "short_trades": 12211,
+        "short_gross_pnl": -2923.086999999999,
+        "short_net_pnl": -14791.357,
+        "short_win_rate_net": 0.3945622799115552
+      },
+      "economic_harsher": {
+        "model_name": "Logistic Regression",
+        "scenario_name": "Harsher Costs (2x)",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 56065,
+        "n_signals_short": 12211,
+        "n_signals_neutral": 2483,
+        "n_trades_executed": 68276,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9650045228403438,
+        "gross_pnl_usd": 3684.6110000000053,
+        "net_pnl_usd": -102445.245,
+        "total_friction_usd": 106129.856,
+        "avg_gross_return_bps": 0.1274836968835072,
+        "avg_net_return_bps": -4.331035880973508,
+        "avg_net_pnl_per_trade": -1.5004576278633779,
+        "win_rate_gross": 0.510047454449587,
+        "win_rate_net": 0.36818208448063744,
+        "profit_factor_gross": 1.027140058007189,
+        "profit_factor_net": 0.4786066209680591,
+        "max_drawdown_usd": 102457.6510000001,
+        "max_drawdown_pct": 2977.4048314798483,
+        "turnover_lots": 68276.0,
+        "long_trades": 56065,
+        "long_gross_pnl": 6607.698000000004,
+        "long_net_pnl": -78635.195,
+        "long_win_rate_net": 0.37399447070364755,
+        "short_trades": 12211,
+        "short_gross_pnl": -2923.086999999999,
+        "short_net_pnl": -23810.05,
+        "short_win_rate_net": 0.3414953730243223
+      }
+    },
+    {
+      "model_name": "Random Forest",
+      "classification": {
+        "model_name": "Random Forest",
+        "split_name": "Validation_2025",
+        "n_total": 70759,
+        "n_valid": 70434,
+        "n_purged": 325,
+        "coverage": 0.9954069446996142,
+        "accuracy": 0.43068688417525625,
+        "balanced_accuracy": 0.35641696286060237,
+        "macro_f1": 0.3421693099596856,
+        "per_class": {
+          "-1": {
+            "precision": 0.4074547600314713,
+            "recall": 0.3011667211863483,
+            "f1": 0.3463395264268846,
+            "support": 27513
+          },
+          "0": {
+            "precision": 0.3726382085374388,
+            "recall": 0.08839641434262949,
+            "f1": 0.14289547833087346,
+            "support": 12048
+          },
+          "1": {
+            "precision": 0.4441998306519898,
+            "recall": 0.6796877530528294,
+            "f1": 0.5372729251212987,
+            "support": 30873
+          }
+        },
+        "confusion_matrix": [
+          [
+            8286,
+            862,
+            18365
+          ],
+          [
+            3092,
+            1065,
+            7891
+          ],
+          [
+            8958,
+            931,
+            20984
+          ]
+        ],
+        "observed_distribution": {
+          "-1": 0.3906210069000767,
+          "0": 0.1710537524491013,
+          "1": 0.43832524065082207
+        },
+        "predicted_distribution": {
+          "-1": 0.2887241957009399,
+          "0": 0.040576994065366155,
+          "1": 0.6706988102336939
+        }
+      },
+      "economic_baseline": {
+        "model_name": "Random Forest",
+        "scenario_name": "Baseline Costs",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 47240,
+        "n_signals_short": 20336,
+        "n_signals_neutral": 3183,
+        "n_trades_executed": 67576,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9551108095884215,
+        "gross_pnl_usd": 3980.6099999999583,
+        "net_pnl_usd": -54579.35800000004,
+        "total_friction_usd": 58559.968,
+        "avg_gross_return_bps": 0.16504482673200313,
+        "avg_net_return_bps": -2.3261178088673353,
+        "avg_net_pnl_per_trade": -0.8076737007221504,
+        "win_rate_gross": 0.5147981531904818,
+        "win_rate_net": 0.43315674203859356,
+        "profit_factor_gross": 1.0294594099365908,
+        "profit_factor_net": 0.6714694351232111,
+        "max_drawdown_usd": 54683.36299999962,
+        "max_drawdown_pct": 1589.0907863753882,
+        "turnover_lots": 67576.0,
+        "long_trades": 47240,
+        "long_gross_pnl": 6962.602999999983,
+        "long_net_pnl": -32799.47900000002,
+        "long_win_rate_net": 0.44422099915325997,
+        "short_trades": 20336,
+        "short_gross_pnl": -2981.993000000025,
+        "short_net_pnl": -21779.879000000023,
+        "short_win_rate_net": 0.4074547600314713
+      },
+      "economic_harsher": {
+        "model_name": "Random Forest",
+        "scenario_name": "Harsher Costs (2x)",
+        "total_bars": 70759,
+        "tradable_bars": 70752,
+        "n_signals_long": 47240,
+        "n_signals_short": 20336,
+        "n_signals_neutral": 3183,
+        "n_trades_executed": 67576,
+        "n_trades_rejected_closure": 0,
+        "coverage_ratio": 0.9551108095884215,
+        "gross_pnl_usd": 3980.6099999999583,
+        "net_pnl_usd": -100570.88500000004,
+        "total_friction_usd": 104551.495,
+        "avg_gross_return_bps": 0.16504482673200313,
+        "avg_net_return_bps": -4.2814885571046855,
+        "avg_net_pnl_per_trade": -1.4882633627323316,
+        "win_rate_gross": 0.5147981531904818,
+        "win_rate_net": 0.3740085237362377,
+        "profit_factor_gross": 1.0294594099365908,
+        "profit_factor_net": 0.48239602264189946,
+        "max_drawdown_usd": 100636.74700000117,
+        "max_drawdown_pct": 2924.489619054592,
+        "turnover_lots": 67576.0,
+        "long_trades": 47240,
+        "long_gross_pnl": 6962.602999999983,
+        "long_net_pnl": -63986.28600000002,
+        "long_win_rate_net": 0.3831922099915326,
+        "short_trades": 20336,
+        "short_gross_pnl": -2981.993000000025,
+        "short_net_pnl": -36584.59900000003,
+        "short_win_rate_net": 0.3526750590086546
+      }
+    }
+  ]
+}

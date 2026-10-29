@@ -1,0 +1,352 @@
+{
+  "H_12": {
+    "horizon_bars": 12,
+    "horizon_hours": 1.0,
+    "sample_count": 260808,
+    "gross_terminal_move": {
+      "mean_usd": 2.4012808234409984,
+      "median_usd": 1.56899999999996,
+      "std_usd": 2.856768637851192,
+      "p25_usd": 0.6910000000000309,
+      "p75_usd": 3.0699999999999363,
+      "p90_usd": 5.329999999999927,
+      "p95_usd": 7.376649999999955
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.041359156927701604,
+      "median_usd": 0.040000000000190994
+    },
+    "excursions": {
+      "mean_mfe_usd": 2.507869760513482,
+      "median_mfe_usd": 1.974999999999909,
+      "mean_mae_usd": 2.507869760513482,
+      "median_mae_usd": 1.974999999999909,
+      "mfe_mae_ratio": 0.9999999996012552,
+      "long_mean_mfe_usd": 2.4967682509738967,
+      "long_mean_mae_usd": 2.5189712700530666,
+      "short_mean_mfe_usd": 2.5189712700530666,
+      "short_mean_mae_usd": 2.4967682509738967
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 16.65777680374785,
+      "base_cost_drag_pct_of_median": 25.493945188018497,
+      "stress_cost_drag_pct_of_mean": 24.986665205621776,
+      "stress_cost_drag_pct_of_median": 38.24091778202774
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 85.21977853440077,
+      "pct_terminal_covers_stress_cost": 78.16324652618017,
+      "pct_mfe_covers_base_cost": 99.86465139106161,
+      "pct_mfe_covers_stress_cost": 98.52190116867581,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 62.74697259400925,
+      "required_win_rate_stress_cost_pct": 69.12045889101387,
+      "edge_hurdle_gap_vs_50pct_base": 12.74697259400925,
+      "edge_hurdle_gap_vs_50pct_stress": 19.120458891013868
+    }
+  },
+  "H_24": {
+    "horizon_bars": 24,
+    "horizon_hours": 2.0,
+    "sample_count": 260796,
+    "gross_terminal_move": {
+      "mean_usd": 3.442728922222733,
+      "median_usd": 2.2590000000000146,
+      "std_usd": 3.9893981913308516,
+      "p25_usd": 1.0070000000000618,
+      "p75_usd": 4.400000000000091,
+      "p90_usd": 7.676999999999907,
+      "p95_usd": 10.636250000000189
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.08274992714612187,
+      "median_usd": 0.08699999999998909
+    },
+    "excursions": {
+      "mean_mfe_usd": 3.5754436264359883,
+      "median_mfe_usd": 2.8349999999999227,
+      "mean_mae_usd": 3.5754436264359883,
+      "median_mae_usd": 2.8349999999999227,
+      "mfe_mae_ratio": 0.9999999997203144,
+      "long_mean_mfe_usd": 3.5688139465329227,
+      "long_mean_mae_usd": 3.582073306339054,
+      "short_mean_mfe_usd": 3.582073306339054,
+      "short_mean_mae_usd": 3.5688139465329227
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 11.618689970564036,
+      "base_cost_drag_pct_of_median": 17.7069499778662,
+      "stress_cost_drag_pct_of_mean": 17.42803495584605,
+      "stress_cost_drag_pct_of_median": 26.560424966799296
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 89.74332428411479,
+      "pct_terminal_covers_stress_cost": 84.69340020552463,
+      "pct_mfe_covers_base_cost": 99.99693246828939,
+      "pct_mfe_covers_stress_cost": 99.86771269497999,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 58.853474988933094,
+      "required_win_rate_stress_cost_pct": 63.280212483399644,
+      "edge_hurdle_gap_vs_50pct_base": 8.853474988933094,
+      "edge_hurdle_gap_vs_50pct_stress": 13.280212483399644
+    }
+  },
+  "H_48": {
+    "horizon_bars": 48,
+    "horizon_hours": 4.0,
+    "sample_count": 260772,
+    "gross_terminal_move": {
+      "mean_usd": 5.013434325771172,
+      "median_usd": 3.3730000000000473,
+      "std_usd": 5.486923929930681,
+      "p25_usd": 1.5299999999999727,
+      "p75_usd": 6.490000000000009,
+      "p90_usd": 11.196999999999889,
+      "p95_usd": 15.329999999999927
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.1657188425137668,
+      "median_usd": 0.1310000000000855
+    },
+    "excursions": {
+      "mean_mfe_usd": 5.168055347199854,
+      "median_mfe_usd": 4.161500000000046,
+      "mean_mae_usd": 5.168055347199854,
+      "median_mae_usd": 4.161500000000046,
+      "mfe_mae_ratio": 0.9999999998065036,
+      "long_mean_mfe_usd": 5.180734952372188,
+      "long_mean_mae_usd": 5.155375742027519,
+      "short_mean_mfe_usd": 5.155375742027519,
+      "short_mean_mae_usd": 5.180734952372188
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 7.978562677959715,
+      "base_cost_drag_pct_of_median": 11.858879335902591,
+      "stress_cost_drag_pct_of_mean": 11.967844016939571,
+      "stress_cost_drag_pct_of_median": 17.788319003853886
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 93.32942187044621,
+      "pct_terminal_covers_stress_cost": 89.94754038010215,
+      "pct_mfe_covers_base_cost": 100.0,
+      "pct_mfe_covers_stress_cost": 99.99501480220269,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 55.9294396679513,
+      "required_win_rate_stress_cost_pct": 58.89415950192694,
+      "edge_hurdle_gap_vs_50pct_base": 5.9294396679513,
+      "edge_hurdle_gap_vs_50pct_stress": 8.894159501926943
+    }
+  },
+  "H_72": {
+    "horizon_bars": 72,
+    "horizon_hours": 6.0,
+    "sample_count": 260748,
+    "gross_terminal_move": {
+      "mean_usd": 6.286877092058233,
+      "median_usd": 4.349999999999909,
+      "std_usd": 6.55963545423252,
+      "p25_usd": 1.9837499999999864,
+      "p75_usd": 8.23700000000008,
+      "p90_usd": 14.020999999999958,
+      "p95_usd": 18.980000000000018
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.2486932133707641,
+      "median_usd": 0.1999999999998181
+    },
+    "excursions": {
+      "mean_mfe_usd": 6.442871793839262,
+      "median_mfe_usd": 5.315000000000055,
+      "mean_mae_usd": 6.442871793839262,
+      "median_mae_usd": 5.315000000000055,
+      "mfe_mae_ratio": 0.9999999998447897,
+      "long_mean_mfe_usd": 6.478497438139506,
+      "long_mean_mae_usd": 6.407246149539018,
+      "short_mean_mfe_usd": 6.407246149539018,
+      "short_mean_mae_usd": 6.478497438139506
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 6.362459360073887,
+      "base_cost_drag_pct_of_median": 9.195402298850768,
+      "stress_cost_drag_pct_of_mean": 9.543689040110829,
+      "stress_cost_drag_pct_of_median": 13.79310344827615
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 94.8551858499394,
+      "pct_terminal_covers_stress_cost": 92.2791354104346,
+      "pct_mfe_covers_base_cost": 100.0,
+      "pct_mfe_covers_stress_cost": 100.0,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 54.59770114942538,
+      "required_win_rate_stress_cost_pct": 56.89655172413808,
+      "edge_hurdle_gap_vs_50pct_base": 4.597701149425383,
+      "edge_hurdle_gap_vs_50pct_stress": 6.896551724138078
+    }
+  },
+  "H_96": {
+    "horizon_bars": 96,
+    "horizon_hours": 8.0,
+    "sample_count": 260724,
+    "gross_terminal_move": {
+      "mean_usd": 7.381148413648148,
+      "median_usd": 5.163000000000011,
+      "std_usd": 7.470939898216159,
+      "p25_usd": 2.343999999999994,
+      "p75_usd": 9.829999999999927,
+      "p90_usd": 16.450000000000205,
+      "p95_usd": 22.05585000000002
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.3308121883677759,
+      "median_usd": 0.30999999999994543
+    },
+    "excursions": {
+      "mean_mfe_usd": 7.546103845445759,
+      "median_mfe_usd": 6.318000000000097,
+      "mean_mae_usd": 7.546103845445759,
+      "median_mae_usd": 6.318000000000097,
+      "mfe_mae_ratio": 0.9999999998674812,
+      "long_mean_mfe_usd": 7.608902893481229,
+      "long_mean_mae_usd": 7.483304797410288,
+      "short_mean_mfe_usd": 7.483304797410288,
+      "short_mean_mae_usd": 7.608902893481229
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 5.419210908432326,
+      "base_cost_drag_pct_of_median": 7.747433662599248,
+      "stress_cost_drag_pct_of_mean": 8.128816362648488,
+      "stress_cost_drag_pct_of_median": 11.621150493898872
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 95.72920022706003,
+      "pct_terminal_covers_stress_cost": 93.59629339838297,
+      "pct_mfe_covers_base_cost": 100.0,
+      "pct_mfe_covers_stress_cost": 100.0,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 53.873716831299625,
+      "required_win_rate_stress_cost_pct": 55.81057524694943,
+      "edge_hurdle_gap_vs_50pct_base": 3.8737168312996246,
+      "edge_hurdle_gap_vs_50pct_stress": 5.810575246949433
+    }
+  },
+  "H_120": {
+    "horizon_bars": 120,
+    "horizon_hours": 10.0,
+    "sample_count": 260700,
+    "gross_terminal_move": {
+      "mean_usd": 8.34328298427311,
+      "median_usd": 5.899999999999864,
+      "std_usd": 8.263535521786535,
+      "p25_usd": 2.689999999999827,
+      "p75_usd": 11.234000000000151,
+      "p90_usd": 18.576100000000025,
+      "p95_usd": 24.63409999999999
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.4129857614115842,
+      "median_usd": 0.4299999999998363
+    },
+    "excursions": {
+      "mean_mfe_usd": 8.54168897967012,
+      "median_mfe_usd": 7.269999999999982,
+      "mean_mae_usd": 8.54168897967012,
+      "median_mae_usd": 7.269999999999982,
+      "mfe_mae_ratio": 0.9999999998829271,
+      "long_mean_mfe_usd": 8.634684464902188,
+      "long_mean_mae_usd": 8.44869349443805,
+      "short_mean_mfe_usd": 8.44869349443805,
+      "short_mean_mae_usd": 8.634684464902188
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 4.794275835471367,
+      "base_cost_drag_pct_of_median": 6.7796610169493094,
+      "stress_cost_drag_pct_of_mean": 7.19141375320705,
+      "stress_cost_drag_pct_of_median": 10.169491525423965
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 96.2662063674722,
+      "pct_terminal_covers_stress_cost": 94.35174530111239,
+      "pct_mfe_covers_base_cost": 100.0,
+      "pct_mfe_covers_stress_cost": 100.0,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 53.38983050847466,
+      "required_win_rate_stress_cost_pct": 55.08474576271198,
+      "edge_hurdle_gap_vs_50pct_base": 3.3898305084746596,
+      "edge_hurdle_gap_vs_50pct_stress": 5.084745762711982
+    }
+  },
+  "H_288": {
+    "horizon_bars": 288,
+    "horizon_hours": 24.0,
+    "sample_count": 260532,
+    "gross_terminal_move": {
+      "mean_usd": 13.530686126848142,
+      "median_usd": 10.059999999999945,
+      "std_usd": 12.336576415814587,
+      "p25_usd": 4.610000000000127,
+      "p75_usd": 18.819250000000068,
+      "p90_usd": 29.633900000000033,
+      "p95_usd": 37.25
+    },
+    "signed_terminal_move": {
+      "mean_usd": 0.9932835121981177,
+      "median_usd": 1.0155000000000882
+    },
+    "excursions": {
+      "mean_mfe_usd": 13.757846679102759,
+      "median_mfe_usd": 12.085000000000036,
+      "mean_mae_usd": 13.757846679102759,
+      "median_mae_usd": 12.085000000000036,
+      "mfe_mae_ratio": 0.9999999999273143,
+      "long_mean_mfe_usd": 14.128220913361888,
+      "long_mean_mae_usd": 13.387472444843624,
+      "short_mean_mfe_usd": 13.387472444843624,
+      "short_mean_mae_usd": 14.128220913361888
+    },
+    "cost_drag": {
+      "base_round_turn_usd": 0.4,
+      "stress_round_turn_usd": 0.6,
+      "base_cost_drag_pct_of_mean": 2.9562432847089966,
+      "base_cost_drag_pct_of_median": 3.976143141153103,
+      "stress_cost_drag_pct_of_mean": 4.434364927063495,
+      "stress_cost_drag_pct_of_median": 5.964214711729655
+    },
+    "opportunity_coverage": {
+      "pct_terminal_covers_base_cost": 97.82521916693536,
+      "pct_terminal_covers_stress_cost": 96.73053598022507,
+      "pct_mfe_covers_base_cost": 100.0,
+      "pct_mfe_covers_stress_cost": 100.0,
+      "pct_favorable_risk_reward_2x": 0.0
+    },
+    "break_even_hurdles": {
+      "required_win_rate_base_cost_pct": 51.98807157057656,
+      "required_win_rate_stress_cost_pct": 52.98210735586483,
+      "edge_hurdle_gap_vs_50pct_base": 1.9880715705765581,
+      "edge_hurdle_gap_vs_50pct_stress": 2.9821073558648266
+    }
+  }
+}

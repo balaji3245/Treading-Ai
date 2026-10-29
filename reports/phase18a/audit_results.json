@@ -1,0 +1,665 @@
+{
+  "partition_audit": {
+    "val": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+      "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "is_unmodified": true
+    },
+    "test": {
+      "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+      "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "is_unmodified": true
+    }
+  },
+  "claim_classifications": [
+    {
+      "claim_id": 1,
+      "claim": "Data Partition Protection & Isolation",
+      "phase17_claim": "Protected validation (2025) and test (2026) were untouched.",
+      "classification": "VERIFIED",
+      "audit_evidence": "SHA-256 hashes match baseline exactly; script AST contains zero references."
+    },
+    {
+      "claim_id": 2,
+      "claim": "Label Class Distribution & Neutral Zone Drag",
+      "phase17_claim": "Class distributions, purge counts, and 14-20% neutral class drag at H=12-24.",
+      "classification": "VERIFIED",
+      "audit_evidence": "Recomputed values across all 7 horizons match Phase 17 to the exact integer row."
+    },
+    {
+      "claim_id": 3,
+      "claim": "Effective Sample Size Calculation (N_eff = N/H)",
+      "phase17_claim": "N_eff \u2248 2,516 at H=96 and 704 at H=288.",
+      "classification": "VERIFIED WITH CAVEATS",
+      "audit_evidence": "Directionally valid that degrees of freedom collapse, but Phase 17 used an uncorrected heuristic N/H. Empirical Bartlett VIF on ternary labels gives N_eff \u2248 4,227 (H=96) and 1,232 (H=288), ~1.7x higher than Phase 17 stated."
+    },
+    {
+      "claim_id": 4,
+      "claim": "MFE = MAE Proves Brownian Motion",
+      "phase17_claim": "Mean MFE equals Mean MAE exactly, proving symmetric Brownian motion.",
+      "classification": "INCORRECT",
+      "audit_evidence": "Pooled MFE and MAE were mathematically identical because pooled_mfe = 0.5*(MFE_L + MFE_S) and pooled_mae = 0.5*(MAE_L + MAE_S) are identical by definition (Short MFE == Long MAE). Additionally, Phase 17's forward slice had an off-by-one error (overstated MFE by ~$0.04/oz)."
+    },
+    {
+      "claim_id": 5,
+      "claim": "Transaction Cost Hurdle & Required Win Rate (58.85% at H=24)",
+      "phase17_claim": "Cost friction requires 58.85% win rate at H=24 vs actual 44.57%.",
+      "classification": "VERIFIED WITH CAVEATS",
+      "audit_evidence": "Formula holds under symmetric payoff assumption. Phase 17 called $0.20 a 'half-spread', whereas actual dynamic friction in backtests averages ~$0.60/oz, making the true break-even win rate hurdle 63.28% (even harsher than Phase 17 claimed)."
+    },
+    {
+      "claim_id": 6,
+      "claim": "Feature Redundancy & PCA Dimensionality",
+      "phase17_claim": "232 features contain 180 redundant dimensions; 52 components explain 90% variance.",
+      "classification": "VERIFIED WITH CAVEATS",
+      "audit_evidence": "PCA spectrum and 180 redundant dimensions verified. Phase 17 had a NaN-sorting bug in its top collinear pairs table due to zero-variance column 'is_daily_roll_window'. Clean pairs include exact duplicates like rsi_14 vs rsi_14_norm (|r| = 1.000)."
+    },
+    {
+      "claim_id": 7,
+      "claim": "Dollar Volatility Drift (atr_14 PSI = 0.6386)",
+      "phase17_claim": "Dollar ATR increased by +46.9% between 2021 and 2024, PSI = 0.6386.",
+      "classification": "VERIFIED WITH CAVEATS",
+      "audit_evidence": "Numerical values and PSI verified. Standard KS p-value caveat due to time series autocorrelation."
+    },
+    {
+      "claim_id": 8,
+      "claim": "Candidate 5 Performance & Passive Long Exposure",
+      "phase17_claim": "531 trades, Net -$73.72, and Fold 3 gain attributable to passive long exposure.",
+      "classification": "VERIFIED WITH CAVEATS",
+      "audit_evidence": "All trade counts, Gross PnL, costs, and Net PnL reconciled to the cent. Long trades generated all of Fold 3's gain (+$71.07 on 30 trades), but Candidate 5 took 151 short trades (-$13.50), so it was not simply a passive long holding."
+    },
+    {
+      "claim_id": 9,
+      "claim": "Continuation Gate Verdict: STOP CURRENT APPROACH",
+      "phase17_claim": "M5 bar-by-bar classification cannot overcome spread friction; stop current approach.",
+      "classification": "VERIFIED",
+      "audit_evidence": "Despite technical errors in MFE/MAE proof and Neff heuristic, the underlying empirical diagnosis is 100% sound: friction dominates signal, models fail baselines, and net PnL is negative."
+    }
+  ],
+  "label_audit": {
+    "H_12": {
+      "horizon_bars": 12,
+      "recomputed": {
+        "valid_rows": 258408,
+        "purged_rows": 2413,
+        "purge_pct": 0.9251555664612896,
+        "counts": {
+          "-1": 101106,
+          "0": 52913,
+          "1": 104389
+        },
+        "pcts": {
+          "-1": 39.12649763165227,
+          "0": 20.476533234265194,
+          "1": 40.39696913408254
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 258408,
+        "p17_purged_rows": 2413,
+        "p17_pcts": {
+          "-1": 39.12649763165227,
+          "0": 20.476533234265194,
+          "1": 40.39696913408254
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 21534.0,
+        "empirical_bartlett_vif": 7.842172866592568,
+        "empirical_neff": 32951.07164760556,
+        "neff_ratio_empirical_vs_heuristic": 1.5301881511844322,
+        "heuristic_underestimation_pct": 53.01881511844321,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.53x higher (32951 vs 21534)."
+      }
+    },
+    "H_24": {
+      "horizon_bars": 24,
+      "recomputed": {
+        "valid_rows": 255996,
+        "purged_rows": 4825,
+        "purge_pct": 1.849927728212069,
+        "counts": {
+          "-1": 106613,
+          "0": 37444,
+          "1": 111939
+        },
+        "pcts": {
+          "-1": 41.646353849278896,
+          "0": 14.626791043610057,
+          "1": 43.72685510711105
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 255996,
+        "p17_purged_rows": 4825,
+        "p17_pcts": {
+          "-1": 41.646353849278896,
+          "0": 14.626791043610057,
+          "1": 43.72685510711105
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 10666.5,
+        "empirical_bartlett_vif": 15.201911268656119,
+        "empirical_neff": 16839.724655400558,
+        "neff_ratio_empirical_vs_heuristic": 1.5787488543946522,
+        "heuristic_underestimation_pct": 57.87488543946522,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.58x higher (16840 vs 10666)."
+      }
+    },
+    "H_48": {
+      "horizon_bars": 48,
+      "recomputed": {
+        "valid_rows": 251172,
+        "purged_rows": 9649,
+        "purge_pct": 3.6994720517136273,
+        "counts": {
+          "-1": 110828,
+          "0": 24125,
+          "1": 116219
+        },
+        "pcts": {
+          "-1": 44.12434507031038,
+          "0": 9.604971891771376,
+          "1": 46.27068303791824
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 251172,
+        "p17_purged_rows": 9649,
+        "p17_pcts": {
+          "-1": 44.12434507031038,
+          "0": 9.604971891771376,
+          "1": 46.27068303791824
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 5232.75,
+        "empirical_bartlett_vif": 30.42960875668071,
+        "empirical_neff": 8254.19748273484,
+        "neff_ratio_empirical_vs_heuristic": 1.5774110138521504,
+        "heuristic_underestimation_pct": 57.741101385215046,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.58x higher (8254 vs 5233)."
+      }
+    },
+    "H_72": {
+      "horizon_bars": 72,
+      "recomputed": {
+        "valid_rows": 246348,
+        "purged_rows": 14473,
+        "purge_pct": 5.549016375215186,
+        "counts": {
+          "-1": 110954,
+          "0": 18343,
+          "1": 117051
+        },
+        "pcts": {
+          "-1": 45.03953756474581,
+          "0": 7.445970740578368,
+          "1": 47.514491694675826
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 246348,
+        "p17_purged_rows": 14473,
+        "p17_pcts": {
+          "-1": 45.03953756474581,
+          "0": 7.445970740578368,
+          "1": 47.514491694675826
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 3421.5,
+        "empirical_bartlett_vif": 44.052004681856005,
+        "empirical_neff": 5592.208612959333,
+        "neff_ratio_empirical_vs_heuristic": 1.6344318611601147,
+        "heuristic_underestimation_pct": 63.443186116011475,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.63x higher (5592 vs 3422)."
+      }
+    },
+    "H_96": {
+      "horizon_bars": 96,
+      "recomputed": {
+        "valid_rows": 241524,
+        "purged_rows": 19297,
+        "purge_pct": 7.398560698716744,
+        "counts": {
+          "-1": 109482,
+          "0": 14684,
+          "1": 117358
+        },
+        "pcts": {
+          "-1": 45.329656680081484,
+          "0": 6.079727066461304,
+          "1": 48.59061625345721
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 241524,
+        "p17_purged_rows": 19297,
+        "p17_pcts": {
+          "-1": 45.329656680081484,
+          "0": 6.079727066461304,
+          "1": 48.59061625345721
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 2515.875,
+        "empirical_bartlett_vif": 57.13450506881809,
+        "empirical_neff": 4227.287865871703,
+        "neff_ratio_empirical_vs_heuristic": 1.6802455868720436,
+        "heuristic_underestimation_pct": 68.02455868720436,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.68x higher (4227 vs 2516)."
+      }
+    },
+    "H_120": {
+      "horizon_bars": 120,
+      "recomputed": {
+        "valid_rows": 236700,
+        "purged_rows": 24121,
+        "purge_pct": 9.248105022218303,
+        "counts": {
+          "-1": 106945,
+          "0": 12781,
+          "1": 116974
+        },
+        "pcts": {
+          "-1": 45.181664554288126,
+          "0": 5.399662019433882,
+          "1": 49.418673426277984
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 236700,
+        "p17_purged_rows": 24121,
+        "p17_pcts": {
+          "-1": 45.181664554288126,
+          "0": 5.399662019433882,
+          "1": 49.418673426277984
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 1972.5,
+        "empirical_bartlett_vif": 70.52647828660801,
+        "empirical_neff": 3356.1862969832428,
+        "neff_ratio_empirical_vs_heuristic": 1.701488616975028,
+        "heuristic_underestimation_pct": 70.14886169750281,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.70x higher (3356 vs 1972)."
+      }
+    },
+    "H_288": {
+      "horizon_bars": 288,
+      "recomputed": {
+        "valid_rows": 202896,
+        "purged_rows": 57925,
+        "purge_pct": 22.208717856307583,
+        "counts": {
+          "-1": 92296,
+          "0": 6327,
+          "1": 104273
+        },
+        "pcts": {
+          "-1": 45.48931472281366,
+          "0": 3.118346344925479,
+          "1": 51.39233893226086
+        }
+      },
+      "p17_comparison": {
+        "p17_valid_rows": 202896,
+        "p17_purged_rows": 57925,
+        "p17_pcts": {
+          "-1": 45.48931472281366,
+          "0": 3.118346344925479,
+          "1": 51.39233893226086
+        },
+        "diff_valid": 0,
+        "diff_purged": 0,
+        "is_distribution_verified": true
+      },
+      "effective_sample_size_audit": {
+        "p17_heuristic_N_over_H": 704.5,
+        "empirical_bartlett_vif": 164.7005223765698,
+        "empirical_neff": 1231.908661079413,
+        "neff_ratio_empirical_vs_heuristic": 1.74862833368263,
+        "heuristic_underestimation_pct": 74.86283336826301,
+        "audit_verdict": "VERIFIED WITH CAVEATS: Phase 17's assertion that N_eff = N/H is a crude heuristic upper-bound. Due to non-linear sign mapping, the true empirical Bartlett N_eff is ~1.75x higher (1232 vs 704)."
+      }
+    }
+  },
+  "friction_audit": {
+    "H_12": {
+      "horizon_bars": 12,
+      "terminal_move": {
+        "mean_usd": 2.4012808234409984,
+        "median_usd": 1.56899999999996
+      },
+      "p17_reported_pooled_mfe": 2.507869760513482,
+      "p17_reported_pooled_mae": 2.507869760513482,
+      "corrected_long_mfe": 2.440774707831048,
+      "corrected_long_mae": 2.4672818778565078,
+      "corrected_short_mfe": 2.4672818778565078,
+      "corrected_short_mae": 2.440774707831048,
+      "index_off_by_one_overstatement_usd": 0.05384146766970366,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 69.12045889101387,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 24.550458891013868
+      }
+    },
+    "H_24": {
+      "horizon_bars": 24,
+      "terminal_move": {
+        "mean_usd": 3.442728922222733,
+        "median_usd": 2.2590000000000146
+      },
+      "p17_reported_pooled_mfe": 3.5754436264359883,
+      "p17_reported_pooled_mae": 3.5754436264359883,
+      "corrected_long_mfe": 3.5262747281400024,
+      "corrected_long_mae": 3.5444132003558337,
+      "corrected_short_mfe": 3.5444132003558337,
+      "corrected_short_mae": 3.5262747281400024,
+      "index_off_by_one_overstatement_usd": 0.04009966218807026,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 63.280212483399644,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 18.710212483399644
+      }
+    },
+    "H_48": {
+      "horizon_bars": 48,
+      "terminal_move": {
+        "mean_usd": 5.013434325771172,
+        "median_usd": 3.3730000000000473
+      },
+      "p17_reported_pooled_mfe": 5.168055347199854,
+      "p17_reported_pooled_mae": 5.168055347199854,
+      "corrected_long_mfe": 5.148137031583146,
+      "corrected_long_mae": 5.127654809565445,
+      "corrected_short_mfe": 5.127654809565445,
+      "corrected_short_mae": 5.148137031583146,
+      "index_off_by_one_overstatement_usd": 0.03015942662555915,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 58.89415950192694,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 14.324159501926943
+      }
+    },
+    "H_72": {
+      "horizon_bars": 72,
+      "terminal_move": {
+        "mean_usd": 6.286877092058233,
+        "median_usd": 4.349999999999909
+      },
+      "p17_reported_pooled_mfe": 6.442871793839262,
+      "p17_reported_pooled_mae": 6.442871793839262,
+      "corrected_long_mfe": 6.450578899934036,
+      "corrected_long_mae": 6.384319833709175,
+      "corrected_short_mfe": 6.384319833709175,
+      "corrected_short_mae": 6.450578899934036,
+      "index_off_by_one_overstatement_usd": 0.025422427017655735,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 56.89655172413808,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 12.326551724138078
+      }
+    },
+    "H_96": {
+      "horizon_bars": 96,
+      "terminal_move": {
+        "mean_usd": 7.381148413648148,
+        "median_usd": 5.163000000000011
+      },
+      "p17_reported_pooled_mfe": 7.546103845445759,
+      "p17_reported_pooled_mae": 7.546103845445759,
+      "corrected_long_mfe": 7.583612525122352,
+      "corrected_long_mae": 7.463386623402525,
+      "corrected_short_mfe": 7.463386623402525,
+      "corrected_short_mae": 7.583612525122352,
+      "index_off_by_one_overstatement_usd": 0.022604271183320535,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 55.81057524694943,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 11.240575246949433
+      }
+    },
+    "H_120": {
+      "horizon_bars": 120,
+      "terminal_move": {
+        "mean_usd": 8.34328298427311,
+        "median_usd": 5.899999999999864
+      },
+      "p17_reported_pooled_mfe": 8.54168897967012,
+      "p17_reported_pooled_mae": 8.54168897967012,
+      "corrected_long_mfe": 8.611428799386267,
+      "corrected_long_mae": 8.430649370924435,
+      "corrected_short_mfe": 8.430649370924435,
+      "corrected_short_mae": 8.611428799386267,
+      "index_off_by_one_overstatement_usd": 0.02064989451476862,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 55.08474576271198,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 10.514745762711982
+      }
+    },
+    "H_288": {
+      "horizon_bars": 288,
+      "terminal_move": {
+        "mean_usd": 13.530686126848142,
+        "median_usd": 10.059999999999945
+      },
+      "p17_reported_pooled_mfe": 13.757846679102759,
+      "p17_reported_pooled_mae": 13.757846679102759,
+      "corrected_long_mfe": 14.112385204120798,
+      "corrected_long_mae": 13.377452739010943,
+      "corrected_short_mfe": 13.377452739010943,
+      "corrected_short_mae": 14.112385204120798,
+      "index_off_by_one_overstatement_usd": 0.012927707536887212,
+      "pooling_identity_audit": {
+        "is_algebraically_identical": true,
+        "audit_verdict": "INCORRECT CLAIM IN P17: Phase 17 claimed that MFE = MAE proved unconditional random-walk Brownian motion. In reality, pooled_mfe = 0.5*(MFE_L + MFE_S) is identically equal to pooled_mae = 0.5*(MAE_L + MAE_S) because Short MFE is mathematically identical to Long MAE. The equality was an algebraic artifact of the pooling definition."
+      },
+      "dynamic_friction_audit": {
+        "actual_backtest_mean_friction_usd": 0.6,
+        "required_break_even_win_rate_dynamic_pct": 52.98210735586483,
+        "actual_incumbent_win_rate_pct": 44.57,
+        "hurdle_gap_percentage_points": 8.412107355864826
+      }
+    }
+  },
+  "feature_audit": {
+    "total_features": 232,
+    "zero_variance_columns": [
+      "is_daily_roll_window"
+    ],
+    "clean_feature_count": 231,
+    "top_collinear_pairs_clean": [
+      {
+        "rank": 1,
+        "feature_1": "rsi_14",
+        "feature_2": "rsi_14_norm",
+        "abs_correlation": 1.0
+      },
+      {
+        "rank": 2,
+        "feature_1": "htf_h4_rsi_14",
+        "feature_2": "htf_h4_rsi_14_norm",
+        "abs_correlation": 1.0
+      },
+      {
+        "rank": 3,
+        "feature_1": "htf_h1_rsi_14",
+        "feature_2": "htf_h1_rsi_14_norm",
+        "abs_correlation": 0.9999999999999989
+      },
+      {
+        "rank": 4,
+        "feature_1": "dist_ema_200",
+        "feature_2": "ema_slope_200",
+        "abs_correlation": 0.9999999959166614
+      },
+      {
+        "rank": 5,
+        "feature_1": "htf_h1_dist_ema_200",
+        "feature_2": "htf_h1_ema_slope_200",
+        "abs_correlation": 0.9999999791881963
+      },
+      {
+        "rank": 6,
+        "feature_1": "dist_ema_50",
+        "feature_2": "ema_slope_50",
+        "abs_correlation": 0.9999999653170935
+      },
+      {
+        "rank": 7,
+        "feature_1": "htf_h4_dist_ema_200",
+        "feature_2": "htf_h4_ema_slope_200",
+        "abs_correlation": 0.9999999383340551
+      },
+      {
+        "rank": 8,
+        "feature_1": "htf_h1_dist_ema_50",
+        "feature_2": "htf_h1_ema_slope_50",
+        "abs_correlation": 0.9999998850279984
+      },
+      {
+        "rank": 9,
+        "feature_1": "dist_ema_21",
+        "feature_2": "ema_slope_21",
+        "abs_correlation": 0.9999998624841283
+      },
+      {
+        "rank": 10,
+        "feature_1": "htf_h1_dist_ema_21",
+        "feature_2": "htf_h1_ema_slope_21",
+        "abs_correlation": 0.9999996195035937
+      }
+    ],
+    "p17_nan_sorting_bug_audit": {
+      "root_cause": "Column 'is_daily_roll_window' had variance=0, producing 0/0 = NaN in np.corrcoef. np.argsort followed by array reversal [::-1] placed NaNs at the top of the array, causing Phase 17 to display NaN pairs instead of the true perfect linear duplicates.",
+      "actual_duplicate_pairs": [
+        "rsi_14 <-> rsi_14_norm (|r| = 1.000)",
+        "dist_ema_200 <-> ema_slope_200 (|r| = 1.000)",
+        "dist_ema_50 <-> ema_slope_50 (|r| = 1.000)"
+      ]
+    },
+    "pca_variance_spectrum": {
+      "components_80_pct": 29,
+      "components_90_pct": 52,
+      "components_95_pct": 71,
+      "components_99_pct": 106,
+      "is_p17_pca_verified": true
+    },
+    "atr_drift_audit": {
+      "mean_2021": 1.1301275550465988,
+      "mean_2024": 1.6596579832476428,
+      "ks_statistic": 0.3648400200749096,
+      "ks_pvalue": 0.0,
+      "psi": 0.6385824501066573,
+      "is_drift_verified": true
+    }
+  },
+  "candidate5_audit": {
+    "reconciled_metrics": {
+      "total_trades": 531,
+      "gross_pnl_usd": 265.0809999999972,
+      "friction_usd": 338.8039999999997,
+      "net_pnl_usd": -73.7230000000028,
+      "long_trades_total": 257,
+      "long_net_pnl_usd": 67.23699999999879,
+      "short_trades_total": 274,
+      "short_net_pnl_usd": -140.96000000000151,
+      "per_fold": {
+        "fold_1": {
+          "total_trades": 208,
+          "gross_pnl": 72.23099999999886,
+          "friction": 125.77199999999999,
+          "net_pnl": -53.541000000001134,
+          "profit_factor_net": 0.9479923923052703,
+          "long_trades": 125,
+          "long_net_pnl": 33.6399999999996,
+          "short_trades": 83,
+          "short_net_pnl": -87.1810000000008
+        },
+        "fold_2": {
+          "total_trades": 142,
+          "gross_pnl": 5.123999999998432,
+          "friction": 82.881,
+          "net_pnl": -77.75700000000163,
+          "profit_factor_net": 0.8872060367987074,
+          "long_trades": 102,
+          "long_net_pnl": -37.47400000000107,
+          "short_trades": 40,
+          "short_net_pnl": -40.2830000000005
+        },
+        "fold_3": {
+          "total_trades": 181,
+          "gross_pnl": 187.72599999999989,
+          "friction": 130.15099999999998,
+          "net_pnl": 57.574999999999925,
+          "profit_factor_net": 1.0534349657255184,
+          "long_trades": 30,
+          "long_net_pnl": 71.0710000000003,
+          "short_trades": 151,
+          "short_net_pnl": -13.496000000000386
+        }
+      }
+    },
+    "passive_exposure_claim_audit": {
+      "claim": "Candidate 5 2024 gain was entirely attributable to passive long exposure",
+      "audit_verdict": "VERIFIED WITH CAVEATS",
+      "factual_reconciliation": "In Fold 3 (2024), Long trades generated +$71.07 on 30 trades while Short trades lost -$13.50 on 151 trades, netting +$57.57. Thus, Long trades indeed accounted for >100% of the net profit. However, the claim that the model had 'passive long exposure' requires caveat: Candidate 5 was actually heavily net short in execution volume (151 short signals vs 30 long signals). The profit was generated because the few long signals occurred during explosive upward legs, while the 151 short trades had small per-trade drag (-$0.089/trade) that was masked by the longs."
+    }
+  },
+  "final_audit_verdict": "PHASE 17 PARTIALLY VERIFIED \u2014 FIXES REQUIRED",
+  "verdict_rationale": "Phase 17's core empirical diagnosis (cost friction dominance, negative net expectancy, model failure vs baselines, and the necessity to STOP the current M5 approach) is completely verified and confirmed. However, Phase 17 contained four specific technical/methodological flaws: (1) Claiming MFE=MAE proves Brownian motion when it was an algebraic identity of the pooling formula; (2) An off-by-one index slice in excursion calculations (1-bar lookahead into exit candle); (3) Using an uncorrected N/H heuristic for Neff which overstated degrees-of-freedom reduction by ~40%; and (4) A NaN-sorting bug in top collinear feature pairs caused by zero-variance column 'is_daily_roll_window'. All four errors are fully corrected in this Phase 18A forensic audit. The corrected evidence continues to conclusively support stopping the current M5 intraday approach. A macro-horizon research redesign may be proposed under strict pre-specified conditions."
+}
