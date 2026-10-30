@@ -1,0 +1,94 @@
+{
+  "audit_timestamp_utc": "2026-10-30T03:12:13.640200+00:00",
+  "protected_partitions": {
+    "val": {
+      "actual": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "expected": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "match": true
+    },
+    "test": {
+      "actual": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "expected": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "match": true
+    }
+  },
+  "data_summary": {
+    "n_evaluated_days": 495,
+    "n_compressed_days": 124,
+    "empirical_q1": 0.28186535182738426
+  },
+  "reconciliation": {
+    "reconciliation_passed": true,
+    "n_trades_checked": 101,
+    "discrepancies_count": 0,
+    "discrepancies": []
+  },
+  "recomputed_metrics": {
+    "executed_trades": 101,
+    "eligible_days": 124,
+    "participation_rate": 81.45,
+    "long_count": 48,
+    "short_count": 53,
+    "exit_reasons": {
+      "TIME_EXIT_1200": 83,
+      "STOP_LOSS": 18
+    },
+    "baseline_1_0x": {
+      "gross_pnl": 67.688,
+      "net_pnl": 42.438,
+      "total_friction": 25.25,
+      "expectancy": 0.42,
+      "wins": 55,
+      "losses": 46,
+      "win_rate_pct": 54.46,
+      "profit_factor": 1.263,
+      "max_drawdown_usd": 30.659
+    },
+    "elevated_1_5x": {
+      "gross_pnl": 67.688,
+      "net_pnl": 29.813,
+      "total_friction": 37.875,
+      "expectancy": 0.295,
+      "wins": 54,
+      "losses": 47,
+      "win_rate_pct": 53.47,
+      "profit_factor": 1.178,
+      "max_drawdown_usd": 32.409
+    },
+    "stressed_2_0x": {
+      "gross_pnl": 67.688,
+      "net_pnl": 17.188,
+      "total_friction": 50.5,
+      "expectancy": 0.17,
+      "wins": 51,
+      "losses": 50,
+      "win_rate_pct": 50.5,
+      "profit_factor": 1.099,
+      "max_drawdown_usd": 34.231
+    },
+    "long_cohort": {
+      "count": 48,
+      "net_pnl": 13.926,
+      "win_rate_pct": 54.17,
+      "profit_factor": 1.171
+    },
+    "short_cohort": {
+      "count": 53,
+      "net_pnl": 28.512,
+      "win_rate_pct": 54.72,
+      "profit_factor": 1.355
+    },
+    "uncertainty": {
+      "expectancy_bootstrap_95_ci": [
+        -0.466,
+        1.352
+      ],
+      "profit_factor_bootstrap_95_ci": [
+        0.751,
+        2.111
+      ],
+      "valid_pf_resamples": 2000,
+      "binom_p_value": 0.2131
+    }
+  }
+}

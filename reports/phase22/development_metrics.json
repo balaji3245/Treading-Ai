@@ -1,0 +1,140 @@
+{
+  "phase": "PHASE 22: CONTROLLED DEVELOPMENT \u2014 HYP-21-ASIAN-LONDON-EXPANSION",
+  "timestamp_utc": "2026-10-30T02:57:33.893619+00:00",
+  "final_decision": "PHASE 22 IMPLEMENTATION COMPLETE \u2014 DEVELOPMENT RESULTS NOT YET VALIDATED",
+  "decision_rationale": "Deterministic event-based backtesting engine for HYP-21-ASIAN-LONDON-EXPANSION was successfully implemented and validated on the 2021-2022 Development Partition (N = 495 calendar days). Zero look-ahead bias, strict one-trade-per-day enforcement, conservative stop-loss gap handling, and daytime holding (zero swap financing) were verified. On development data, the strategy executed 101 trades (48 Long, 53 Short) across 124 eligible compressed days, yielding +$42.44/oz net PnL (Net PF 1.263, 54.46% win rate) under 1.0x baseline costs ($0.25/oz), and remaining net positive under 1.5x (+$29.81/oz) and 2.0x (+$17.19/oz) cost stress. Because these results are strictly in-sample development figures, they do not establish out-of-sample edge. The implementation is complete and ready for locked out-of-sample testing.",
+  "data_governance": {
+    "development_metadata": {
+      "m5_2021_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2021.parquet",
+      "m5_2021_sha256": "f4888b0e722b60fc60f813711fcd80ba26d24698482cfb37da560ec27647ca3e",
+      "m5_2021_rows": 70686,
+      "m5_2022_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2022.parquet",
+      "m5_2022_sha256": "ee56686d8ad690af6b283c237a45944c65f8625eb414136447ae4e9b5a771350",
+      "m5_2022_rows": 70928,
+      "total_development_bars": 141614,
+      "min_timestamp_utc": "2021-01-03T23:00:00+00:00",
+      "max_timestamp_utc": "2022-12-30T21:55:00+00:00",
+      "fail_closed_check_passed": true
+    },
+    "protected_partitions": {
+      "val": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+        "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "is_unmodified": true
+      },
+      "test": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+        "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "is_unmodified": true
+      }
+    }
+  },
+  "frozen_strategy_parameters": {
+    "hypothesis_id": "HYP-21-ASIAN-LONDON-EXPANSION",
+    "asian_session_window": "00:00:00 to 07:00:00 UTC",
+    "breakout_monitoring_window": "07:05:00 to 09:00:00 UTC",
+    "holding_window_scheduled_exit": "12:00:00 UTC Close (11:55 bar close)",
+    "frozen_compression_threshold": 0.281865,
+    "atr_trailing_period_days": 20,
+    "atr_shift": 1,
+    "stop_loss_placement": "Opposite Asian session boundary",
+    "stop_order_of_operations": "Stop checked before exit on every bar",
+    "open_gap_stop_slippage": "Filled at Open if bar opens beyond stop",
+    "entry_adverse_gap_rule": "Aborted if next bar Open breaches stop",
+    "max_trades_per_day": 1
+  },
+  "backtest_results_development": {
+    "sample_counts": {
+      "n_eligible_compressed_days": 124,
+      "n_executed_trades": 101,
+      "trade_participation_rate_pct": 81.45,
+      "n_long_trades": 48,
+      "n_short_trades": 53,
+      "long_trade_share_pct": 47.52,
+      "short_trade_share_pct": 52.48
+    },
+    "exit_reasons": {
+      "TIME_EXIT_1200": 83,
+      "STOP_LOSS": 18
+    },
+    "cost_tiers": {
+      "cost_1_0x_baseline": {
+        "cost_per_trade_usd": 0.25,
+        "total_costs_usd": 25.25,
+        "gross_pnl_usd": 67.688,
+        "net_pnl_usd": 42.438,
+        "avg_net_trade_usd": 0.42,
+        "wins_count": 55,
+        "losses_count": 46,
+        "scratch_count": 0,
+        "win_rate_pct": 54.46,
+        "net_profit_factor": 1.263,
+        "max_drawdown_usd": 30.659,
+        "max_drawdown_pct": 0.3
+      },
+      "cost_1_5x_elevated": {
+        "cost_per_trade_usd": 0.375,
+        "total_costs_usd": 37.875,
+        "gross_pnl_usd": 67.688,
+        "net_pnl_usd": 29.813,
+        "avg_net_trade_usd": 0.295,
+        "wins_count": 54,
+        "losses_count": 47,
+        "scratch_count": 0,
+        "win_rate_pct": 53.47,
+        "net_profit_factor": 1.178,
+        "max_drawdown_usd": 32.409,
+        "max_drawdown_pct": 0.32
+      },
+      "cost_2_0x_stressed": {
+        "cost_per_trade_usd": 0.5,
+        "total_costs_usd": 50.5,
+        "gross_pnl_usd": 67.688,
+        "net_pnl_usd": 17.188,
+        "avg_net_trade_usd": 0.17,
+        "wins_count": 51,
+        "losses_count": 50,
+        "scratch_count": 0,
+        "win_rate_pct": 50.5,
+        "net_profit_factor": 1.099,
+        "max_drawdown_usd": 34.231,
+        "max_drawdown_pct": 0.34
+      }
+    },
+    "directional_breakdown_1_0x": {
+      "long_trades": {
+        "trades_count": 48,
+        "net_pnl_usd": 13.926,
+        "win_rate_pct": 54.17,
+        "net_profit_factor": 1.171
+      },
+      "short_trades": {
+        "trades_count": 53,
+        "net_pnl_usd": 28.512,
+        "win_rate_pct": 54.72,
+        "net_profit_factor": 1.355
+      }
+    },
+    "statistical_inference": {
+      "primary_metric_net_expectancy": {
+        "point_estimate_usd": 0.42,
+        "bootstrap_95_ci_lower_usd": -0.466,
+        "bootstrap_95_ci_upper_usd": 1.352,
+        "valid_resamples": 2000
+      },
+      "secondary_metric_net_profit_factor": {
+        "point_estimate": 1.263,
+        "bootstrap_95_ci_lower": 0.751,
+        "bootstrap_95_ci_upper": 2.111,
+        "valid_resamples": 2000,
+        "undefined_pf_policy": "Zero-loss resamples return NaN and are excluded from percentile ranking."
+      },
+      "binomial_test_vs_50pct": {
+        "p_value": 0.2131,
+        "is_significant_at_alpha_0_05": false
+      }
+    }
+  }
+}
