@@ -1,0 +1,26 @@
+{
+  "audit_timestamp_utc": "2026-10-30T03:45:18.239677+00:00",
+  "protected_partitions": {
+    "val": {
+      "actual": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "expected": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "match": true
+    },
+    "test": {
+      "actual": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "expected": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "match": true
+    }
+  },
+  "data_summary": {
+    "n_evaluated_days": 495,
+    "n_eligible_days": 124,
+    "empirical_q75": 0.3202104122098326
+  },
+  "reconciliation": {
+    "reconciliation_passed": true,
+    "n_trades_checked": 124,
+    "discrepancies_count": 0,
+    "discrepancies": []
+  }
+}

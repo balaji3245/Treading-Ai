@@ -58,8 +58,8 @@ Bid-Only Execution Convention & Cost Causality Documentation:
 """
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
-from typing import Dict, Optional, Union
+from datetime import datetime, time, timedelta, timezone
+from typing import Any, Dict, List, Optional, Tuple, Union
 from zoneinfo import ZoneInfo
 import numpy as np
 import pandas as pd
@@ -67,6 +67,13 @@ import pandas as pd
 TZ_NEW_YORK = ZoneInfo("America/New_York")
 TZ_LONDON = ZoneInfo("Europe/London")
 TZ_TOKYO = ZoneInfo("Asia/Tokyo")
+
+
+def _to_utc_timestamp(timestamp: Union[datetime, pd.Timestamp]) -> pd.Timestamp:
+    """Helper to ensure timestamp is a timezone-aware UTC pd.Timestamp."""
+    if not hasattr(timestamp, "tzinfo") or timestamp.tzinfo is None:
+        return pd.to_datetime(timestamp, utc=True)
+    return pd.Timestamp(timestamp).tz_convert(timezone.utc)
 
 
 @dataclass(frozen=True)
@@ -82,6 +89,253 @@ class TradeExecution:
     timestamp: pd.Timestamp
     is_tradable: bool
     rejection_reason: Optional[str] = None
+
+
+@dataclass(frozen=True)
+class SwapFinancingRecord:
+    """Details of overnight financing (swap) calculated for a holding period.
+
+    Documented Unit Accounting:
+    - Base unit: USD per troy ounce ($/oz) and total USD for given position size.
+    - Contract specification: 1 standard lot = 100 troy ounces.
+    - Sign convention:
+      * swap_pnl_per_oz: Negative is debit (cash drag reducing PnL); positive is credit.
+      * swap_drag_per_oz: Non-negative friction metric (positive drag against capital).
+    - Calibration governance:
+      * is_calibrated: Strictly False unless populated with verified broker quote tables.
+    """
+    direction: str  # 'LONG' or 'SHORT'
+    entry_ts: pd.Timestamp
+    exit_ts: pd.Timestamp
+    rollover_count: int
+    weighted_days: float
+    rate_per_oz_day: float
+    swap_pnl_per_oz: float
+    total_swap_pnl_usd: float
+    swap_drag_per_oz: float
+    total_swap_drag_usd: float
+    rate_unit: str
+    is_calibrated: bool
+    broker_source: Optional[str] = None
+
+
+class OvernightSwapEngine:
+    """Configurable overnight swap financing engine for spot gold (XAUUSD).
+
+    Models institutional and retail broker overnight financing charges (swaps/rollover)
+    incurred when holding spot gold positions across the daily settlement boundary.
+
+    Institutional Financing & Rollover Mechanics:
+    ---------------------------------------------
+    1. Rollover Boundary:
+       Spot gold positions held across 17:00:00 New York local time (America/New_York)
+       incur overnight financing. Positions opened and closed within the same trading
+       session without crossing 17:00:00 NY incur ZERO swap charges.
+
+    2. Daylight Saving Time (DST) Handling:
+       The 17:00:00 New York rollover boundary dynamically shifts in UTC:
+       - Summer (EDT): 21:00:00 UTC
+       - Winter (EST): 22:00:00 UTC
+       The engine dynamically calculates rollover crossings using America/New_York
+       timezone conversion, ensuring zero fixed-offset misalignment.
+
+    3. Wednesday Triple Swap Convention:
+       Spot gold trades settle on a T+2 business day basis. A position held across
+       Wednesday 17:00 NY rollover settles from Friday to Monday, bridging the 2 weekend
+       days (Saturday and Sunday). Therefore, the Wednesday rollover carries 3x the daily
+       financing charge (1 day for Wednesday, 2 days for the weekend).
+       Monday, Tuesday, Thursday, and Friday rollovers carry 1x the daily charge.
+
+    4. Rate Conventions and Supported Units:
+       Brokers quote swap rates in varying units:
+       - 'usd_per_oz_day': Direct USD charge per troy ounce per day (e.g., -0.12 $/oz/day).
+       - 'points_per_day': Swap in broker points (e.g., -12.0 points, where 1 pt = $0.01/oz = $0.12/oz).
+       - 'annual_percentage': Annualized financing rate (e.g., -2.5% p.a.), converted via
+         (spot_price * rate_annual / 360).
+       - 'usd_per_lot_day': USD charge per standard lot (100 oz) per day (e.g., -$12.00/lot/day).
+
+    5. Sign Conventions & Friction:
+       - Swap PnL (Credit/Debit): Negative values represent debits (costs dragging PnL).
+         Positive values represent credits (interest earned).
+       - Swap Friction / Drag: Positive dollar amount representing the drag on trading capital.
+         Friction ($/oz) = -swap_pnl_per_oz when swap_pnl_per_oz < 0.
+
+    6. Contract Specifications:
+       - Standard contract size: 100 troy ounces per lot.
+       - Base accounting unit: USD per troy ounce ($/oz).
+
+    7. Calibration & Assumptions Disclaimer:
+       Actual swap rates depend on real-time broker interbank funding costs and Tom-Next
+       rates. All default rates in this engine are explicit illustrative ASSUMPTIONS and
+       MUST NOT be treated as verified market facts until calibrated against live broker feeds.
+    """
+
+    def __init__(
+        self,
+        swap_rate_long: float = -0.12,  # Illustrative assumption ($/oz/day)
+        swap_rate_short: float = -0.04,  # Illustrative assumption ($/oz/day)
+        rate_unit: str = "usd_per_oz_day",  # 'usd_per_oz_day', 'points_per_day', 'usd_per_lot_day', 'annual_percentage'
+        contract_size_oz: float = 100.0,
+        point_value_usd: float = 0.01,
+        triple_swap_day: int = 2,  # Wednesday = 2 (Monday=0 ... Sunday=6)
+        rollover_hour_ny: int = 17,
+        rollover_minute_ny: int = 0,
+        days_per_year: int = 360,
+        is_calibrated: bool = False,
+        broker_source: Optional[str] = None,
+    ):
+        valid_units = ["usd_per_oz_day", "points_per_day", "usd_per_lot_day", "annual_percentage"]
+        if rate_unit not in valid_units:
+            raise ValueError(f"Invalid rate_unit '{rate_unit}'. Supported: {valid_units}")
+
+        self.swap_rate_long = float(swap_rate_long)
+        self.swap_rate_short = float(swap_rate_short)
+        self.rate_unit = rate_unit
+        self.contract_size_oz = float(contract_size_oz)
+        self.point_value_usd = float(point_value_usd)
+        self.triple_swap_day = int(triple_swap_day)
+        self.rollover_hour_ny = int(rollover_hour_ny)
+        self.rollover_minute_ny = int(rollover_minute_ny)
+        self.days_per_year = int(days_per_year)
+        self.is_calibrated = bool(is_calibrated)
+        self.broker_source = broker_source
+
+    def convert_rate_to_usd_per_oz_day(
+        self,
+        rate: float,
+        spot_price: Optional[float] = None,
+    ) -> float:
+        """Convert any supported rate unit to USD per troy ounce per day ($/oz/day)."""
+        if self.rate_unit == "usd_per_oz_day":
+            return rate
+        elif self.rate_unit == "points_per_day":
+            return rate * self.point_value_usd
+        elif self.rate_unit == "usd_per_lot_day":
+            return rate / self.contract_size_oz
+        elif self.rate_unit == "annual_percentage":
+            if spot_price is None or spot_price <= 0:
+                raise ValueError("spot_price must be a positive float when rate_unit='annual_percentage'.")
+            annual_rate = rate / 100.0 if abs(rate) > 0.5 else rate
+            return (spot_price * annual_rate) / self.days_per_year
+        else:
+            raise ValueError(f"Unsupported rate_unit: {self.rate_unit}")
+
+    def get_rollover_crossings(
+        self,
+        entry_ts: Union[datetime, pd.Timestamp],
+        exit_ts: Union[datetime, pd.Timestamp],
+    ) -> List[Dict[str, Any]]:
+        """Identify every 17:00:00 New York rollover boundary crossed between entry and exit.
+
+        Causality & Rollover Boundary Convention:
+        - A position crossing 17:00:00 NY incurs rollover financing.
+        - Boundary condition: entry_ts < rollover_ts <= exit_ts.
+        - Positions opened and closed within the same trading session (without crossing 17:00 NY)
+          cross zero boundaries (0 swap).
+        """
+        t_entry = _to_utc_timestamp(entry_ts)
+        t_exit = _to_utc_timestamp(exit_ts)
+
+        if t_exit <= t_entry:
+            return []
+
+        entry_ny = t_entry.tz_convert(TZ_NEW_YORK)
+        exit_ny = t_exit.tz_convert(TZ_NEW_YORK)
+
+        cur_date = entry_ny.date()
+        end_date = exit_ny.date() + timedelta(days=1)
+
+        crossings: List[Dict[str, Any]] = []
+        while cur_date <= end_date:
+            # Rollovers occur Monday through Friday at 17:00 NY
+            if cur_date.weekday() < 5:
+                roll_ny = datetime.combine(
+                    cur_date,
+                    time(self.rollover_hour_ny, self.rollover_minute_ny),
+                    tzinfo=TZ_NEW_YORK,
+                )
+                roll_utc = roll_ny.astimezone(timezone.utc)
+                if t_entry < roll_utc <= t_exit:
+                    mult = 3.0 if cur_date.weekday() == self.triple_swap_day else 1.0
+                    crossings.append({
+                        "timestamp_utc": pd.Timestamp(roll_utc),
+                        "timestamp_ny": pd.Timestamp(roll_ny),
+                        "weekday": cur_date.weekday(),
+                        "multiplier": mult,
+                    })
+            cur_date += timedelta(days=1)
+
+        return crossings
+
+    def calculate_swap_financing(
+        self,
+        direction: str,
+        entry_ts: Union[datetime, pd.Timestamp],
+        exit_ts: Union[datetime, pd.Timestamp],
+        position_size_oz: float = 1.0,
+        spot_price: Optional[float] = None,
+    ) -> SwapFinancingRecord:
+        """Calculate complete overnight financing drag and PnL for a trade holding interval.
+
+        Parameters
+        ----------
+        direction : str
+            Trade direction: 'LONG' (or 'BUY') or 'SHORT' (or 'SELL').
+        entry_ts : Union[datetime, pd.Timestamp]
+            Trade fill timestamp at entry.
+        exit_ts : Union[datetime, pd.Timestamp]
+            Trade exit timestamp.
+        position_size_oz : float
+            Position size in troy ounces (e.g. 100.0 oz = 1 standard lot). Default: 1.0 oz.
+        spot_price : Optional[float]
+            Representative spot price (required if rate_unit='annual_percentage').
+
+        Returns
+        -------
+        SwapFinancingRecord
+            Complete financing results including weighted days, $/oz drag, and total USD impact.
+        """
+        dir_clean = direction.upper()
+        if dir_clean in ["BUY", "LONG"]:
+            dir_norm = "LONG"
+            raw_rate = self.swap_rate_long
+        elif dir_clean in ["SELL", "SHORT"]:
+            dir_norm = "SHORT"
+            raw_rate = self.swap_rate_short
+        else:
+            raise ValueError(f"Invalid direction '{direction}'. Must be LONG/BUY or SHORT/SELL.")
+
+        t_entry = _to_utc_timestamp(entry_ts)
+        t_exit = _to_utc_timestamp(exit_ts)
+
+        rate_per_oz_day = self.convert_rate_to_usd_per_oz_day(raw_rate, spot_price=spot_price)
+        crossings = self.get_rollover_crossings(t_entry, t_exit)
+
+        rollover_count = len(crossings)
+        weighted_days = sum(c["multiplier"] for c in crossings)
+
+        swap_pnl_per_oz = round(rate_per_oz_day * weighted_days, 5)
+        total_swap_pnl_usd = round(swap_pnl_per_oz * position_size_oz, 5)
+
+        # Cost friction drag is positive when swap drags PnL (debit)
+        swap_drag_per_oz = max(0.0, -swap_pnl_per_oz)
+        total_swap_drag_usd = max(0.0, -total_swap_pnl_usd)
+
+        return SwapFinancingRecord(
+            direction=dir_norm,
+            entry_ts=t_entry,
+            exit_ts=t_exit,
+            rollover_count=rollover_count,
+            weighted_days=float(weighted_days),
+            rate_per_oz_day=round(rate_per_oz_day, 5),
+            swap_pnl_per_oz=swap_pnl_per_oz,
+            total_swap_pnl_usd=total_swap_pnl_usd,
+            swap_drag_per_oz=round(swap_drag_per_oz, 5),
+            total_swap_drag_usd=round(total_swap_drag_usd, 5),
+            rate_unit=self.rate_unit,
+            is_calibrated=self.is_calibrated,
+            broker_source=self.broker_source,
+        )
 
 
 class ExecutionCostModel:
@@ -111,6 +365,7 @@ class ExecutionCostModel:
         enable_volatility_scaling: bool = True,
         volatility_spread_factor: float = 0.5,
         session_multipliers: Optional[Dict[str, float]] = None,
+        swap_engine: Optional[OvernightSwapEngine] = None,
     ):
         self.base_spread_usd = base_spread_usd
         self.commission_per_lot_usd = commission_per_lot_usd
@@ -119,6 +374,7 @@ class ExecutionCostModel:
         self.base_slippage_usd = base_slippage_usd
         self.enable_volatility_scaling = enable_volatility_scaling
         self.volatility_spread_factor = volatility_spread_factor
+        self.swap_engine = swap_engine or OvernightSwapEngine()
 
         self.session_multipliers = session_multipliers or {
             "LONDON_NY_OVERLAP": 1.0,   # Peak liquidity (London & NY both open)
@@ -431,3 +687,74 @@ class ExecutionCostModel:
             prior_candle_range=candle_range,
             baseline_candle_range=baseline_candle_range,
         )
+
+    def calculate_round_turn_cost(
+        self,
+        entry_execution: TradeExecution,
+        exit_execution: TradeExecution,
+        position_size_oz: float = 1.0,
+        spot_price: Optional[float] = None,
+    ) -> Dict[str, Any]:
+        """Calculate complete itemized and aggregated round-turn transaction and financing cost.
+
+        Standard Accounting Conventions:
+        - Base unit: USD per troy ounce ($/oz).
+        - Contract specification: 1 standard lot = 100 troy ounces.
+        - Itemized Components:
+          1. Entry Spread ($/oz, applied if BUY entry)
+          2. Entry Slippage ($/oz)
+          3. Entry Commission ($/oz)
+          4. Exit Spread ($/oz, applied if BUY exit)
+          5. Exit Slippage ($/oz)
+          6. Exit Commission ($/oz)
+          7. Overnight Swap Financing ($/oz and total USD; 0 for intraday holds)
+        - Aggregate Friction:
+          Total Friction ($/oz) = Entry Friction + Exit Friction + Swap Drag.
+          Total Friction (USD) = Total Friction ($/oz) * position_size_oz.
+        - Strict Safeguard: Zero double-counting of spread, commission, slippage, or financing.
+        """
+        if not entry_execution.is_tradable:
+            raise ValueError(f"Entry execution was rejected: {entry_execution.rejection_reason}")
+        if not exit_execution.is_tradable:
+            raise ValueError(f"Exit execution was rejected: {exit_execution.rejection_reason}")
+
+        # Determine trade direction from entry action: BUY -> LONG, SELL -> SHORT
+        direction = "LONG" if entry_execution.action == "BUY" else "SHORT"
+
+        entry_spread = entry_execution.effective_spread if entry_execution.action == "BUY" else 0.0
+        entry_slippage = entry_execution.slippage
+        entry_comm = entry_execution.commission_per_oz
+        entry_friction = round(entry_spread + entry_slippage + entry_comm, 5)
+
+        exit_spread = exit_execution.effective_spread if exit_execution.action == "BUY" else 0.0
+        exit_slippage = exit_execution.slippage
+        exit_comm = exit_execution.commission_per_oz
+        exit_friction = round(exit_spread + exit_slippage + exit_comm, 5)
+
+        total_exec_friction_per_oz = round(entry_friction + exit_friction, 5)
+
+        # Financing / Swap drag across holding interval
+        swap_record = self.swap_engine.calculate_swap_financing(
+            direction=direction,
+            entry_ts=entry_execution.timestamp,
+            exit_ts=exit_execution.timestamp,
+            position_size_oz=position_size_oz,
+            spot_price=spot_price or entry_execution.nominal_bid,
+        )
+
+        total_friction_per_oz = round(total_exec_friction_per_oz + swap_record.swap_drag_per_oz, 5)
+        total_friction_usd = round(total_friction_per_oz * position_size_oz, 5)
+
+        return {
+            "direction": direction,
+            "position_size_oz": position_size_oz,
+            "entry_friction_per_oz": entry_friction,
+            "exit_friction_per_oz": exit_friction,
+            "total_execution_friction_per_oz": total_exec_friction_per_oz,
+            "swap_drag_per_oz": swap_record.swap_drag_per_oz,
+            "total_friction_per_oz": total_friction_per_oz,
+            "total_friction_usd": total_friction_usd,
+            "swap_record": swap_record,
+            "is_calibrated": swap_record.is_calibrated,
+        }
+

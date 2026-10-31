@@ -1,0 +1,6 @@
+hypothesis_id,sample_size,net_pnl_1_0x_usd,avg_net_trade_usd,net_profit_factor,win_rate_pct,max_drawdown_usd,net_pnl_1_5x_usd,long_pf,short_pf,binomial_p_val,hb_significant,decision,rationale
+HYP-27-VOL-SHOCK-EXPANSION,49,46.046,0.94,1.452,57.14,18.207,39.921,0.923,3.68,0.1958,False,REJECTED,"Failed development gates: Directional asymmetry (Long PF 0.923, Short PF 3.680 < 1.05)"
+HYP-27-LONDON-PM-FIX-IMBALANCE,133,73.527,0.553,1.284,48.12,65.985,56.902,0.959,1.763,0.6985,False,REJECTED,"Failed development gates: Directional asymmetry (Long PF 0.959, Short PF 1.763 < 1.05)"
+HYP-27-POST-COMEX-DRIFT-REVERSION,100,23.546,0.235,1.311,55.0,15.246,11.046,1.427,1.21,0.1841,False,REJECTED,Failed development gates: Expectancy $0.235 < $0.50
+HYP-27-CONSECUTIVE-RANGE-MOMENTUM,46,64.9,1.411,1.453,45.65,39.188,59.15,0.342,2.674,0.7693,False,REJECTED,"Failed development gates: Directional asymmetry (Long PF 0.342, Short PF 2.674 < 1.05)"
+HYP-27-MONDAY-WEEKEND-GAP-REVERSION,40,-5.757,-0.144,0.93,42.5,30.015,-10.757,0.476,1.689,0.8659,False,REJECTED,"Failed development gates: Expectancy $-0.144 < $0.50; PF 0.930 < 1.25; Negative net PnL at 1.5x ($-10.76); Directional asymmetry (Long PF 0.476, Short PF 1.689 < 1.05)"

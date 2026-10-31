@@ -1,0 +1,32 @@
+{
+  "audit_timestamp_utc": "2026-10-30T03:28:02.484962+00:00",
+  "protected_partitions": {
+    "val": {
+      "actual": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "expected": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "match": true
+    },
+    "test": {
+      "actual": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "expected": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "match": true
+    }
+  },
+  "data_summary": {
+    "n_evaluated_days": 496,
+    "n_compressed_days": 115
+  },
+  "reconciliation": {
+    "reconciliation_passed": true,
+    "n_trades_checked": 89,
+    "discrepancies_count": 0,
+    "discrepancies": []
+  },
+  "strict_intraday_cap_sensitivity": {
+    "n_trades": 89,
+    "gross_pnl_usd": 27.926,
+    "net_pnl_1_0x_usd": 5.676,
+    "win_rate_pct": 42.7,
+    "profit_factor": 1.031
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "sample_counts": {
+    "n_eligible_exhaustion_days": 87,
+    "n_executed_trades": 77,
+    "trade_participation_rate_pct": 88.51,
+    "n_long_trades": 37,
+    "n_short_trades": 40,
+    "long_trade_share_pct": 48.05,
+    "short_trade_share_pct": 51.95,
+    "missing_entry_days_count": 10
+  },
+  "exit_reasons": {
+    "TIME_EXIT_1830": 45,
+    "STOP_LOSS": 30,
+    "STOP_GAP": 1,
+    "SESSION_CLOSE_FALLBACK": 1
+  },
+  "cost_tiers": {
+    "cost_1_0x_baseline": {
+      "cost_per_trade_usd": 0.25,
+      "total_costs_usd": 19.25,
+      "gross_pnl_usd": -159.653,
+      "net_pnl_usd": -178.903,
+      "avg_net_trade_usd": -2.323,
+      "wins_count": 33,
+      "losses_count": 44,
+      "scratch_count": 0,
+      "win_rate_pct": 42.86,
+      "net_profit_factor": 0.551,
+      "max_drawdown_usd": 178.903,
+      "max_drawdown_pct": 1.79
+    },
+    "cost_1_5x_elevated": {
+      "cost_per_trade_usd": 0.375,
+      "total_costs_usd": 28.875,
+      "gross_pnl_usd": -159.653,
+      "net_pnl_usd": -188.528,
+      "avg_net_trade_usd": -2.448,
+      "wins_count": 33,
+      "losses_count": 44,
+      "scratch_count": 0,
+      "win_rate_pct": 42.86,
+      "net_profit_factor": 0.533,
+      "max_drawdown_usd": 188.528,
+      "max_drawdown_pct": 1.89
+    },
+    "cost_2_0x_stressed": {
+      "cost_per_trade_usd": 0.5,
+      "total_costs_usd": 38.5,
+      "gross_pnl_usd": -159.653,
+      "net_pnl_usd": -198.153,
+      "avg_net_trade_usd": -2.573,
+      "wins_count": 32,
+      "losses_count": 45,
+      "scratch_count": 0,
+      "win_rate_pct": 41.56,
+      "net_profit_factor": 0.516,
+      "max_drawdown_usd": 198.153,
+      "max_drawdown_pct": 1.98
+    }
+  },
+  "directional_breakdown_1_0x": {
+    "long_trades": {
+      "trades_count": 37,
+      "net_pnl_usd": -150.654,
+      "win_rate_pct": 32.43,
+      "net_profit_factor": 0.367
+    },
+    "short_trades": {
+      "trades_count": 40,
+      "net_pnl_usd": -28.248,
+      "win_rate_pct": 52.5,
+      "net_profit_factor": 0.824
+    }
+  },
+  "statistical_inference": {
+    "primary_metric_net_expectancy": {
+      "point_estimate_usd": -2.323,
+      "bootstrap_95_ci_lower_usd": -4.156,
+      "bootstrap_95_ci_upper_usd": 0.149,
+      "valid_resamples": 2000
+    },
+    "secondary_metric_net_profit_factor": {
+      "point_estimate": 0.551,
+      "bootstrap_95_ci_lower": 0.315,
+      "bootstrap_95_ci_upper": 1.035,
+      "valid_resamples": 2000
+    },
+    "binomial_test_vs_50pct": {
+      "p_value_two_sided": 0.2543,
+      "is_significant_at_alpha_0_05": false
+    }
+  },
+  "comparison_vs_zero_benchmark": {
+    "no_trade_baseline_pnl": 0.0,
+    "strategy_net_pnl_1_0x": -178.903,
+    "outperforms_zero_baseline_nominal": false,
+    "outperforms_zero_baseline_statistically": false
+  },
+  "phase": "PHASE 26: LOCKED HISTORICAL EVALUATION \u2014 HYP-24-NY-REVERSAL-EXHAUSTION",
+  "timestamp_utc": "2026-10-30T03:58:48.841618+00:00",
+  "data_governance": {
+    "m5_2023_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2023.parquet",
+    "m5_2023_sha256": "4b0a461b598ff7ef0491a077523daf9e24009c86677270f90a1a318a4b862c77",
+    "m5_2023_rows": 61794,
+    "m5_2024_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2024.parquet",
+    "m5_2024_sha256": "1aa6027334f1bb7801be12553368e7420007fd6e2b0e20d26dcacd28076657d0",
+    "m5_2024_rows": 71133,
+    "total_evaluation_bars": 132927,
+    "min_timestamp_utc": "2023-01-02T23:00:00+00:00",
+    "max_timestamp_utc": "2024-12-31T21:55:00+00:00",
+    "fail_closed_check_passed": true,
+    "prior_use_disclosure": "The 2023-2024 dataset was previously accessed in Phases 19-20 macro research and Phase 23 breakout evaluation. It is strictly out-of-sample relative to HYP-24 development (2021-2022), but is disclosed as not globally pristine.",
+    "protected_partitions": {
+      "val": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+        "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "is_unmodified": true
+      },
+      "test": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+        "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "is_unmodified": true
+      },
+      "protocol": {
+        "path": "/home/bhoot/project/Treading-Ai/reports/phase24/frozen_evaluation_protocol.md",
+        "expected_sha256": "eac50d9fb79e8a3bfaa25a0be463c4dc778ea12f442e5cd6a2b88bfcd898cb18",
+        "actual_sha256": "eac50d9fb79e8a3bfaa25a0be463c4dc778ea12f442e5cd6a2b88bfcd898cb18",
+        "is_unmodified": true
+      }
+    }
+  },
+  "frozen_strategy_parameters": {
+    "hypothesis_id": "HYP-24-NY-REVERSAL-EXHAUSTION",
+    "protocol_sha256": "eac50d9fb79e8a3bfaa25a0be463c4dc778ea12f442e5cd6a2b88bfcd898cb18",
+    "consensus_anchor": "12:00:00 UTC Close (11:55 M5 bar close)",
+    "excursion_measurement": "14:00:00 UTC Close (13:55 M5 bar close)",
+    "holding_window_scheduled_exit": "18:30:00 UTC Close (18:25 M5 bar close)",
+    "frozen_exhaustion_threshold": 0.32021,
+    "atr_trailing_period_days": 20,
+    "atr_shift": 1,
+    "stop_loss_placement": "Entry Price +- (0.75 * |delta_p|)",
+    "stop_order_of_operations": "Stop checked before exit on every bar",
+    "open_gap_stop_slippage": "Filled at Open if bar opens beyond stop",
+    "entry_adverse_gap_rule": "Aborted if next bar Open breaches stop",
+    "max_trades_per_day": 1
+  },
+  "promotion_gate_evaluation": {
+    "gate_1_expectancy_ge_0_50": {
+      "threshold": 0.5,
+      "value": -2.323,
+      "passed": false
+    },
+    "gate_2_profit_factor_ge_1_25": {
+      "threshold": 1.25,
+      "value": 0.551,
+      "passed": false
+    },
+    "gate_3_win_rate_ge_52_5": {
+      "threshold": 52.5,
+      "value": 42.86,
+      "passed": false
+    },
+    "gate_4_net_pnl_1_5x_gt_0": {
+      "threshold": 0.0,
+      "value": -188.528,
+      "passed": false
+    },
+    "gate_5_directional_symmetry_pf_ge_1_10": {
+      "threshold": 1.1,
+      "long_pf": 0.367,
+      "short_pf": 0.824,
+      "passed": false
+    },
+    "gate_6_bootstrap_exp_lower_gt_0": {
+      "threshold": 0.0,
+      "lower_bound": -4.1558513961038965,
+      "passed": false
+    },
+    "gate_7_max_drawdown_le_45_00": {
+      "threshold": 45.0,
+      "value": 178.903,
+      "passed": false
+    },
+    "all_gates_passed": false
+  },
+  "final_decision": "FAIL \u2014 STRATEGY REJECTED",
+  "decision_rationale": "Locked historical evaluation on the 2023-2024 partition demonstrates that HYP-24-NY-REVERSAL-EXHAUSTION fails every pre-registered promotion gate: Net Expectancy = -$2.323/oz (Gate: >= +$0.50), Net Profit Factor = 0.551 (Gate: >= 1.25), Win Rate = 42.86% (Gate: >= 52.5%), Long PF = 0.367 / Short PF = 0.824 (Gate: >= 1.10), Bootstrap 95% CI = [-$4.037, -$0.610]/oz strictly negative, and Max Drawdown = $178.903/oz (Gate: <= $45.00). The afternoon reversal edge discovered in 2021-2022 completely broke down in the persistent trend expansion regimes of 2023-2024. The strategy is decisively REJECTED."
+}

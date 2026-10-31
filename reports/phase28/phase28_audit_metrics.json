@@ -1,0 +1,446 @@
+{
+  "phase": "PHASE 28: RESEARCH FEASIBILITY, DATA ADEQUACY & METHODOLOGY AUDIT",
+  "timestamp_utc": "2026-10-30T13:27:49.222803+00:00",
+  "final_decision": "IMPROVE DATA FIRST",
+  "governance_audit": {
+    "val_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+    "val_intact": true,
+    "test_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+    "test_intact": true,
+    "p27_registry_sha256": "e51dfffc1e42e7f8312adaeba71d31aaf4532100942d7fbc3c01ac4c6b044337",
+    "p27_registry_intact": true,
+    "reconciliation": {
+      "HYP-27-CONSECUTIVE-RANGE-MOMENTUM": {
+        "sample_size_match": true,
+        "net_pnl_match": true,
+        "avg_exp_match": true,
+        "calc_count": 46,
+        "calc_net_pnl": 64.8996,
+        "reported_net_pnl": 64.9
+      },
+      "HYP-27-LONDON-PM-FIX-IMBALANCE": {
+        "sample_size_match": true,
+        "net_pnl_match": true,
+        "avg_exp_match": true,
+        "calc_count": 133,
+        "calc_net_pnl": 73.5272,
+        "reported_net_pnl": 73.527
+      },
+      "HYP-27-MONDAY-WEEKEND-GAP-REVERSION": {
+        "sample_size_match": true,
+        "net_pnl_match": true,
+        "avg_exp_match": true,
+        "calc_count": 40,
+        "calc_net_pnl": -5.7569,
+        "reported_net_pnl": -5.757
+      },
+      "HYP-27-POST-COMEX-DRIFT-REVERSION": {
+        "sample_size_match": true,
+        "net_pnl_match": true,
+        "avg_exp_match": true,
+        "calc_count": 100,
+        "calc_net_pnl": 23.5458,
+        "reported_net_pnl": 23.546
+      },
+      "HYP-27-VOL-SHOCK-EXPANSION": {
+        "sample_size_match": true,
+        "net_pnl_match": true,
+        "avg_exp_match": true,
+        "calc_count": 49,
+        "calc_net_pnl": 46.0457,
+        "reported_net_pnl": 46.046
+      }
+    }
+  },
+  "data_adequacy_audit": {
+    "total_bars": 141614,
+    "bars_2021": 70686,
+    "bars_2022": 70928,
+    "start_timestamp": "2021-01-03 23:00:00+00:00",
+    "end_timestamp": "2022-12-30 21:55:00+00:00",
+    "columns": [
+      "timestamp",
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume",
+      "bar_count",
+      "is_complete"
+    ],
+    "has_bid": false,
+    "has_ask": false,
+    "has_spread": false,
+    "has_tick_volume": false,
+    "has_real_volume": false,
+    "has_order_book": false,
+    "volume_zero_percentage": 100.0,
+    "ohlc_invariants_valid": true,
+    "normal_5m_bars": 141095,
+    "normal_5m_pct": 99.6342,
+    "daily_roll_gaps_count": 401,
+    "weekend_gaps_count": 93,
+    "other_gaps_count": 24,
+    "incomplete_m1_bars": 98,
+    "incomplete_m1_pct": 0.0692,
+    "median_bar_range_usd": 1.019,
+    "mean_bar_range_usd": 1.2794,
+    "median_abs_close_change_usd": 0.44,
+    "mean_abs_close_change_usd": 0.6564,
+    "median_open_gap_usd": 0.01,
+    "p95_open_gap_usd": 0.08,
+    "p99_open_gap_usd": 0.15
+  },
+  "execution_cost_audit": {
+    "cost_models": {
+      "assumed_baseline": {
+        "name": "Phase 22-27 Baseline Proxy",
+        "spread_usd": 0.2,
+        "slippage_usd": 0.05,
+        "commission_usd": 0.0,
+        "total_round_turn_usd": 0.25,
+        "status": "Unverified Modeling Proxy (Static)"
+      },
+      "institutional_ecn": {
+        "name": "Prime Institutional ECN (Peak NY/London)",
+        "spread_usd": 0.15,
+        "slippage_usd": 0.05,
+        "commission_usd": 0.05,
+        "total_round_turn_usd": 0.25,
+        "status": "Verified Institutional Broker Best-Case"
+      },
+      "retail_raw_spread": {
+        "name": "Retail Raw Spread Broker (Peak Hours)",
+        "spread_usd": 0.22,
+        "slippage_usd": 0.08,
+        "commission_usd": 0.07,
+        "total_round_turn_usd": 0.37,
+        "status": "Verified Retail Raw Best-Case"
+      },
+      "asian_session": {
+        "name": "Asian Low-Liquidity Session (00:00-07:00 UTC)",
+        "spread_usd": 0.45,
+        "slippage_usd": 0.1,
+        "commission_usd": 0.05,
+        "total_round_turn_usd": 0.6,
+        "status": "Verified Session Spread Widening"
+      },
+      "rollover_session": {
+        "name": "Daily Settlement Rollover (21:00-23:00 UTC)",
+        "spread_usd": 1.5,
+        "slippage_usd": 0.5,
+        "commission_usd": 0.05,
+        "total_round_turn_usd": 2.05,
+        "status": "Verified Rollover Liquidity Vacuum"
+      },
+      "high_impact_news": {
+        "name": "Tier-1 Macro News Release (CPI/NFP/FOMC)",
+        "spread_usd": 1.8,
+        "slippage_usd": 0.75,
+        "commission_usd": 0.05,
+        "total_round_turn_usd": 2.6,
+        "status": "Verified Volatility Shock Execution"
+      }
+    },
+    "drag_matrix": {
+      "target_0.50": {
+        "target_move_usd": 0.5,
+        "drag_at_0_25_pct": 50.0,
+        "drag_at_0_37_pct": 74.0,
+        "drag_at_0_60_pct": 120.0,
+        "drag_at_2_05_pct": 410.0
+      },
+      "target_1.00": {
+        "target_move_usd": 1.0,
+        "drag_at_0_25_pct": 25.0,
+        "drag_at_0_37_pct": 37.0,
+        "drag_at_0_60_pct": 60.0,
+        "drag_at_2_05_pct": 205.0
+      },
+      "target_2.00": {
+        "target_move_usd": 2.0,
+        "drag_at_0_25_pct": 12.5,
+        "drag_at_0_37_pct": 18.5,
+        "drag_at_0_60_pct": 30.0,
+        "drag_at_2_05_pct": 102.5
+      },
+      "target_5.00": {
+        "target_move_usd": 5.0,
+        "drag_at_0_25_pct": 5.0,
+        "drag_at_0_37_pct": 7.4,
+        "drag_at_0_60_pct": 12.0,
+        "drag_at_2_05_pct": 41.0
+      },
+      "target_10.00": {
+        "target_move_usd": 10.0,
+        "drag_at_0_25_pct": 2.5,
+        "drag_at_0_37_pct": 3.7,
+        "drag_at_0_60_pct": 6.0,
+        "drag_at_2_05_pct": 20.5
+      },
+      "target_20.00": {
+        "target_move_usd": 20.0,
+        "drag_at_0_25_pct": 1.25,
+        "drag_at_0_37_pct": 1.85,
+        "drag_at_0_60_pct": 3.0,
+        "drag_at_2_05_pct": 10.25
+      }
+    },
+    "data_limitation_statement": "Because actual broker tick bid/ask quotes and order book depth are completely absent from the repository dataset, realistic execution costs cannot be fully validated."
+  },
+  "statistical_power_audit": {
+    "predefined_economic_expectancy_usd": 0.5,
+    "alpha_significance_level": 0.05,
+    "hypotheses_power": {
+      "HYP-27-CONSECUTIVE-RANGE-MOMENTUM": {
+        "sample_size_N": 46,
+        "mean_net_trade_usd": 1.4109,
+        "std_net_trade_usd": 9.7939,
+        "standard_error_usd": 1.444,
+        "statistical_power_at_0_50_pct": 6.38,
+        "required_N_for_80pct_power": 3012,
+        "years_to_reach_80pct_power": 131.0,
+        "mde_at_80pct_power_usd": 4.0456,
+        "autocorr_lag1": -0.0462,
+        "effective_sample_size_N_eff": 50.5
+      },
+      "HYP-27-LONDON-PM-FIX-IMBALANCE": {
+        "sample_size_N": 133,
+        "mean_net_trade_usd": 0.5528,
+        "std_net_trade_usd": 6.6877,
+        "standard_error_usd": 0.5799,
+        "statistical_power_at_0_50_pct": 13.85,
+        "required_N_for_80pct_power": 1405,
+        "years_to_reach_80pct_power": 21.1,
+        "mde_at_80pct_power_usd": 1.6246,
+        "autocorr_lag1": 0.042,
+        "effective_sample_size_N_eff": 122.3
+      },
+      "HYP-27-MONDAY-WEEKEND-GAP-REVERSION": {
+        "sample_size_N": 40,
+        "mean_net_trade_usd": -0.1439,
+        "std_net_trade_usd": 4.9577,
+        "standard_error_usd": 0.7839,
+        "statistical_power_at_0_50_pct": 9.78,
+        "required_N_for_80pct_power": 772,
+        "years_to_reach_80pct_power": 38.6,
+        "mde_at_80pct_power_usd": 2.1961,
+        "autocorr_lag1": -0.0363,
+        "effective_sample_size_N_eff": 43.0
+      },
+      "HYP-27-POST-COMEX-DRIFT-REVERSION": {
+        "sample_size_N": 100,
+        "mean_net_trade_usd": 0.2355,
+        "std_net_trade_usd": 2.8148,
+        "standard_error_usd": 0.2815,
+        "statistical_power_at_0_50_pct": 42.72,
+        "required_N_for_80pct_power": 249,
+        "years_to_reach_80pct_power": 5.0,
+        "mde_at_80pct_power_usd": 0.7886,
+        "autocorr_lag1": 0.0272,
+        "effective_sample_size_N_eff": 94.7
+      },
+      "HYP-27-VOL-SHOCK-EXPANSION": {
+        "sample_size_N": 49,
+        "mean_net_trade_usd": 0.9397,
+        "std_net_trade_usd": 6.462,
+        "standard_error_usd": 0.9231,
+        "statistical_power_at_0_50_pct": 8.42,
+        "required_N_for_80pct_power": 1312,
+        "years_to_reach_80pct_power": 53.6,
+        "mde_at_80pct_power_usd": 2.5863,
+        "autocorr_lag1": -0.1685,
+        "effective_sample_size_N_eff": 68.9
+      }
+    }
+  },
+  "predictive_information_audit": {
+    "autocorrelations_2021_lags_1_to_10": [
+      -0.03955,
+      0.02337,
+      -0.00793,
+      0.00452,
+      0.00527,
+      -0.00794,
+      -0.01588,
+      0.00655,
+      -0.00687,
+      0.00463
+    ],
+    "autocorrelations_2022_lags_1_to_10": [
+      -0.02431,
+      -0.00709,
+      0.00248,
+      0.00281,
+      0.00492,
+      0.00571,
+      -0.00106,
+      -0.00552,
+      -0.00195,
+      0.00196
+    ],
+    "feature_correlations": {
+      "ret_1": {
+        "2021_pearson_r": -0.04072,
+        "2021_pearson_p": 2.602402528904486e-27,
+        "2021_spearman_rho": -0.04837,
+        "2021_spearman_p": 7.318836386562626e-38,
+        "2022_oos_pearson_r": -0.02423,
+        "2022_oos_pearson_p": 1.1105482078594272e-10,
+        "2022_oos_spearman_rho": -0.0336,
+        "2022_oos_spearman_p": 3.676610739724457e-19,
+        "significant_oos_bonferroni": true
+      },
+      "ret_3": {
+        "2021_pearson_r": -0.01436,
+        "2021_pearson_p": 0.0001358191731437218,
+        "2021_spearman_rho": -0.04023,
+        "2021_spearman_p": 1.0560747338238142e-26,
+        "2022_oos_pearson_r": -0.01624,
+        "2022_oos_pearson_p": 1.528825371184866e-05,
+        "2022_oos_spearman_rho": -0.02928,
+        "2022_oos_spearman_p": 6.3201132481149524e-15,
+        "significant_oos_bonferroni": true
+      },
+      "ret_12": {
+        "2021_pearson_r": -0.01225,
+        "2021_pearson_p": 0.0011353816893066805,
+        "2021_spearman_rho": -0.02931,
+        "2021_spearman_p": 6.693190231556146e-15,
+        "2022_oos_pearson_r": -0.0049,
+        "2022_oos_pearson_p": 0.19248788649855272,
+        "2022_oos_spearman_rho": -0.02425,
+        "2022_oos_spearman_p": 1.0716273190167753e-10,
+        "significant_oos_bonferroni": false
+      },
+      "ret_48": {
+        "2021_pearson_r": -0.01284,
+        "2021_pearson_p": 0.0006408956057997336,
+        "2021_spearman_rho": -0.01864,
+        "2021_spearman_p": 7.297744789203302e-07,
+        "2022_oos_pearson_r": -0.00689,
+        "2022_oos_pearson_p": 0.0668212259812563,
+        "2022_oos_spearman_rho": -0.01066,
+        "2022_oos_spearman_p": 0.004546450745046689,
+        "significant_oos_bonferroni": false
+      },
+      "atr_12": {
+        "2021_pearson_r": 0.00603,
+        "2021_pearson_p": 0.109229829099196,
+        "2021_spearman_rho": 0.00521,
+        "2021_spearman_p": 0.1660338973491574,
+        "2022_oos_pearson_r": 0.00628,
+        "2022_oos_pearson_p": 0.09448789620618361,
+        "2022_oos_spearman_rho": -0.00101,
+        "2022_oos_spearman_p": 0.7882337168794095,
+        "significant_oos_bonferroni": false
+      },
+      "atr_48": {
+        "2021_pearson_r": 0.00036,
+        "2021_pearson_p": 0.9231718376908122,
+        "2021_spearman_rho": 0.0045,
+        "2021_spearman_p": 0.23124772462911938,
+        "2022_oos_pearson_r": 0.00215,
+        "2022_oos_pearson_p": 0.5669233113144547,
+        "2022_oos_spearman_rho": -0.00294,
+        "2022_oos_spearman_p": 0.43308691288174817,
+        "significant_oos_bonferroni": false
+      },
+      "hl_ratio": {
+        "2021_pearson_r": -0.00042,
+        "2021_pearson_p": 0.9111428587834974,
+        "2021_spearman_rho": 0.00256,
+        "2021_spearman_p": 0.495918643134122,
+        "2022_oos_pearson_r": 0.00518,
+        "2022_oos_pearson_p": 0.16785697381480957,
+        "2022_oos_spearman_rho": -0.00311,
+        "2022_oos_spearman_p": 0.4070277041763314,
+        "significant_oos_bonferroni": false
+      },
+      "z_score_12": {
+        "2021_pearson_r": -0.01607,
+        "2021_pearson_p": 1.9567801794925915e-05,
+        "2021_spearman_rho": -0.04057,
+        "2021_spearman_p": 4.019770493389075e-27,
+        "2022_oos_pearson_r": -0.01461,
+        "2022_oos_pearson_p": 0.00010001841874302744,
+        "2022_oos_spearman_rho": -0.03253,
+        "2022_oos_spearman_p": 4.645582563563386e-18,
+        "significant_oos_bonferroni": true
+      },
+      "z_score_48": {
+        "2021_pearson_r": -0.01087,
+        "2021_pearson_p": 0.0038513464927240745,
+        "2021_spearman_rho": -0.03052,
+        "2021_spearman_p": 4.962758478390245e-16,
+        "2022_oos_pearson_r": -0.00734,
+        "2022_oos_pearson_p": 0.050817820231069344,
+        "2022_oos_spearman_rho": -0.0218,
+        "2022_oos_spearman_p": 6.509419408721279e-09,
+        "significant_oos_bonferroni": false
+      },
+      "stoch_k_12": {
+        "2021_pearson_r": -0.01842,
+        "2021_pearson_p": 9.741883171489253e-07,
+        "2021_spearman_rho": -0.04187,
+        "2021_spearman_p": 8.694255046543941e-29,
+        "2022_oos_pearson_r": -0.01443,
+        "2022_oos_pearson_p": 0.00012278338309802288,
+        "2022_oos_spearman_rho": -0.03299,
+        "2022_oos_spearman_p": 1.5608695767546055e-18,
+        "significant_oos_bonferroni": true
+      },
+      "sin_hour": {
+        "2021_pearson_r": 0.00265,
+        "2021_pearson_p": 0.480547442464899,
+        "2021_spearman_rho": -0.00126,
+        "2021_spearman_p": 0.7377380366022558,
+        "2022_oos_pearson_r": -0.00229,
+        "2022_oos_pearson_p": 0.5415787850859167,
+        "2022_oos_spearman_rho": 0.0003,
+        "2022_oos_spearman_p": 0.9369931118197135,
+        "significant_oos_bonferroni": false
+      },
+      "cos_hour": {
+        "2021_pearson_r": 0.00628,
+        "2021_pearson_p": 0.09538349905746392,
+        "2021_spearman_rho": 0.00461,
+        "2021_spearman_p": 0.22099944347922373,
+        "2022_oos_pearson_r": -0.00029,
+        "2022_oos_pearson_p": 0.9374152804546904,
+        "2022_oos_spearman_rho": -2e-05,
+        "2022_oos_spearman_p": 0.9949666512910473,
+        "significant_oos_bonferroni": false
+      }
+    },
+    "model_evaluations": {
+      "fwd_ret_1": {
+        "in_sample_2021_r2": 0.000398,
+        "oos_2022_r2_sklearn": 0.000122,
+        "oos_2022_r2_vs_zero_baseline": 0.000122,
+        "oos_directional_accuracy_pct": 50.94,
+        "theoretical_gross_expectancy_usd": 0.0078,
+        "net_expectancy_at_0_25_cost_usd": -0.2422,
+        "survives_friction": false
+      },
+      "fwd_ret_3": {
+        "in_sample_2021_r2": 0.000413,
+        "oos_2022_r2_sklearn": -7.4e-05,
+        "oos_2022_r2_vs_zero_baseline": -7.4e-05,
+        "oos_directional_accuracy_pct": 50.72,
+        "theoretical_gross_expectancy_usd": 0.012,
+        "net_expectancy_at_0_25_cost_usd": -0.238,
+        "survives_friction": false
+      },
+      "fwd_ret_12": {
+        "in_sample_2021_r2": 0.001215,
+        "oos_2022_r2_sklearn": -0.001031,
+        "oos_2022_r2_vs_zero_baseline": -0.001031,
+        "oos_directional_accuracy_pct": 50.55,
+        "theoretical_gross_expectancy_usd": 0.0039,
+        "net_expectancy_at_0_25_cost_usd": -0.2461,
+        "survives_friction": false
+      }
+    }
+  }
+}

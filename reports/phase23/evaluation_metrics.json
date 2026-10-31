@@ -1,0 +1,146 @@
+{
+  "sample_counts": {
+    "n_eligible_compressed_days": 115,
+    "n_executed_trades": 89,
+    "trade_participation_rate_pct": 77.39,
+    "n_long_trades": 52,
+    "n_short_trades": 37,
+    "long_trade_share_pct": 58.43,
+    "short_trade_share_pct": 41.57
+  },
+  "exit_reasons": {
+    "TIME_EXIT_1200": 63,
+    "STOP_LOSS": 22,
+    "LAST_AVAILABLE_BAR_EXIT": 4
+  },
+  "cost_tiers": {
+    "cost_1_0x_baseline": {
+      "cost_per_trade_usd": 0.25,
+      "total_costs_usd": 22.25,
+      "gross_pnl_usd": 59.611,
+      "net_pnl_usd": 37.361,
+      "avg_net_trade_usd": 0.42,
+      "wins_count": 39,
+      "losses_count": 50,
+      "scratch_count": 0,
+      "win_rate_pct": 43.82,
+      "net_profit_factor": 1.18,
+      "max_drawdown_usd": 61.558,
+      "max_drawdown_pct": 0.61
+    },
+    "cost_1_5x_elevated": {
+      "cost_per_trade_usd": 0.375,
+      "total_costs_usd": 33.375,
+      "gross_pnl_usd": 59.611,
+      "net_pnl_usd": 26.236,
+      "avg_net_trade_usd": 0.295,
+      "wins_count": 38,
+      "losses_count": 51,
+      "scratch_count": 0,
+      "win_rate_pct": 42.7,
+      "net_profit_factor": 1.123,
+      "max_drawdown_usd": 67.933,
+      "max_drawdown_pct": 0.68
+    },
+    "cost_2_0x_stressed": {
+      "cost_per_trade_usd": 0.5,
+      "total_costs_usd": 44.5,
+      "gross_pnl_usd": 59.611,
+      "net_pnl_usd": 15.111,
+      "avg_net_trade_usd": 0.17,
+      "wins_count": 38,
+      "losses_count": 51,
+      "scratch_count": 0,
+      "win_rate_pct": 42.7,
+      "net_profit_factor": 1.069,
+      "max_drawdown_usd": 74.308,
+      "max_drawdown_pct": 0.74
+    }
+  },
+  "directional_breakdown_1_0x": {
+    "long_trades": {
+      "trades_count": 52,
+      "net_pnl_usd": 79.294,
+      "win_rate_pct": 55.77,
+      "net_profit_factor": 1.85
+    },
+    "short_trades": {
+      "trades_count": 37,
+      "net_pnl_usd": -41.933,
+      "win_rate_pct": 27.03,
+      "net_profit_factor": 0.633
+    }
+  },
+  "statistical_inference": {
+    "primary_metric_net_expectancy": {
+      "point_estimate_usd": 0.42,
+      "bootstrap_95_ci_lower_usd": -0.855,
+      "bootstrap_95_ci_upper_usd": 2.299,
+      "valid_resamples": 2000
+    },
+    "secondary_metric_net_profit_factor": {
+      "point_estimate": 1.18,
+      "bootstrap_95_ci_lower": 0.663,
+      "bootstrap_95_ci_upper": 2.192,
+      "valid_resamples": 2000,
+      "undefined_pf_policy": "Zero-loss resamples return NaN and are excluded from percentile ranking."
+    },
+    "binomial_test_vs_50pct": {
+      "p_value_two_sided": 0.2891,
+      "is_significant_at_alpha_0_05": false
+    }
+  },
+  "comparison_vs_zero_benchmark": {
+    "no_trade_baseline_pnl": 0.0,
+    "strategy_net_pnl_1_0x": 37.361,
+    "outperforms_zero_baseline_nominal": true,
+    "outperforms_zero_baseline_statistically": false
+  },
+  "phase": "PHASE 23: LOCKED OUT-OF-SAMPLE EVALUATION \u2014 HYP-21-ASIAN-LONDON-EXPANSION",
+  "timestamp_utc": "2026-10-30T03:27:15.804214+00:00",
+  "data_governance": {
+    "evaluation_metadata": {
+      "m5_2023_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2023.parquet",
+      "m5_2023_sha256": "4b0a461b598ff7ef0491a077523daf9e24009c86677270f90a1a318a4b862c77",
+      "m5_2023_rows": 61794,
+      "m5_2024_path": "/home/bhoot/project/Treading-Ai/data/processed/XAUUSD/M5/XAUUSD_M5_2024.parquet",
+      "m5_2024_sha256": "1aa6027334f1bb7801be12553368e7420007fd6e2b0e20d26dcacd28076657d0",
+      "m5_2024_rows": 71133,
+      "total_evaluation_bars": 132927,
+      "min_timestamp_utc": "2023-01-02T23:00:00+00:00",
+      "max_timestamp_utc": "2024-12-31T21:55:00+00:00",
+      "fail_closed_check_passed": true,
+      "prior_use_disclosure": "The 2023-2024 dataset was previously accessed in Phases 19-20 macro research. It is strictly out-of-sample relative to HYP-21-ASIAN-LONDON-EXPANSION development (2021-2022), but is disclosed as not globally pristine."
+    },
+    "protected_partitions": {
+      "val": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_val.parquet",
+        "expected_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "actual_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+        "is_unmodified": true
+      },
+      "test": {
+        "path": "/home/bhoot/project/Treading-Ai/data/features/XAUUSD_M5_features_test.parquet",
+        "expected_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "actual_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+        "is_unmodified": true
+      }
+    }
+  },
+  "frozen_strategy_parameters": {
+    "hypothesis_id": "HYP-21-ASIAN-LONDON-EXPANSION",
+    "asian_session_window": "00:00:00 to 07:00:00 UTC",
+    "breakout_monitoring_window": "07:05:00 to 09:00:00 UTC",
+    "holding_window_scheduled_exit": "12:00:00 UTC Close (11:55 bar close)",
+    "frozen_compression_threshold": 0.281865,
+    "atr_trailing_period_days": 20,
+    "atr_shift": 1,
+    "stop_loss_placement": "Opposite Asian session boundary",
+    "stop_order_of_operations": "Stop checked before exit on every bar",
+    "open_gap_stop_slippage": "Filled at Open if bar opens beyond stop",
+    "entry_adverse_gap_rule": "Aborted if next bar Open breaches stop",
+    "max_trades_per_day": 1
+  },
+  "final_decision": "REJECT",
+  "decision_rationale": "Out-of-sample evaluation on the 2023-2024 partition demonstrates hypothesis failure under quantitative governance. Overall win rate collapsed from 54.46% in-sample to 43.82% out-of-sample (39W / 50L, two-sided binomial p = 0.2872). Severe directional collapse occurred on Short trades (PF 0.633, 27.03% win rate, -$41.933/oz net loss). The primary net expectancy 95% bootstrap confidence interval [-0.855, +2.299]/oz spans zero, failing statistical significance. Furthermore, forensic analysis revealed that all positive net PnL was generated by 4 trades where missing 11:55 UTC bars erroneously caused positions to hold past daily rollover until evening (LAST_AVAILABLE_BAR_EXIT). When strictly capped at 12:00 UTC, out-of-sample net PnL is -$24.218/oz. The hypothesis fails to establish a robust, statistically verifiable edge."
+}

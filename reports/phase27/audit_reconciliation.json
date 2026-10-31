@@ -1,0 +1,34 @@
+{
+  "audit_timestamp_utc": "2026-10-30T13:25:56.510872+00:00",
+  "protected_partitions": {
+    "val": {
+      "actual": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "expected": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+      "match": true
+    },
+    "test": {
+      "actual": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "expected": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+      "match": true
+    },
+    "registry": {
+      "actual": "e51dfffc1e42e7f8312adaeba71d31aaf4532100942d7fbc3c01ac4c6b044337",
+      "expected": "e51dfffc1e42e7f8312adaeba71d31aaf4532100942d7fbc3c01ac4c6b044337",
+      "match": true
+    }
+  },
+  "reconciliation": {
+    "reconciliation_passed": true,
+    "total_trades_checked": 368,
+    "trade_counts_by_hyp": {
+      "HYP-27-LONDON-PM-FIX-IMBALANCE": 133,
+      "HYP-27-POST-COMEX-DRIFT-REVERSION": 100,
+      "HYP-27-VOL-SHOCK-EXPANSION": 49,
+      "HYP-27-CONSECUTIVE-RANGE-MOMENTUM": 46,
+      "HYP-27-MONDAY-WEEKEND-GAP-REVERSION": 40
+    },
+    "discrepancies_count": 0,
+    "discrepancies": []
+  },
+  "overall_audit_verdict": "PASS"
+}

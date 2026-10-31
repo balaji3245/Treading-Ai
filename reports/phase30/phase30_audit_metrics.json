@@ -1,0 +1,397 @@
+{
+  "phase": "PHASE 30: H4 & DAILY DATASET AUDIT, HORIZON STATISTICS & EXECUTION COSTS",
+  "timestamp_utc": "2026-10-31T14:37:59.147332+00:00",
+  "formal_verdict": "IMPROVE DATA/COST MODEL FIRST",
+  "governance_audit": {
+    "val_sha256": "7e9222e9dc0893601e24505912eeab78330670c4e70ebcc2fa462ff8d44a4f94",
+    "val_intact": true,
+    "test_sha256": "f95fd09a5d07666e3f1d9a72e840e2e97f3c058d11b6bb0c712b21dea86a5dec",
+    "test_intact": true
+  },
+  "h4_integrity_audit": {
+    "total_h4_bars": 3086,
+    "bars_2021": 1539,
+    "bars_2022": 1547,
+    "start_timestamp": "2021-01-03 22:00:00+00:00",
+    "end_timestamp": "2022-12-30 18:00:00+00:00",
+    "invariants_valid": true,
+    "is_monotonic_increasing": true,
+    "duplicate_timestamps": 0,
+    "null_counts": {
+      "timestamp": 0,
+      "open": 0,
+      "high": 0,
+      "low": 0,
+      "close": 0,
+      "volume": 0,
+      "bar_count": 0,
+      "is_complete": 0
+    },
+    "volume_is_all_zero": true,
+    "intervals": {
+      "normal_4h_count": 2975,
+      "normal_4h_pct": 96.43,
+      "weekend_52h_gaps_count": 99,
+      "holiday_3d_gaps_count": 4,
+      "other_irregular_gaps_count": 7
+    },
+    "bar_count_analysis": {
+      "bars_with_240_m1": 2502,
+      "bars_with_240_m1_pct": 81.08,
+      "bars_with_180_m1_roll_session": 498,
+      "bars_with_180_m1_pct": 16.14,
+      "bars_with_other_counts": 86,
+      "explanation": "The 180-bar candles occur daily during the rollover window (22:00-02:00 UTC in winter or 18:00-22:00 UTC in summer). Active trading spans 3 hours (180 mins) due to the official 1-hour daily settlement market closure. These candles are legitimate, fully formed session candles, but are marked is_complete=False due to hardcoded expected_m1_count=240."
+    },
+    "completeness_flag": {
+      "is_complete_true": 2502,
+      "is_complete_false": 584
+    },
+    "timestamp_hours_distribution": {
+      "22": 516,
+      "2": 516,
+      "6": 515,
+      "10": 515,
+      "14": 515,
+      "18": 509
+    }
+  },
+  "daily_alignment_audit": {
+    "ny_close_aligned_days_count": 516,
+    "ny_close_days_2021": 258,
+    "ny_close_days_2022": 258,
+    "utc_midnight_aligned_days_count": 620,
+    "utc_sunday_mini_bars_count": 103,
+    "utc_sunday_mini_bars_median_minutes": 120.0,
+    "alignment_comparison_finding": "Naive UTC midnight alignment produces 620 calendar days across 2021-2022, creating 103 artificial 'Sunday mini-candles' with only ~60 minutes of trading activity before midnight. This creates 6 trading days per week and distorts moving averages and ATR. In contrast, New York Close alignment (22:00 UTC) produces exactly 516 trading days (5 days per week, ~258 days/year) matching institutional convention."
+  },
+  "price_and_horizon_statistics": {
+    "h4_statistics": {
+      "candle_range_distribution": {
+        "count": 3086,
+        "mean": 9.3462,
+        "std": 6.2188,
+        "min": 1.187,
+        "p10": 3.908,
+        "p25": 5.3163,
+        "median": 7.7505,
+        "p75": 11.355,
+        "p90": 16.6655,
+        "p95": 20.6082,
+        "p99": 32.0051,
+        "max": 93.96
+      },
+      "candle_body_distribution": {
+        "count": 3086,
+        "mean": 4.5251,
+        "std": 4.804,
+        "min": 0.0,
+        "p10": 0.515,
+        "p25": 1.3508,
+        "median": 3.118,
+        "p75": 5.93,
+        "p90": 10.36,
+        "p95": 13.7692,
+        "p99": 23.3915,
+        "max": 50.21
+      },
+      "abs_close_change_distribution": {
+        "count": 3085,
+        "mean": 4.5412,
+        "std": 4.8218,
+        "min": 0.0,
+        "p10": 0.53,
+        "p25": 1.36,
+        "median": 3.113,
+        "p75": 5.93,
+        "p90": 10.282,
+        "p95": 13.8254,
+        "p99": 24.1716,
+        "max": 50.21
+      },
+      "bar_to_bar_open_gap_distribution": {
+        "count": 3085,
+        "mean": 0.1368,
+        "std": 0.7443,
+        "min": 0.0,
+        "p10": 0.0,
+        "p25": 0.003,
+        "median": 0.02,
+        "p75": 0.055,
+        "p90": 0.3124,
+        "p95": 0.678,
+        "p99": 1.5684,
+        "max": 30.678
+      },
+      "weekend_gap_distribution": {
+        "count": 103,
+        "mean": 1.742,
+        "std": 3.5884,
+        "min": 0.04,
+        "p10": 0.206,
+        "p25": 0.446,
+        "median": 0.97,
+        "p75": 1.5485,
+        "p90": 2.8904,
+        "p95": 4.8868,
+        "p99": 16.2769,
+        "max": 30.678
+      },
+      "forward_excursions": {
+        "h4_1_bars": {
+          "horizon_bars": 1,
+          "approx_hours": 4,
+          "long_mfe_median_usd": 3.233,
+          "long_mfe_mean_usd": 4.5715,
+          "long_mae_median_usd": 3.26,
+          "long_mae_mean_usd": 4.7728
+        },
+        "h4_2_bars": {
+          "horizon_bars": 2,
+          "approx_hours": 8,
+          "long_mfe_median_usd": 4.85,
+          "long_mfe_mean_usd": 6.6138,
+          "long_mae_median_usd": 4.8055,
+          "long_mae_mean_usd": 6.9752
+        },
+        "h4_6_bars": {
+          "horizon_bars": 6,
+          "approx_hours": 24,
+          "long_mfe_median_usd": 9.483,
+          "long_mfe_mean_usd": 11.996,
+          "long_mae_median_usd": 9.4995,
+          "long_mae_mean_usd": 12.8181
+        },
+        "h4_12_bars": {
+          "horizon_bars": 12,
+          "approx_hours": 48,
+          "long_mfe_median_usd": 14.316,
+          "long_mfe_mean_usd": 17.1236,
+          "long_mae_median_usd": 13.7195,
+          "long_mae_mean_usd": 18.3426
+        },
+        "h4_30_bars": {
+          "horizon_bars": 30,
+          "approx_hours": 120,
+          "long_mfe_median_usd": 22.26,
+          "long_mfe_mean_usd": 26.9522,
+          "long_mae_median_usd": 22.6225,
+          "long_mae_mean_usd": 29.5724
+        }
+      }
+    },
+    "daily_statistics": {
+      "candle_range_distribution": {
+        "count": 516,
+        "mean": 24.8035,
+        "std": 11.8154,
+        "min": 7.89,
+        "p10": 13.508,
+        "p25": 16.941,
+        "median": 22.0665,
+        "p75": 29.7468,
+        "p90": 38.811,
+        "p95": 44.1982,
+        "p99": 60.6843,
+        "max": 96.46
+      },
+      "candle_body_distribution": {
+        "count": 516,
+        "mean": 11.9499,
+        "std": 10.6976,
+        "min": 0.131,
+        "p10": 1.73,
+        "p25": 4.2867,
+        "median": 8.617,
+        "p75": 16.341,
+        "p90": 27.5805,
+        "p95": 33.105,
+        "p99": 48.3269,
+        "max": 65.32
+      },
+      "abs_close_change_distribution": {
+        "count": 515,
+        "mean": 11.8996,
+        "std": 10.6519,
+        "min": 0.02,
+        "p10": 1.6142,
+        "p25": 4.325,
+        "median": 8.423,
+        "p75": 16.155,
+        "p90": 27.36,
+        "p95": 32.809,
+        "p99": 48.4512,
+        "max": 65.31
+      },
+      "bar_to_bar_open_gap_distribution": {
+        "count": 515,
+        "mean": 0.6939,
+        "std": 1.715,
+        "min": 0.0,
+        "p10": 0.072,
+        "p25": 0.1935,
+        "median": 0.44,
+        "p75": 0.74,
+        "p90": 1.1684,
+        "p95": 1.7679,
+        "p99": 4.8751,
+        "max": 30.678
+      },
+      "weekend_gap_distribution": {
+        "count": 103,
+        "mean": 1.742,
+        "std": 3.5884,
+        "min": 0.04,
+        "p10": 0.206,
+        "p25": 0.446,
+        "median": 0.97,
+        "p75": 1.5485,
+        "p90": 2.8904,
+        "p95": 4.8868,
+        "p99": 16.2769,
+        "max": 30.678
+      },
+      "forward_excursions": {
+        "daily_1_days": {
+          "horizon_days": 1,
+          "long_mfe_median_usd": 9.666,
+          "long_mfe_mean_usd": 12.2473,
+          "long_mae_median_usd": 8.61,
+          "long_mae_mean_usd": 12.5246
+        },
+        "daily_2_days": {
+          "horizon_days": 2,
+          "long_mfe_median_usd": 14.492,
+          "long_mfe_mean_usd": 17.3817,
+          "long_mae_median_usd": 13.0785,
+          "long_mae_mean_usd": 18.0359
+        },
+        "daily_3_days": {
+          "horizon_days": 3,
+          "long_mfe_median_usd": 17.255,
+          "long_mfe_mean_usd": 21.1926,
+          "long_mae_median_usd": 16.421,
+          "long_mae_mean_usd": 22.236
+        },
+        "daily_5_days": {
+          "horizon_days": 5,
+          "long_mfe_median_usd": 22.47,
+          "long_mfe_mean_usd": 27.1224,
+          "long_mae_median_usd": 22.16,
+          "long_mae_mean_usd": 29.1193
+        },
+        "daily_10_days": {
+          "horizon_days": 10,
+          "long_mfe_median_usd": 31.163,
+          "long_mfe_mean_usd": 38.244,
+          "long_mae_median_usd": 32.257,
+          "long_mae_mean_usd": 42.1526
+        }
+      }
+    }
+  },
+  "execution_cost_audit": {
+    "cost_tiers": {
+      "tier_1_institutional_prime": {
+        "name": "Institutional Prime ECN",
+        "round_turn_spread_usd": 0.15,
+        "round_turn_commission_usd": 0.05,
+        "round_turn_slippage_usd": 0.05,
+        "swap_financing_long_usd_per_day": 0.08,
+        "swap_financing_short_usd_per_day": 0.02
+      },
+      "tier_2_retail_raw_ecn": {
+        "name": "Retail Raw Spread Broker (Base Case)",
+        "round_turn_spread_usd": 0.25,
+        "round_turn_commission_usd": 0.07,
+        "round_turn_slippage_usd": 0.1,
+        "swap_financing_long_usd_per_day": 0.12,
+        "swap_financing_short_usd_per_day": 0.04
+      },
+      "tier_3_retail_standard_stressed": {
+        "name": "Retail Standard / Stressed Broker",
+        "round_turn_spread_usd": 0.45,
+        "round_turn_commission_usd": 0.0,
+        "round_turn_slippage_usd": 0.25,
+        "swap_financing_long_usd_per_day": 0.18,
+        "swap_financing_short_usd_per_day": 0.06
+      }
+    },
+    "cumulative_cost_projections": {
+      "tier_1_institutional_prime": {
+        "1_day": {
+          "fixed_entry_exit_friction_usd": 0.25,
+          "cumulative_swap_long_usd": 0.08,
+          "total_friction_long_usd": 0.33
+        },
+        "3_days": {
+          "fixed_entry_exit_friction_usd": 0.25,
+          "cumulative_swap_long_usd": 0.4,
+          "total_friction_long_usd": 0.65
+        },
+        "5_days_1wk": {
+          "fixed_entry_exit_friction_usd": 0.25,
+          "cumulative_swap_long_usd": 0.56,
+          "total_friction_long_usd": 0.81
+        },
+        "10_days_2wk": {
+          "fixed_entry_exit_friction_usd": 0.25,
+          "cumulative_swap_long_usd": 1.12,
+          "total_friction_long_usd": 1.37
+        }
+      },
+      "tier_2_retail_raw_ecn": {
+        "1_day": {
+          "fixed_entry_exit_friction_usd": 0.42,
+          "cumulative_swap_long_usd": 0.12,
+          "total_friction_long_usd": 0.54
+        },
+        "3_days": {
+          "fixed_entry_exit_friction_usd": 0.42,
+          "cumulative_swap_long_usd": 0.6,
+          "total_friction_long_usd": 1.02
+        },
+        "5_days_1wk": {
+          "fixed_entry_exit_friction_usd": 0.42,
+          "cumulative_swap_long_usd": 0.84,
+          "total_friction_long_usd": 1.26
+        },
+        "10_days_2wk": {
+          "fixed_entry_exit_friction_usd": 0.42,
+          "cumulative_swap_long_usd": 1.68,
+          "total_friction_long_usd": 2.1
+        }
+      },
+      "tier_3_retail_standard_stressed": {
+        "1_day": {
+          "fixed_entry_exit_friction_usd": 0.7,
+          "cumulative_swap_long_usd": 0.18,
+          "total_friction_long_usd": 0.88
+        },
+        "3_days": {
+          "fixed_entry_exit_friction_usd": 0.7,
+          "cumulative_swap_long_usd": 0.9,
+          "total_friction_long_usd": 1.6
+        },
+        "5_days_1wk": {
+          "fixed_entry_exit_friction_usd": 0.7,
+          "cumulative_swap_long_usd": 1.26,
+          "total_friction_long_usd": 1.96
+        },
+        "10_days_2wk": {
+          "fixed_entry_exit_friction_usd": 0.7,
+          "cumulative_swap_long_usd": 2.52,
+          "total_friction_long_usd": 3.22
+        }
+      }
+    },
+    "missing_inputs": [
+      "Historical broker-specific swap rates (no daily long/short swap points time-series exists).",
+      "Bid/Ask quote series (cannot verify spread at time of entry/exit).",
+      "Stop-loss gap execution records (cannot measure slippage on weekend/overnight gaps without tick fills).",
+      "Verified broker margin and financing haircut parameters."
+    ],
+    "supports_credible_net_pnl_backtest": false,
+    "justification": "While gross price excursions ($22-$31/oz) dwarf fixed spread friction ($0.42/oz), overnight swap financing accumulates significantly over multi-day swings ($0.60 to $2.50/oz). Because historical broker swap rate series and tick gap fills are missing, an audited net-PnL backtest cannot be certified without explicit, defensible swap and gap modeling assumptions."
+  }
+}

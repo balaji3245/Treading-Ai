@@ -28,6 +28,7 @@ TIMEFRAME_FREQ_MAP: Dict[str, str] = {
     "M30": "30min",
     "H1": "1h",
     "H4": "4h",
+    "D1": "1D",
 }
 
 # Expected M1 constituent candle count per higher timeframe bar
@@ -38,6 +39,7 @@ TIMEFRAME_M1_COUNT: Dict[str, int] = {
     "M30": 30,
     "H1": 60,
     "H4": 240,
+    "D1": 1380,
 }
 
 # HistData Source Specifics
